@@ -14,6 +14,12 @@ module.exports = {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'mainDarkColor': 'var(--main-dark-color)',
+                'mainDarkLightColor': 'var(--mainDarkLightColor)',
+                'mainTextColor': 'var(--mainTextColor)',
+                'mainDarkenLightTextColor': 'var(--mainDarkenLightTextColor)',
+            }
         },
     },
 

@@ -1,7 +1,81 @@
+@import "./custom.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --mainDarkColor: #0c0708;
+    --mainDarkLightColor: #161616;
+    --mainTextColor: #f3f3f3;
+    --mainDarkenLightTextColor: #e7e7e7;
+    --mainDarkLightTextColor: #737373;
+}
+
+body {
+    background-color: var(--mainDarkColor);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--mainTextColor);
+}
+
+p,
+li,
+a {
+    color: var(--mainDarkLightTextColor);
+}
+
 .flex-center {
     @apply flex items-center justify-center;
+}
+.flex-between {
+    @apply flex items-center justify-between;
+}
+.flex-start {
+    @apply flex items-center justify-start;
+}
+.flex-end {
+    @apply flex items-center justify-end;
+}
+.flex-1 {
+    @apply flex items-center gap-1;
+}
+.flex-2 {
+    @apply flex items-center gap-2;
+}
+.flex-3 {
+    @apply flex items-center gap-3;
+}
+
+.flex-col-1 {
+    @apply flex flex-col  gap-1;
+}
+.flex-col-2 {
+    @apply flex flex-col  gap-2;
+}
+.flex-col-3 {
+    @apply flex flex-col  gap-3;
+}
+.flex-col-4 {
+    @apply flex flex-col  gap-4;
+}
+.flex-col-5 {
+    @apply flex flex-col  gap-5;
+}
+
+.max-w-wrapper {
+    @apply max-w-7xl mx-auto px-5 xl:px-0;
+}
+
+.fill-button {
+    @apply border bg-[var(--mainDarkenLightTextColor)] w-full lg:w-max border-[var(--mainDarkenLightTextColor)] px-5 p-[5px] rounded-md hover:-translate-y-2 transition-all;
+}
+.outline-button {
+    @apply border w-full lg:w-max border-[var(--mainDarkenLightTextColor)] text-mainDarkenLightTextColor px-5 p-[5px] rounded-md hover:-translate-y-2 transition-all;
 }
