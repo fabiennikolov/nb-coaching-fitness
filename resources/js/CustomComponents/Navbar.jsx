@@ -14,7 +14,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className="flex-between max-w-wrapper h-[80px]">
+        <div className="fixed left-1/2 bg-[var(--mainDarkColor)] -translate-x-1/2 w-full z-[10000] flex-between max-w-wrapper h-[80px]">
             <div className="p-3">
                 <img src="/img/logo.png" alt="logo" />
             </div>
@@ -32,7 +32,6 @@ const Navbar = () => {
             </ul>
             <div className="hidden lg:flex gap-3">
                 <button className="outline-button">Login</button>
-                <button className="fill-button">Learn More</button>
             </div>
             <Menu
                 className="flex sm:hidden text-white cursor-pointer"

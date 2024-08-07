@@ -5,8 +5,9 @@
 @tailwind utilities;
 
 :root {
-    --mainDarkColor: #0c0708;
-    --mainDarkLightColor: #161616;
+    --mainDarkColor: #181818;
+    --mainDarkLightColor: #202020;
+    --mainDarkenLightColor: #161616;
     --mainTextColor: #f3f3f3;
     --mainDarkenLightTextColor: #e7e7e7;
     --mainDarkLightTextColor: #737373;
@@ -72,10 +73,20 @@ a {
 .max-w-wrapper {
     @apply max-w-7xl mx-auto px-5 xl:px-0;
 }
+.larger-max-w-wrapper {
+    @apply max-w-[110rem] mx-auto px-5 xl:px-0;
+}
 
 .fill-button {
-    @apply border bg-[var(--mainDarkenLightTextColor)] w-full lg:w-max border-[var(--mainDarkenLightTextColor)] px-5 p-[5px] rounded-md hover:-translate-y-2 transition-all;
+    @apply border w-full bg-[var(--mainDarkenLightTextColor)] md:w-max shadow-lg border-[var(--mainDarkenLightTextColor)] px-5 p-[5px] rounded-md hover:-translate-y-2 transition-all;
 }
 .outline-button {
-    @apply border w-full lg:w-max border-[var(--mainDarkenLightTextColor)] text-mainDarkenLightTextColor px-5 p-[5px] rounded-md hover:-translate-y-2 transition-all;
+    @apply border w-full md:w-max border-[var(--mainDarkenLightTextColor)] shadow-lg text-mainDarkenLightTextColor px-5 p-[5px] rounded-md hover:-translate-y-2 transition-all;
+}
+
+.grid-2 {
+    @apply grid grid-cols-1 md:grid-cols-2;
+}
+.grid-3 {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3;
 }

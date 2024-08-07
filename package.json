@@ -21,7 +21,10 @@
     },
     "dependencies": {
         "-": "^0.0.1",
+        "clsx": "^2.1.1",
+        "framer-motion": "^11.3.22",
         "lucide-react": "^0.424.0",
+        "tailwind-merge": "^2.4.0",
         "y": "^0.3.2"
     }
 }
