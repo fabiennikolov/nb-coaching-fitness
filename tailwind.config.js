@@ -25,6 +25,9 @@ module.exports = {
                 'mainTextColor': 'var(--mainTextColor)',
                 'mainDarkenLightTextColor': 'var(--mainDarkenLightTextColor)',
             },
+            backgroundImage: {
+                "panel-image": "linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url('/assets/login.jpg')",
+            },
             animation: {
                 scroll:
                     "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
