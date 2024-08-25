@@ -41,10 +41,9 @@ export default function Login({ status, canResetPassword }) {
                 <div className="w-full px-5 lg:px-10 xl:px-32 mx-auto">
                     <div className="flex-col-3">
                         <h1 className="font-bold text-3xl">
-                            Welcome back,{" "}
-                            <span className="text-underline">User!</span>
+                         Добре дошли
                         </h1>
-                        <p>Welcome Back! Please Enter your details.</p>
+                        <p>Добре дошли обратно! Моля, въведете вашите данни.</p>
                         <div className="input-container">
                             <input
                                 id="email"
@@ -81,22 +80,22 @@ export default function Login({ status, canResetPassword }) {
                         <div className="flex-between">
                             <div className="flex-3">
                                 <input type="checkbox" />
-                                <p>Remember for 30 days</p>
+                                <p>Запомни за 30 дни</p>
                             </div>
-                            <a href="#" className="text-[#dc2626] underline">
-                                Forgot Password?
+                            <a href="/forgot-password" className="text-[#dc2626] underline">
+                                Забравена парола?
                             </a>
                         </div>
                         <button className="w-full mt-3 bg-white rounded-md p-3 transition-all hover:-translate-y-1">
-                            Log in
+                            Вход
                         </button>
                         <p className="flex-end gap-1">
-                            Don't have an account?{" "}
+                           Нямаш профил?{" "}
                             <a
                                 className="text-[#dc2626] underline"
                                 href="/register"
                             >
-                                Register
+                                Създай Акаунт
                             </a>
                         </p>
                     </div>
