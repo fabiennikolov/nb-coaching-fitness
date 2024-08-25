@@ -9,7 +9,7 @@
     right: 0;
     bottom: calc(0.3125em * -0.625);
     height: 0.3125em;
-    background-image: url("data:image/svg+xml,<svg width='100' height='64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M-17 30.5C-1 22 72-4 54 13 37.9 28.2-2.5 57.5 16 55.5s72-29 104-40' stroke='Crimson' stroke-width='14'/></svg>");
+    background-image: url("data:image/svg+xml,<svg width='100' height='64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M-17 30.5C-1 22 72-4 54 13 37.9 28.2-2.5 57.5 16 55.5s72-29 104-40' stroke='red' stroke-width='14'/></svg>");
     background-size: auto 100%;
 }
 
@@ -36,6 +36,37 @@
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 0.3px white;
     -moz-text-fill-color: transparent;
+}
+.input-container {
+    position: relative;
+}
+.input-container input {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--mainDarkLightTextColor);
+    border-radius: 0.5em;
+    color: var(--mainDarkLightTextColor);
+    outline: none;
+}
+
+.input-container input:focus,
+.input-container input:valid {
+    border-radius: 0.5em;
+}
+
+.input-container label {
+    position: absolute;
+    color: gray;
+    top: 29%;
+    left: 2%;
+}
+
+.input-container input:focus ~ label,
+.input-container input:valid ~ label {
+    transform: translateY(-24px);
+    transition: 0.4s;
+    color: #dc2626;
+    background-color: var(--mainDarkColor);
 }
 
 @media screen and (min-width: 768px) {

@@ -11,7 +11,7 @@ const Welcome = () => {
     return (
         <div className="relative">
             <img
-                className="absolute opacity-[0.02] lg:opacity-30 left-[-12%] top-[30%]"
+                className="absolute opacity-[0.02] lg:opacity-30 left-[-12%] top-[10%] z-[-1]"
                 src="/assets/white-dots.png"
             />
             <Navbar />
@@ -28,7 +28,9 @@ const Welcome = () => {
                             <p className="m-3">{description}</p>
                             <div className="flex flex-col md:flex-row gap-3 items-center flex-center w-full">
                                 <button className="outline-button">
-                                    Login
+                                    <a className="text-white" href="/login">
+                                        Login
+                                    </a>
                                 </button>
                                 <button className="fill-button">
                                     Learn More
@@ -84,7 +86,7 @@ const Welcome = () => {
 
             <section className="flex flex-col gap-20 flex-center min-h-[80vh] relative overflow-hidden">
                 <img
-                    className="absolute opacity-[0.02] lg:opacity-30 right-[-12%] top-[40%]"
+                    className="absolute opacity-[0.02] lg:opacity-30 right-[-12%] top-[40%] z-[-1]"
                     src="/assets/white-dots.png"
                 />
                 <div className="flex-col-3 text-center">
@@ -110,7 +112,11 @@ const Welcome = () => {
                                 Doesnt have an account?
                             </h1>
                             <p>Create an account to see the full data</p>
-                            <button className="fill-button mt-3">Login</button>
+                            <button className="fill-button mt-3">
+                                <a className="text-black" href="/login">
+                                    Login
+                                </a>
+                            </button>
                         </div>
                     </div>
                     <div className="flex-col-5">
