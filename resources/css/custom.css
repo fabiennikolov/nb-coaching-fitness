@@ -1,18 +1,3 @@
-.text-underline {
-    position: relative;
-    white-space: nowrap;
-}
-.text-underline::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: calc(0.3125em * -0.625);
-    height: 0.3125em;
-    background-image: url("data:image/svg+xml,<svg width='100' height='64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M-17 30.5C-1 22 72-4 54 13 37.9 28.2-2.5 57.5 16 55.5s72-29 104-40' stroke='red' stroke-width='14'/></svg>");
-    background-size: auto 100%;
-}
-
 .sidebar {
     position: fixed;
     top: 0;
@@ -32,42 +17,74 @@
 }
 
 .special-footer-outline-text {
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 0.3px white;
-    -moz-text-fill-color: transparent;
+    color: white;
+    z-index: -1; opacity: 0.01;
 }
 .input-container {
     position: relative;
 }
-.input-container input {
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+.input-container input,
+.input-container textarea {
     width: 100%;
     background: transparent;
     border: 1px solid var(--mainDarkLightTextColor);
     border-radius: 0.5em;
     color: var(--mainDarkLightTextColor);
     outline: none;
+    padding: 1em 0.5em 0.5em 0.5em;
+    resize: vertical; /* Allows resizing of textarea only vertically */
 }
 
 .input-container input:focus,
-.input-container input:valid {
+.input-container textarea:focus,
+.input-container input:valid,
+.input-container textarea:valid {
     border-radius: 0.5em;
 }
 
 .input-container label {
     position: absolute;
     color: gray;
-    top: 29%;
-    left: 2%;
+    top: 50%;
+    left: 0.5em;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    pointer-events: none;
+    transition: all 0.4s ease;
+    background-color: transparent;
+    padding: 0 0.25em;
 }
 
+/* Move the label up when input or textarea is focused or valid (has content) */
 .input-container input:focus ~ label,
-.input-container input:valid ~ label {
-    transform: translateY(-24px);
-    transition: 0.4s;
-    color: #dc2626;
+.input-container textarea:focus ~ label,
+.input-container input:not(:placeholder-shown) ~ label,
+.input-container textarea:not(:placeholder-shown) ~ label {
+    transform: translateY(-150%);
+    color: var(--mainDarkLightTextColor);
     background-color: var(--mainDarkColor);
 }
+
+/* Keep the label in place when input or textarea is empty and not focused */
+.input-container input:placeholder-shown ~ label,
+.input-container textarea:placeholder-shown ~ label {
+    transform: translateY(-50%);
+    color: gray;
+}
+@media screen and (min-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+}
+
+
 
 @media screen and (min-width: 768px) {
     .sidebar {

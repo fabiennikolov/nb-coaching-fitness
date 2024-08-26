@@ -1,10 +1,6 @@
 import { useEffect } from "react";
-import GuestLayout from "@/Layouts/GuestLayout";
 import InputError from "@/Components/InputError";
-import InputLabel from "@/Components/InputLabel";
-import PrimaryButton from "@/Components/PrimaryButton";
-import TextInput from "@/Components/TextInput";
-import { Head, Link, useForm } from "@inertiajs/react";
+import { useForm } from "@inertiajs/react";
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -12,6 +8,8 @@ export default function Register() {
         email: "",
         password: "",
         password_confirmation: "",
+        additional_information: "",
+        instagram: "",
     });
 
     useEffect(() => {
@@ -40,12 +38,9 @@ export default function Register() {
             <div className="flex-center min-h-screen">
                 <div className="w-full px-5 lg:px-10 xl:px-32 mx-auto">
                     <div className="flex-col-3">
-                        <h1 className="font-bold text-3xl">
-                            Hello there fellow,
-                            <span className="text-underline">User!</span>
-                        </h1>
+                        <h1 className="font-bold text-3xl">Здравейте</h1>
                         <p>
-                            Please create an account! Please Enter your details.
+                           Създайте си акаунт. Моля въведете вашите данни
                         </p>
                         <div className="input-container">
                             <input
@@ -57,7 +52,7 @@ export default function Register() {
                                 onChange={handleOnChange}
                                 required
                             />
-                            <label>Name</label>
+                            <label>Име <span className="text-[10px]">(reqiured)</span></label>
                             <InputError
                                 message={errors.name}
                                 className="mt-2"
@@ -73,7 +68,10 @@ export default function Register() {
                                 onChange={handleOnChange}
                                 required
                             />
-                            <label>Email</label>
+                            <label>
+                                Email
+                                <span className="text-[10px]">(reqiured)</span>
+                            </label>
                             <InputError
                                 message={errors.email}
                                 className="mt-2"
@@ -89,7 +87,10 @@ export default function Register() {
                                 onChange={handleOnChange}
                                 required
                             />
-                            <label>Password</label>
+                            <label>
+                                Парола
+                                
+                            </label>
                             <InputError
                                 message={errors.password}
                                 className="mt-2"
@@ -106,31 +107,65 @@ export default function Register() {
                                 onChange={handleOnChange}
                                 required
                             />
-                            <label>Confirm Password</label>
+                            <label>
+                                Потвърждение на парола
+                            </label>
                             <InputError
                                 message={errors.password_confirmation}
+                                className="mt-2"
+                            />
+                        </div>
+                        <div className="input-container">
+                            <input
+                                id="additional_information"
+                                type="text"
+                                name="additional_informatio"
+                                value={data.instagram}
+                                className="mt-1 block w-full"
+                                onChange={handleOnChange}
+
+                            />
+                            <label>@{" "}Instagram</label>
+                            <InputError
+                                message={errors.instagram}
+                                className="mt-2"
+                            />
+                        </div>
+                        <div className="input-container">
+                            <textarea
+                                id="additional_information"
+                                type="text"
+                                name="additional_informatio"
+                                value={data.additional_information}
+                                className="mt-1 block w-full"
+                                onChange={handleOnChange}
+                                
+                            />
+                            <label>Допълнителна информация</label>
+                            <InputError
+                                message={errors.additional_informatio}
                                 className="mt-2"
                             />
                         </div>
                         <div className="flex-between">
                             <div className="flex-3">
                                 <input type="checkbox" />
-                                <p>Remember for 30 days</p>
+                                <p>Запомни за 30 дни</p>
                             </div>
-                            <a href="#" className="text-[#dc2626] underline">
-                                Forgot Password?
+                            <a href="/forgot-password" className="text-[#dc2626] underline">
+                                Забравена парола?
                             </a>
                         </div>
                         <button className="w-full mt-3 bg-white rounded-md p-3 transition-all hover:-translate-y-1">
-                            Register
+                            Създаване на акаунт
                         </button>
                         <p className="flex-end gap-1">
-                            Already have an account?{" "}
+                            Вече имаш акаунт?{" "}
                             <a
                                 className="text-[#dc2626] underline"
                                 href="/login"
                             >
-                                Log in
+                                Вход
                             </a>
                         </p>
                     </div>
