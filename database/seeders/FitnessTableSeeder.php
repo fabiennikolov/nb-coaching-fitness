@@ -7,6 +7,8 @@ use Illuminate\Database\Seeder;
 
 class FitnessTableSeeder extends Seeder
 {
+
+    protected $seedData = [];
     /**
      * Run the database seeds.
      *
