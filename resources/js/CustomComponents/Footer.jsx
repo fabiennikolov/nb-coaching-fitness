@@ -1,9 +1,13 @@
 import { footerLinks } from "@/Constants/StaticData";
+import { usePage } from "@inertiajs/react";
 import React from "react";
 
 const Footer = () => {
+
+    const { auth } = usePage().props
+
     return (
-        <div className="flex-col-3 mt-5 lg:mt-0 bg-[var(--mainDarkenLightColor)] min-h-[40vh] overflow-hidden">
+        <div className="flex-col-3 mt-5 lg:mt-0 bg-[var(--mainDarkenLightColor)] min-h-[40vh] overflow-hidden z-1">
             <div className="larger-max-w-wrapper w-full grid-4 gap-5 lg:gap-56 py-10 relative">
                 <div className="flex-col-3">
                     <img
@@ -12,8 +16,8 @@ const Footer = () => {
                         alt="footer_logo"
                     />
                     <div className="px-5">
-                        <p>Build a better body with SB Coacing.</p>
-                        <button className="fill-button mt-2">Register</button>
+                        <p>Направи перфектното тяло с NB Coaching</p>
+                        <button className="outline-button mt-2">{auth.user ? <a href="/profile">Profile</a> : <a href="/login">Login</a> }</button>
                         <h1 className="z-0 hidden xl:flex absolute special-footer-outline-text text-[10em] -right-[30%] font-bold leading-[70px] mt-20 uppercase bottom-0">
                             NB Coaching
                         </h1>
@@ -41,8 +45,7 @@ const Footer = () => {
             <span className="bg-[var(--mainDarkLightColor)] w-full h-[0.5px]"></span>
             <div className="larger-max-w-wrapper w-full">
                 <p className="w-full p-5">
-                    ©{new Date().getFullYear()} Copywrite NB Coaching. All
-                    rights reserved.
+                    ©{new Date().getFullYear()} Nb coaching Всички права са запазени
                 </p>
             </div>
         </div>

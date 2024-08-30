@@ -1,12 +1,15 @@
 import React from "react";
 import Navbar from "@/CustomComponents/Navbar";
 import { ContainerScroll } from "@/CustomComponents/ui/container-scroll-animation";
-import { headerDataText } from "@/Constants/StaticData";
+import { aboutCards, headerDataText } from "@/Constants/StaticData";
 import { Dumbbell } from "lucide-react";
 import Footer from "@/CustomComponents/Footer";
+import { usePage } from "@inertiajs/react";
 
 const Welcome = () => {
     const { title, subtitle, description } = headerDataText;
+
+    const { auth } = usePage().props;
 
     return (
         <div className="relative">
@@ -18,22 +21,25 @@ const Welcome = () => {
             <header className="flex flex-col overflow-hidden">
                 <ContainerScroll
                     titleComponent={
-                        <div className="flex-col-5 mb-10">
-                            <h1 className="text-3xl md:text-4xl font-semibold text-black dark:text-white">
+                        <div className="flex-col-5 mb-14 mt-10">
+                            <h1 className="text-3xl md:text-4xl font-semibold dark:text-white">
                                 {title} <br />
-                                <span className="text-underline text-4xl md:text-6xl lg:text-[6rem] font-bold mt-1 leading-none">
+                                <span className="text-4xl md:text-6xl lg:text-[6rem] font-bold mt-1 leading-none">
                                     {subtitle}
                                 </span>
                             </h1>
                             <p className="m-3">{description}</p>
                             <div className="flex flex-col md:flex-row gap-3 items-center flex-center w-full">
                                 <button className="outline-button">
-                                    <a className="text-white" href="/login">
-                                        Login
+                                    <a
+                                        className="text-white"
+                                        href={auth.user ? "/profile" : "/login"}
+                                    >
+                                        {auth.user ? "Профил" : "Вход"}
                                     </a>
                                 </button>
                                 <button className="fill-button">
-                                    Learn More
+                                    Научи повече
                                 </button>
                             </div>
                         </div>
@@ -50,11 +56,10 @@ const Welcome = () => {
                 </ContainerScroll>
             </header>
 
-            <section className="flex-col-5 flex-center min-h-[80vh]">
+            <section className="flex-col-5 flex-center min-h-[80vh] my-10">
                 <div className="flex-col-3 text-center">
                     <h1 className="font-bold text-3xl lg:text-6xl">
-                        It's time to trust{" "}
-                        <span className="text-underline">yourself</span>
+                        It's time to trust yourself
                     </h1>
                     <p className="max-w-[800px] mx-auto">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -62,80 +67,92 @@ const Welcome = () => {
                         nam quis aspernatur esse. Accusamus!
                     </p>
                 </div>
-                <div className="max-w-wrapper grid-3 gap-10">
-                    {[1, 2, 3].map((_, index) => (
-                        <div className="relative flex-col-3 bg-[var(--mainDarkenLightColor)] p-5 rounded-md overflow-hidden">
-                            <Dumbbell
+                <div className="max-w-wrapper grid-3 gap-3">
+                    {aboutCards.map((item, index) => (
+                        <div
+                            key={index}
+                            className="relative flex-col-3 bg-[var(--mainDarkenLightColor)] p-5 rounded-md overflow-hidden"
+                        >
+                            <i
                                 className="absolute -right-[20%] z-1 -top-10 text-orange-600 opacity-[0.5]"
                                 size={200}
-                            />
-                            <h1>Heading, {index}</h1>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Libero ipsam quae, et eum
-                                consequuntur perspiciatis explicabo temporibus
-                                unde velit similique quas, mollitia saepe
-                                reprehenderit totam dicta! Laudantium ex numquam
-                                dolorum.
-                            </p>
-                            <button className="fill-button">Learn More</button>
+                            >
+                                {item.icon}
+                            </i>
+                            <h1 className="text-xl font-bold">
+                                {item.heading}
+                            </h1>
+                            <p>{item.p}</p>
                         </div>
                     ))}
                 </div>
             </section>
 
-            <section className="flex flex-col gap-20 flex-center min-h-[80vh] relative overflow-hidden">
+            <section className="flex flex-col gap-20 flex-center min-h-[80vh] relative overflow-hidden my-10">
                 <img
                     className="absolute opacity-[0.02] lg:opacity-30 right-[-12%] top-[40%] z-[-1]"
                     src="/assets/white-dots.png"
                 />
                 <div className="flex-col-3 text-center">
                     <h1 className="font-bold text-3xl lg:text-6xl">
-                        It's time to trust{" "}
-                        <span className="text-underline">yourself</span>
+                        За кого е подходяща услугата?
                     </h1>
                     <p className="max-w-[800px] mx-auto">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Nesciunt recusandae saepe accusamus quo consequatur quia
-                        nam quis aspernatur esse. Accusamus!
+                        Услугата е насочена към хора, които имат минимум 6
+                        месеца опит в тренировките и искат да напреднат и да
+                        достигнат нови висоти във фитнеса. Ако сте готови да
+                        направите сериозна промяна и да работите усилено за
+                        постигане на Вашите цели, аз съм тук, за да Ви помогна.
                     </p>
                 </div>
-                <div className="max-w-wrapper grid-2 gap-10">
+                <div className="max-w-wrapper grid-2 gap-10 ">
                     <div className="relative flex-center">
-                        <img
-                            className="blur-lg"
-                            src="/assets/panel.png"
-                            alt="panel"
-                        />
-                        <div className="absolute text-center mx-auto flex-center flex-col">
-                            <h1 className="text-3xl font-bold">
-                                Doesnt have an account?
-                            </h1>
-                            <p>Create an account to see the full data</p>
-                            <button className="fill-button mt-3">
-                                <a className="text-black" href="/login">
-                                    Login
-                                </a>
-                            </button>
+                        <div className="bg-neutral-900 p-3 rounded-lg">
+                            <img
+                                className={`${
+                                    !auth.user && "blur-lg"
+                                } rounded-lg`}
+                                src="/assets/panel.png"
+                                alt="panel"
+                            />
                         </div>
+                        {!auth.user && (
+                            <div className="absolute text-center mx-auto flex-center flex-col">
+                                <h1 className="text-3xl font-bold">
+                                    Doesnt have an account?
+                                </h1>
+                                <p>Create an account to see the full data</p>
+                                <button className="fill-button mt-3">
+                                    <a className="text-black" href="/login">
+                                        Login
+                                    </a>
+                                </button>
+                            </div>
+                        )}
                     </div>
                     <div className="flex-col-5">
                         <div>
-                            <p>Lorem ipsum dolor sit.</p>
+                            <p>За мен</p>
                             <h1 className="text-2xl md:text-4xl font-bold">
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing
+                                Никола Бугов (Фитнес Инструктор)
                             </h1>
                         </div>
 
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit. Distinctio ipsum sint provident, non possimus
-                            voluptates recusandae cumque autem aliquid
-                            laudantium ab? Magnam harum dolorum deserunt
-                            pariatur voluptatum, quam vero saepe!
+                            Аз съм Никола Бугов, сертифициран фитнес треньор с
+                            повече от 2 години опит в работата с клиенти от
+                            различни нива на физическа подготовка. През това
+                            време съм помогнал на много хора да постигнат своите
+                            фитнес цели, независимо дали става въпрос за
+                            отслабване, изграждане на мускулна маса или просто
+                            за подобряване на общото им здравословно състояние.
                         </p>
-                        <button className="outline-button">Learn More</button>
+                        <p>
+                            Запишете се за безплатна консултация и започнете
+                            своята трансформация. С NBcoaching имате всичко
+                            необходимо, за да реализирате амбициите си.
+                        </p>
+                        <button className="fill-button">Контакт</button>
                     </div>
                 </div>
             </section>
