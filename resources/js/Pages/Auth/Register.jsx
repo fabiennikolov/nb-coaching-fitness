@@ -8,7 +8,7 @@ export default function Register() {
         email: "",
         password: "",
         password_confirmation: "",
-        additional_information: "",
+        additional_info: "",
         instagram: "",
         phone: ""
     });
@@ -149,10 +149,10 @@ export default function Register() {
                         </div>
                         <div className="input-container">
                             <textarea
-                                id="additional_information"
+                                id="additional_info"
                                 type="text"
-                                name="additional_information"
-                                value={data.additional_information}
+                                name="additional_info"
+                                value={data.additional_info}
                                 className="mt-1 block w-full"
                                 onChange={handleOnChange}
                                 

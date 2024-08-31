@@ -148,6 +148,12 @@ a {
     @apply flex flex-col  gap-5;
 }
 
+.flex-col-10 {
+    @apply flex flex-col  gap-10;
+}
+.flex-col-20 {
+    @apply flex flex-col  gap-20;
+}
 .max-w-wrapper {
     @apply max-w-7xl mx-auto px-5 xl:px-0;
 }

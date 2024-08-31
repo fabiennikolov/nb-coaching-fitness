@@ -6,6 +6,8 @@ import { customStyles } from "@/Constants/StaticData";
 export default function Admin(props) {
 
     const { user, usersData } = props;
+
+    console.log(usersData)
  
     const columns = [
         {
@@ -20,18 +22,18 @@ export default function Admin(props) {
         },
         {
           name: 'Phone Number',
-          selector: row => row.phone  && 'empty',
+          selector: row => row.phone ,
           sortable: true,
         },
         {
           name: 'Instagram',
-          selector: row => row.instagram && 'empty',
+          selector: row => row.instagram,
           sortable: true,
         //   cell: row => <a href={`https://instagram.com/${row.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer">{row.instagram}</a>,
         },
         {
           name: 'Message',
-          selector: row => row.message  && 'empty',
+          selector: row => row.additional_info ,
           sortable: false,
         },
         {

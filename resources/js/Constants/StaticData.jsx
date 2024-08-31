@@ -1,10 +1,16 @@
 import {
     Book,
+    ChartBar,
     Drumstick,
     Dumbbell,
+    MessageCircle,
     Monitor,
     Phone,
+    PhoneCall,
+    Pin,
+    Send,
     SquareChartGantt,
+    Twitter,
 } from "lucide-react";
 import { createTheme } from "react-data-table-component";
 
@@ -133,48 +139,104 @@ export const aboutCards = [
     },
 ];
 
+export const contactFormInputs = (data) => [
+    {
+        name: "Email",
+        value: data.email,
+    },
+    {
+        name: "Phone Number",
+        value: data.phone,
+    },
+    {
+        name: "Message",
+        value: data.additional_info,
+    },
+];
+
+export const contactFormGridThree = [
+    {
+        heading: "Chat with us",
+        p: "Speak to our friendly team via live chat",
+        add: [
+            {
+                icon: <MessageCircle />,
+                text: "Start a live chat",
+            },
+            {
+                icon: <Send />,
+                text: "Shoot us an email",
+            },
+            {
+                icon: <Twitter />,
+                text: "Message us on X",
+            },
+        ],
+    },
+    {
+        heading: "Call Us",
+        p: "Call our team Mon-Fri 8am to 5pm",
+        add: [
+            {
+                icon: <PhoneCall />,
+                text: "+1+(555) 000-0000",
+            },
+        ],
+    },
+    {
+        heading: "Visit ss",
+        p: "Chat to us in person at our Melboure HQ",
+        add: [
+            {
+                icon: <Pin />,
+                text: "100 Smith Street, Collingwood VIC 3065",
+            },
+        ],
+    },
+];
+
 export const customStyles = {
     rows: {
         style: {
             backgroundColor: "#202020",
             color: "#a8a29e",
-            borderTop: '1px solid #3f3f3f',     
+            borderTop: "1px solid #3f3f3f",
         },
     },
     headCells: {
         style: {
             backgroundColor: "#202020",
             color: "#a8a29e",
-            border: 'none'
+            border: "none",
         },
     },
     cells: {
         style: {
             backgroundColor: "#202020",
             color: "#a8a29e",
-        }
+        },
     },
     pagination: {
         style: {
             backgroundColor: "#202020", // Pagination background color
             color: "#a8a29e", // Text color for pagination
-            borderTop: '1px solid #3f3f3f', // Optional border top for separation
-            padding: '8px 16px', // Padding around pagination controls
+            borderTop: "1px solid #3f3f3f", // Optional border top for separation
+            padding: "8px 16px", // Padding around pagination controls
         },
         pageButtonsStyle: {
             color: "#a8a29e", // Button text color
-            borderRadius: '5px', // Button border radius
-            padding: '5px 10px', // Padding inside buttons
-            margin: '0 4px', // Space between buttons
-            cursor: 'pointer',
-            transition: '0.3s', // Smooth hover transition
-    
-            '&:disabled': {
-                cursor: 'not-allowed',
+            borderRadius: "5px", // Button border radius
+            padding: "5px 10px", // Padding inside buttons
+            margin: "0 4px", // Space between buttons
+            cursor: "pointer",
+            transition: "0.3s", // Smooth hover transition
+
+            "&:disabled": {
+                cursor: "not-allowed",
             },
-            '&.active': {
-                fontWeight: 'bold', // Make active button text bold
+            "&.active": {
+                fontWeight: "bold", // Make active button text bold
             },
         },
-    }
+    },
 };

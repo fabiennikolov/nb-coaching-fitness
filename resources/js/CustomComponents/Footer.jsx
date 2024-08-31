@@ -20,14 +20,14 @@ const Footer = () => {
                             <a href="/profile">
                                 {" "}
                                 <button className="outline-button mt-2">
-                                    Profile
+                                    Профил
                                 </button>
                             </a>
                         ) : (
                             <a href="/login">
                                 {" "}
                                 <button className="outline-button mt-2">
-                                    Login{" "}
+                                    Вход{" "}
                                 </button>
                             </a>
                         )}

@@ -30,6 +30,11 @@ Route::get('/', function () {
 });
 
 
+Route::get('/contact', function() {
+    return Inertia::render('ContactPage');
+});
+
+
 Route::get('/dashboard', function () {
     $user = auth()->user();
     
