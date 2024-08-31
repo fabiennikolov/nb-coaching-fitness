@@ -35,12 +35,33 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'phone' => [
+                'nullable',
+                'string',
+                'max:15',
+                'regex:/^\+?[0-9]{10,15}$/',
+            ],
+            'instagram' => [
+                'nullable',    // Instagram handle is optional
+                'string',      // Ensure it's a string
+                'max:255',     // Limit to 255 characters
+                'regex:/^(http(s)?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9._%-]+\/?$/', // Validates Instagram URLs or handles
+            ],
+            'additional_info' => [
+                'nullable',    // This field is optional
+                'string',      // Ensure it's a string
+                'max:500',     // Set a maximum length (adjust based on your needs)
+            ],
+
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'phone' => $request->phone,
+            'instagram' => $request->instagram,
+            'additional_info' => $request->additional_info,
         ]);
 
         event(new Registered($user));
