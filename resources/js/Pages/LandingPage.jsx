@@ -1,16 +1,17 @@
 import React from "react";
 import Navbar from "@/CustomComponents/Navbar";
+
+import { usePage } from "@inertiajs/react";
 import { ContainerScroll } from "@/CustomComponents/ui/container-scroll-animation";
 import { aboutCards, headerDataText } from "@/Constants/StaticData";
-import { Dumbbell } from "lucide-react";
-import Footer from "@/CustomComponents/Footer";
-import { usePage } from "@inertiajs/react";
 
-const Welcome = () => {
+import Footer from "@/CustomComponents/Footer";
+
+const Welcome = (props) => {
     const { title, subtitle, description } = headerDataText;
 
-    const { auth } = usePage().props;
-
+    const { auth, permissions } = props;
+    
     return (
         <div className="relative">
             <img
@@ -30,14 +31,14 @@ const Welcome = () => {
                             </h1>
                             <p className="m-3">{description}</p>
                             <div className="flex flex-col md:flex-row gap-3 items-center flex-center w-full">
-                                <button className="outline-button">
-                                    <a
-                                        className="text-white"
-                                        href={auth.user ? "/profile" : "/login"}
-                                    >
+                                <a
+                                    className="text-white w-full md:w-max"
+                                    href={auth.user ? "/profile" : "/login"}
+                                >
+                                    <button className="outline-button">
                                         {auth.user ? "Профил" : "Вход"}
-                                    </a>
-                                </button>
+                                    </button>
+                                </a>
                                 <button className="fill-button">
                                     Научи повече
                                 </button>
@@ -122,11 +123,11 @@ const Welcome = () => {
                                     Doesnt have an account?
                                 </h1>
                                 <p>Create an account to see the full data</p>
-                                <button className="fill-button mt-3">
-                                    <a className="text-black" href="/login">
+                                <a className="text-black" href="/login">
+                                    <button className="fill-button mt-3">
                                         Login
-                                    </a>
-                                </button>
+                                    </button>
+                                </a>
                             </div>
                         )}
                     </div>

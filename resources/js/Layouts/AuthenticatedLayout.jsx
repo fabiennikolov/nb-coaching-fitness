@@ -1,13 +1,14 @@
 import { useState } from "react";
-import ApplicationLogo from "@/Components/ApplicationLogo";
-import Dropdown from "@/Components/Dropdown";
-import NavLink from "@/Components/NavLink";
-import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
+``;
+import Dropdown from "@/Components/Dropdown";
+import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 
 export default function Authenticated({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
+
+    const role = auth.user?.roles[0].name;
 
     return (
         <div className="min-h-screen">
@@ -25,13 +26,23 @@ export default function Authenticated({ auth, header, children }) {
                                 </Link>
                             </div>
 
-                            <div className="">
+                            <div className="flex-3">
                                 <a
                                     href={route("dashboard")}
                                     active={route().current("dashboard")}
                                 >
                                     Dashboard
                                 </a>
+                                {role === "admin" || role === "superadmin" ? (
+                                    <a
+                                        href={route("admin")}
+                                        active={route().current("admin")}
+                                    >
+                                        Admin
+                                    </a>
+                                ) : (
+                                    ""
+                                )}
                             </div>
                         </div>
 

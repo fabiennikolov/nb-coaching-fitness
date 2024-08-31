@@ -108,11 +108,9 @@ const Navbar = () => {
                             </Dropdown.Content>
                         </Dropdown>
                     ) : (
-                        <button className="outline-button">
-                            <a className="text-white" href="/login">
-                                Вход
-                            </a>
-                        </button>
+                        <a className="text-white" href="/login">
+                            <button className="outline-button">Вход</button>
+                        </a>
                     )}
                     <Menu
                         className="flex lg:hidden text-white cursor-pointer"

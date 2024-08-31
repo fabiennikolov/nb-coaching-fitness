@@ -10,6 +10,7 @@ export default function Register() {
         password_confirmation: "",
         additional_information: "",
         instagram: "",
+        phone: ""
     });
 
     useEffect(() => {
@@ -48,7 +49,6 @@ export default function Register() {
                                 name="name"
                                 value={data.name}
                                 autoComplete="name"
-                                isFocused={true}
                                 onChange={handleOnChange}
                                 required
                             />
@@ -117,9 +117,9 @@ export default function Register() {
                         </div>
                         <div className="input-container">
                             <input
-                                id="additional_information"
+                                id="instagram"
                                 type="text"
-                                name="additional_informatio"
+                                name="instagram"
                                 value={data.instagram}
                                 className="mt-1 block w-full"
                                 onChange={handleOnChange}
@@ -132,10 +132,26 @@ export default function Register() {
                             />
                         </div>
                         <div className="input-container">
+                            <input
+                                id="phone"
+                                type="number"
+                                name="phone"
+                                value={data.phone}
+                                className="mt-1 block w-full"
+                                onChange={handleOnChange}
+
+                            />
+                            <label>Phone</label>
+                            <InputError
+                                message={errors.phone}
+                                className="mt-2"
+                            />
+                        </div>
+                        <div className="input-container">
                             <textarea
                                 id="additional_information"
                                 type="text"
-                                name="additional_informatio"
+                                name="additional_information"
                                 value={data.additional_information}
                                 className="mt-1 block w-full"
                                 onChange={handleOnChange}
@@ -173,91 +189,5 @@ export default function Register() {
             </div>
             <div className="bg-panel-image bg-center bg-cover" />
         </form>
-        // <GuestLayout>
-        //     <Head title="Register" />
-
-        //     <form onSubmit={submit}>
-        //         <div>
-        //             <InputLabel htmlFor="name" value="Name" />
-
-        //             <TextInput
-        //                 id="name"
-        //                 name="name"
-        //                 value={data.name}
-        //                 className="mt-1 block w-full"
-        //                 autoComplete="name"
-        //                 isFocused={true}
-        //                 onChange={handleOnChange}
-        //                 required
-        //             />
-
-        //             <InputError message={errors.name} className="mt-2" />
-        //         </div>
-
-        //         <div className="mt-4">
-        //             <InputLabel htmlFor="email" value="Email" />
-
-        //             <TextInput
-        //                 id="email"
-        //                 type="email"
-        //                 name="email"
-        //                 value={data.email}
-        //                 className="mt-1 block w-full"
-        //                 autoComplete="username"
-        //                 onChange={handleOnChange}
-        //                 required
-        //             />
-
-        //             <InputError message={errors.email} className="mt-2" />
-        //         </div>
-
-        //         <div className="mt-4">
-        //             <InputLabel htmlFor="password" value="Password" />
-
-        //             <TextInput
-        //                 id="password"
-        //                 type="password"
-        //                 name="password"
-        //                 value={data.password}
-        //                 className="mt-1 block w-full"
-        //                 autoComplete="new-password"
-        //                 onChange={handleOnChange}
-        //                 required
-        //             />
-
-        //             <InputError message={errors.password} className="mt-2" />
-        //         </div>
-
-        //         <div className="mt-4">
-        //             <InputLabel htmlFor="password_confirmation" value="Confirm Password" />
-
-        //             <TextInput
-        //                 id="password_confirmation"
-        //                 type="password"
-        //                 name="password_confirmation"
-        //                 value={data.password_confirmation}
-        //                 className="mt-1 block w-full"
-        //                 autoComplete="new-password"
-        //                 onChange={handleOnChange}
-        //                 required
-        //             />
-
-        //             <InputError message={errors.password_confirmation} className="mt-2" />
-        //         </div>
-
-        //         <div className="flex items-center justify-end mt-4">
-        //             <Link
-        //                 href={route('login')}
-        //                 className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        //             >
-        //                 Already registered?
-        //             </Link>
-
-        //             <PrimaryButton className="ml-4" disabled={processing}>
-        //                 Register
-        //             </PrimaryButton>
-        //         </div>
-        //     </form>
-        // </GuestLayout>
     );
 }

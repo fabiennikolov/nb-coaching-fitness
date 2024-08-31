@@ -3,8 +3,7 @@ import { usePage } from "@inertiajs/react";
 import React from "react";
 
 const Footer = () => {
-
-    const { auth } = usePage().props
+    const { auth } = usePage().props;
 
     return (
         <div className="flex-col-3 mt-5 lg:mt-0 bg-[var(--mainDarkenLightColor)] min-h-[40vh] overflow-hidden z-1">
@@ -17,7 +16,21 @@ const Footer = () => {
                     />
                     <div className="px-5">
                         <p>Направи перфектното тяло с NB Coaching</p>
-                        <button className="outline-button mt-2">{auth.user ? <a href="/profile">Profile</a> : <a href="/login">Login</a> }</button>
+                        {auth.user ? (
+                            <a href="/profile">
+                                {" "}
+                                <button className="outline-button mt-2">
+                                    Profile
+                                </button>
+                            </a>
+                        ) : (
+                            <a href="/login">
+                                {" "}
+                                <button className="outline-button mt-2">
+                                    Login{" "}
+                                </button>
+                            </a>
+                        )}
                         <h1 className="z-0 hidden xl:flex absolute special-footer-outline-text text-[10em] -right-[30%] font-bold leading-[70px] mt-20 uppercase bottom-0">
                             NB Coaching
                         </h1>
@@ -45,7 +58,8 @@ const Footer = () => {
             <span className="bg-[var(--mainDarkLightColor)] w-full h-[0.5px]"></span>
             <div className="larger-max-w-wrapper w-full">
                 <p className="w-full p-5">
-                    ©{new Date().getFullYear()} Nb coaching Всички права са запазени
+                    ©{new Date().getFullYear()} Nb coaching Всички права са
+                    запазени
                 </p>
             </div>
         </div>
