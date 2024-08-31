@@ -45,7 +45,6 @@ class RegisteredUserController extends Controller
                 'nullable',    // Instagram handle is optional
                 'string',      // Ensure it's a string
                 'max:255',     // Limit to 255 characters
-                'regex:/^(http(s)?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9._%-]+\/?$/', // Validates Instagram URLs or handles
             ],
             'additional_info' => [
                 'nullable',    // This field is optional
