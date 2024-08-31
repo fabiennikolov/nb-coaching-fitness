@@ -19,9 +19,12 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): Response
     {
+        $user = auth()->user();
+
         return Inertia::render('Auth/Login', [
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status'),
+            'permissions' => $user ? $user->getAllPermissions()->pluck('name') : [], // Only pass permissions if authenticated
         ]);
     }
 
