@@ -17,11 +17,14 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
+    $user = auth()->user();
+
     return Inertia::render('LandingPage', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+        'permissions' => $user ? $user->getAllPermissions()->pluck('name') : [], // Pass permissions if authenticated, empty array otherwise
     ]);
 });
 
@@ -31,7 +34,7 @@ Route::get('/dashboard', function () {
     
     return Inertia::render('Dashboard', [
         'user' => $user,
-        'role' => $user->getAllPermissions()->pluck('name'),
+        'permissions' => $user->getAllPermissions()->pluck('name'),
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
