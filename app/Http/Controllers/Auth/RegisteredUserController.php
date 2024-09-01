@@ -42,17 +42,16 @@ class RegisteredUserController extends Controller
                 'regex:/^\+?[0-9]{10,15}$/',
             ],
             'instagram' => [
-                'nullable',    // Instagram handle is optional
-                'string',      // Ensure it's a string
-                'max:255',     // Limit to 255 characters
-                'regex:/^(http(s)?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9._%-]+\/?$/', // Validates Instagram URLs or handles
+                'nullable',
+                'string',
+                'max:255',
+                'regex:/^(http(s)?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9._%-]+\/?$/',
             ],
             'additional_info' => [
-                'nullable',    // This field is optional
-                'string',      // Ensure it's a string
-                'max:500',     // Set a maximum length (adjust based on your needs)
+                'nullable',
+                'string',
+                'max:500',
             ],
-
         ]);
 
         $user = User::create([
