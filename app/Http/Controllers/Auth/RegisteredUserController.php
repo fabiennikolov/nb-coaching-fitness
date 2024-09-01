@@ -42,9 +42,9 @@ class RegisteredUserController extends Controller
                 'regex:/^\+?[0-9]{10,15}$/',
             ],
             'instagram' => [
-                'nullable',    // Instagram handle is optional
-                'string',      // Ensure it's a string
-                'max:255',     // Limit to 255 characters
+                'nullable',
+                'string',
+                'max:255',
             ],
             'additional_info' => [
                 'nullable',
