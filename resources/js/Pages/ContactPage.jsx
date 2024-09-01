@@ -49,7 +49,7 @@ const ContactPage = () => {
                     <div className="grid-3 gap-10 items-center">
                         <form
                             onSubmit={onSubmit}
-                            className="flex-col-10    col-span-2"
+                            className="flex-col-10 col-span-2"
                         >
                             <div className="grid-2 gap-10">
                                 <div className="input-container">

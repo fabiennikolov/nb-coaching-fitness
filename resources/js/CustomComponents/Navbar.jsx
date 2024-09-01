@@ -9,7 +9,7 @@ const Navbar = () => {
     const sidebarRef = useRef();
     const navbarRef = useRef();
 
-    const { auth } = usePage().props;
+    const { auth  } = usePage().props;
 
     const [toggleIcon, setToggleIcon] = useState(true);
 
@@ -41,6 +41,8 @@ const Navbar = () => {
         };
     }, []);
 
+
+
     return (
         <div
             ref={navbarRef}
@@ -56,10 +58,10 @@ const Navbar = () => {
                 </div>
                 <ul className="hidden lg:flex gap-3 items-center">
                     {navbarLinks.map((link, index) => (
-                        <li key={index}>
+                        <li key={index} >
                             <a
-                                className="hover:text-white transition-all cursor-pointer"
-                                href={link.href}
+                                className={`${window.location.pathname === link.path ? 'text-white' : ''} hover:text-white transition-all cursor-pointer`}
+                                href={link.path}
                             >
                                 {link.name}
                             </a>

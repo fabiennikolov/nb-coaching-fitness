@@ -12,7 +12,6 @@ import {
     SquareChartGantt,
     Twitter,
 } from "lucide-react";
-import { createTheme } from "react-data-table-component";
 
 export const navbarLinks = [
     {
@@ -29,11 +28,11 @@ export const navbarLinks = [
     },
     {
         name: "Конктакт",
-        path: "/",
+        path: "/contact",
     },
     {
         name: "NB Coaching",
-        path: "/",
+        path: "/nb-coaching",
     },
 ];
 

@@ -34,6 +34,11 @@ Route::get('/contact', function() {
     return Inertia::render('ContactPage');
 });
 
+Route::get('/nb-coaching', function() {
+    return Inertia::render('NbCoachingPage');
+});
+
+
 
 Route::get('/dashboard', function () {
     $user = auth()->user();
