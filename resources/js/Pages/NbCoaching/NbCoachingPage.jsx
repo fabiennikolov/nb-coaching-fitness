@@ -3,15 +3,18 @@ import Navbar from "@/CustomComponents/Navbar";
 
 import { Download } from "lucide-react";
 
-const NbCoachingPage = () => {
+const NbCoachingPage = (props) => {
+
+    console.log(props)
+
     return (
         <div>
             <Navbar />
             <div className="max-w-wrapper">
-                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 min-h-screen justify-center items-center py-20">
+                <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-5 min-h-[50vh] justify-center items-center py-20">
                     <div className="flex-col-3 p-3 border border-neutral-800 group hover:border-neutral-300 rounded-md transition-all">
                         <img
-                            className="w-full h-[400px] object-cotain rounded-md"
+                            className="w-full h-[200px] object-cotain rounded-md"
                             src="https://cdn.discordapp.com/attachments/1270095587718725632/1279771157515735121/image.png?ex=66d5a744&is=66d455c4&hm=e8e5461d2e4b7ed60f178f81694387f337f673de41eb46d344dcedd6f3e13f5f&"
                         />
                         <div className="flex-between">
@@ -31,7 +34,7 @@ const NbCoachingPage = () => {
                     </div>
                     <div className="flex-col-3 p-3 border border-neutral-800 group hover:border-neutral-300 rounded-md transition-all">
                         <img
-                            className="w-full h-[400px] object-cotain rounded-md"
+                            className="w-full h-[200px] object-cotain rounded-md"
                             src="https://cdn.discordapp.com/attachments/1270095587718725632/1279771157515735121/image.png?ex=66d5a744&is=66d455c4&hm=e8e5461d2e4b7ed60f178f81694387f337f673de41eb46d344dcedd6f3e13f5f&"
                         />
                         <div className="flex-between">
