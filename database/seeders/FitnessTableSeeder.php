@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\FitnessTable;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class FitnessTableSeeder extends Seeder
@@ -15,29 +15,29 @@ class FitnessTableSeeder extends Seeder
      */
     public function run()
     {
-         // Get all users with the "client" role
-         $clients = User::role('client')->get();
+        // Get all users with the "client" role
+        $clients = User::role('client')->get();
 
-         foreach ($clients as $client) {
-             // Create 2-3 fitness tables for each user
-             $tables = [
-                 [
-                     'name' => 'Morning Workout',
-                     'url' => 'https://example.com/morning-workout',
-                 ],
-                 [
-                     'name' => 'Evening Yoga',
-                     'url' => 'https://example.com/evening-yoga',
-                 ],
-                 [
-                     'name' => 'Cardio Blast',
-                     'url' => 'https://example.com/cardio-blast',
-                 ],
-             ];
+        foreach ($clients as $client) {
+            // Create 2-3 fitness tables for each user
+            $tables = [
+                [
+                    'name' => 'Morning Workout',
+                    'url' => 'https://docs.google.com/spreadsheets/d/14AnrKUdcqbtoaONVJqpJsQocnMLJVg9qBCl6keeeGlc/edit?gid=0#gid=0',
+                ],
+                [
+                    'name' => 'Evening Yoga',
+                    'url' => 'https://docs.google.com/spreadsheets/d/1dOAwmlgXcA3T3Gnd--E_J1K88MbSw7iXFBaaeNaWskU/edit',
+                ],
+                [
+                    'name' => 'Cardio Blast',
+                    'url' => 'https://docs.google.com/spreadsheets/d/1dOAwmlgXcA3T3Gnd--E_J1K88MbSw7iXFBaaeNaWskU/edit',
+                ],
+            ];
  
-             foreach (array_slice($tables, 0, rand(2, 3)) as $tableData) {
-                 FitnessTable::create(array_merge($tableData, ['user_id' => $client->id]));
-             }
-         }
+            foreach (array_slice($tables, 0, rand(2, 3)) as $tableData) {
+                FitnessTable::create(array_merge($tableData, ['user_id' => $client->id]));
+            }
+        }
     }
 }
