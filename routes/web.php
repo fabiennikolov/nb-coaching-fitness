@@ -18,6 +18,7 @@ use App\Models\User;
 */
 
 Route::get('/', function () {
+
     $user = auth()->user();
 
     return Inertia::render('LandingPage', [
@@ -27,20 +28,23 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
         'permissions' => $user ? $user->getAllPermissions()->pluck('name') : [], // Pass permissions if authenticated, empty array otherwise
     ]);
+
 });
 
-
 Route::get('/dashboard', function () {
+
     $user = auth()->user();
     
     return Inertia::render('Dashboard', [
         'user' => $user,
         'permissions' => $user->getAllPermissions()->pluck('name'),
     ]);
+
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/admin', function () {
     $user = auth()->user();
+    
     $users = User::whereDoesntHave('roles', function ($query) {
         $query->whereIn('name', ['admin', 'superadmin']);
     })->get();
