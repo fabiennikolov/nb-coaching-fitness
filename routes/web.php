@@ -40,6 +40,9 @@ Route::get('/nb-coaching', function() {
     return Inertia::render('NbCoachingPage');
 });
 
+Route::get('/nb-coaching/brochure', function() {
+    return Inertia::render('NbCoachingPage');
+});
 
 
 Route::get('/dashboard', function () {
