@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\FitnessTable;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -36,16 +37,16 @@ Route::get('/contact', function() {
 });
 
 Route::get('/nb-coaching', function() {
-    return Inertia::render('NbCoaching/NbCoachingPage');
-});
+    $userId = auth()->user()->id;
+    $clientTables = FitnessTable::where('user_id', $userId)->get();
+    return Inertia::render('NbCoachingPage', ['tables' => $clientTables]);
+})->middleware('auth');
 
 Route::get('/nb-coaching/brochure', function() {
     return Inertia::render('NbCoaching/NbCoachingBrochurePage');
 });
 
-
 Route::get('/dashboard', function () {
-
     $user = auth()->user();
     
     return Inertia::render('Dashboard', [
