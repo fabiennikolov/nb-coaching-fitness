@@ -42,10 +42,9 @@ class RegisteredUserController extends Controller
                 'regex:/^\+?[0-9]{10,15}$/',
             ],
             'instagram' => [
-                'nullable',
-                'string',
-                'max:255',
-                'regex:/^(http(s)?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9._%-]+\/?$/',
+                'nullable',    // Instagram handle is optional
+                'string',      // Ensure it's a string
+                'max:255',     // Limit to 255 characters
             ],
             'additional_info' => [
                 'nullable',
@@ -65,6 +64,6 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::ADMIN);
     }
 }

@@ -26,6 +26,7 @@
         "clsx": "^2.1.1",
         "framer-motion": "^11.3.22",
         "lucide-react": "^0.424.0",
+        "react-data-table-component": "^7.6.2",
         "tailwind-merge": "^2.5.2",
         "tailwindcss-animate": "^1.0.7",
         "y": "^0.3.2"

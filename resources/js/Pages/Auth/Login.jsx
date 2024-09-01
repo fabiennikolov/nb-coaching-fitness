@@ -6,7 +6,7 @@ import TextInput from "@/Components/TextInput";
 import { Head, Link, useForm } from "@inertiajs/react";
 import InputError from "@/Components/InputError";
 
-export default function Login({ status, canResetPassword }) {
+export default function Login({ permissions, status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: "",
         password: "",
@@ -40,10 +40,13 @@ export default function Login({ status, canResetPassword }) {
             <div className="flex-center min-h-screen">
                 <div className="w-full px-5 lg:px-10 xl:px-32 mx-auto">
                     <div className="flex-col-3">
-                        <h1 className="font-bold text-3xl">
-                         Добре дошли
-                        </h1>
+                        <h1 className="font-bold text-3xl">Добре дошли</h1>
                         <p>Добре дошли обратно! Моля, въведете вашите данни.</p>
+                        <InputError message={errors.email} className="mt-2" />
+                        <InputError
+                            message={errors.password}
+                            className="mt-2"
+                        />
                         <div className="input-container">
                             <input
                                 id="email"
@@ -55,10 +58,7 @@ export default function Login({ status, canResetPassword }) {
                                 isFocused={true}
                                 onChange={handleOnChange}
                             />
-                            <InputError
-                                message={errors.email}
-                                className="mt-2"
-                            />
+
                             <label>Email</label>
                         </div>
                         <div className="input-container">
@@ -71,10 +71,7 @@ export default function Login({ status, canResetPassword }) {
                                 value={data.password}
                                 onChange={handleOnChange}
                             />
-                            <InputError
-                                message={errors.password}
-                                className="mt-2"
-                            />
+
                             <label>Password</label>
                         </div>
                         <div className="flex-between">
@@ -82,22 +79,30 @@ export default function Login({ status, canResetPassword }) {
                                 <input type="checkbox" />
                                 <p>Запомни за 30 дни</p>
                             </div>
-                            <a href="/forgot-password" className="text-[#dc2626] underline">
+                            <a
+                                href="/forgot-password"
+                                className="text-[#dc2626] underline"
+                            >
                                 Забравена парола?
                             </a>
                         </div>
                         <button className="w-full mt-3 bg-white rounded-md p-3 transition-all hover:-translate-y-1">
                             Вход
                         </button>
-                        <p className="flex-end gap-1">
-                           Нямаш профил?{" "}
-                            <a
-                                className="text-[#dc2626] underline"
-                                href="/register"
-                            >
-                                Създай Акаунт
-                            </a>
-                        </p>
+                        {!permissions.includes("register users") &&
+                        permissions.length === 0 ? (
+                            ""
+                        ) : (
+                            <p className="flex-end gap-1">
+                                Нямаш профил?{" "}
+                                <a
+                                    className="text-[#dc2626] underline"
+                                    href="/register"
+                                >
+                                    Създай Акаунт
+                                </a>
+                            </p>
+                        )}
                     </div>
                 </div>
             </div>

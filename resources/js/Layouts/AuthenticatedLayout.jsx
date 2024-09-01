@@ -1,13 +1,14 @@
 import { useState } from "react";
-import ApplicationLogo from "@/Components/ApplicationLogo";
-import Dropdown from "@/Components/Dropdown";
-import NavLink from "@/Components/NavLink";
-import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
+``;
+import Dropdown from "@/Components/Dropdown";
+import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 
 export default function Authenticated({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
+
+    // const role = auth.user?.roles?.length === 0 ? '' : auth.user.roles[0].name;
 
     return (
         <div className="min-h-screen">
@@ -25,13 +26,23 @@ export default function Authenticated({ auth, header, children }) {
                                 </Link>
                             </div>
 
-                            <div className="">
+                            <div className="flex-3">
                                 <a
                                     href={route("dashboard")}
                                     active={route().current("dashboard")}
                                 >
                                     Dashboard
                                 </a>
+                                {/* {role === "admin" || role === "superadmin" ? (
+                                    <a
+                                        href={route("admin")}
+                                        active={route().current("admin")}
+                                    >
+                                        Admin
+                                    </a>
+                                ) : (
+                                    ""
+                                )} */}
                             </div>
                         </div>
 
@@ -44,7 +55,7 @@ export default function Authenticated({ auth, header, children }) {
                                                 type="button"
                                                 className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md bg-[var(--mainDarkLightColor)] text-white focus:outline-none transition ease-in-out duration-150"
                                             >
-                                                {auth.user.name}
+                                                {auth?.user?.name}
 
                                                 <svg
                                                     className="ml-2 -mr-0.5 h-4 w-4"
@@ -141,10 +152,10 @@ export default function Authenticated({ auth, header, children }) {
                     <div className="pt-4 pb-1 border-t ">
                         <div className="px-4">
                             <div className="font-medium text-base">
-                                <p>{auth.user.name}</p>
+                                <p>{auth?.user?.name}</p>
                             </div>
                             <div className="font-medium text-sm ">
-                                <p>{auth.user.email}</p>
+                                <p>{auth?.user?.email}</p>
                             </div>
                         </div>
 

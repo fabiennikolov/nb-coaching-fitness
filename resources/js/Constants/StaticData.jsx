@@ -1,125 +1,241 @@
-import { Book, Drumstick, Dumbbell, Monitor, Phone, SquareChartGantt } from "lucide-react"
+import {
+    Book,
+    ChartBar,
+    Drumstick,
+    Dumbbell,
+    MessageCircle,
+    Monitor,
+    Phone,
+    PhoneCall,
+    Pin,
+    Send,
+    SquareChartGantt,
+    Twitter,
+} from "lucide-react";
 
 export const navbarLinks = [
     {
-        name: 'Home',
-        path: '/'
+        name: "Home",
+        path: "/",
     },
     {
-        name: 'За нас',
-        path: '/'
+        name: "За нас",
+        path: "/",
     },
     {
-        name: 'Лични тренировки',
-        path: '/'
+        name: "Лични тренировки",
+        path: "/",
     },
     {
-        name: 'Конктакт',
-        path: '/'
+        name: "Конктакт",
+        path: "/contact",
     },
     {
-        name: 'NB Coaching',
-        path: '/'
-    }
-]
+        name: "NB Coaching",
+        path: "/nb-coaching",
+    },
+];
 
 export const headerDataText = {
-    title: 'Unleash the power of',
-    subtitle: 'NB Coaching Fitness',
-    description: 'Добре дошли в NBcoaching. Тази платформа е тук, за да Ви предостави необходимите ресурси и насоки за постигане на Вашите фитнес цели. С акцент на практичността и ефективността, услугата предлага разнообразие от стратегии, които ще Ви помогнат да постигнете желаните резултати. Тук ще намерите полезна информация и подкрепа, за да реализирате пълния си потенциал.'
-}
+    title: "Unleash the power of",
+    subtitle: "NB Coaching Fitness",
+    description:
+        "Добре дошли в NBcoaching. Тази платформа е тук, за да Ви предостави необходимите ресурси и насоки за постигане на Вашите фитнес цели. С акцент на практичността и ефективността, услугата предлага разнообразие от стратегии, които ще Ви помогнат да постигнете желаните резултати. Тук ще намерите полезна информация и подкрепа, за да реализирате пълния си потенциал.",
+};
 
 export const footerLinks = [
     {
-        name: 'Navigation',
+        name: "Navigation",
         links: [
             {
-                name: 'Company',
-                path: '/'
+                name: "Company",
+                path: "/",
             },
             {
-                name: 'Pricing',
-                path: '/'
+                name: "Pricing",
+                path: "/",
             },
             {
-                name: 'Docs',
-                path: '/'
+                name: "Docs",
+                path: "/",
             },
             {
-                name: 'Careers',
-                path: '/'
-            }
-        ]
+                name: "Careers",
+                path: "/",
+            },
+        ],
     },
     {
-        name: 'Documentation',
+        name: "Documentation",
         links: [
             {
-                name: 'Introduction',
-                path: '/'
+                name: "Introduction",
+                path: "/",
             },
             {
-                name: 'Quickstart',
-                path: '/'
+                name: "Quickstart",
+                path: "/",
             },
             {
-                name: 'Why evals',
-                path: '/'
+                name: "Why evals",
+                path: "/",
             },
             {
-                name: 'Use Cases',
-                path: '/'
+                name: "Use Cases",
+                path: "/",
             },
             {
-                name: 'Metrics',
-                path: '/'
-            }
-        ]
+                name: "Metrics",
+                path: "/",
+            },
+        ],
     },
     {
-        name: 'Legal',
+        name: "Legal",
         links: [
             {
-                name: 'Privacy Policy',
-                path: '/'
+                name: "Privacy Policy",
+                path: "/",
             },
             {
-                name: 'Terms of Service',
-                path: '/'
+                name: "Terms of Service",
+                path: "/",
             },
-        ]
+        ],
     },
-]
+];
 
 export const aboutCards = [
     {
         heading: "Наръчник за хранене",
-        p: 'Информативен ресурс, който Ви помага да се справите с хранителния план и да направите правилния избор на храни.',
-        icon: <Drumstick className="text-red-600" size={200}/>
+        p: "Информативен ресурс, който Ви помага да се справите с хранителния план и да направите правилния избор на храни.",
+        icon: <Drumstick className="text-red-600" size={200} />,
     },
     {
         heading: "Наръчник за суплементация",
-        p: 'Информация за хранителни добавки и как да ги използвате ефективно.',
-        icon: <Book className="text-blue-600" size={200}/>
+        p: "Информация за хранителни добавки и как да ги използвате ефективно.",
+        icon: <Book className="text-blue-600" size={200} />,
     },
     {
         heading: "Хранителен план",
-        p: 'Индивидуално съставен план, който отговаря на Вашите цели и предпочитания.',
-        icon: <SquareChartGantt className="text-yellow-600" size={200}/>
+        p: "Индивидуално съставен план, който отговаря на Вашите цели и предпочитания.",
+        icon: <SquareChartGantt className="text-yellow-600" size={200} />,
     },
     {
         heading: "Тренировъчен план",
-        p: 'Персонализирана програма, адаптирана към Вашето ниво и желания.',
-        icon: <Dumbbell size={200}/>
+        p: "Персонализирана програма, адаптирана към Вашето ниво и желания.",
+        icon: <Dumbbell size={200} />,
     },
     {
         heading: "Мониторинг",
-        p: ': Проследяване на напредъка Ви и корекции на плановете.',
-        icon: <Monitor className="text-red-600" size={200}/>
+        p: ": Проследяване на напредъка Ви и корекции на плановете.",
+        icon: <Monitor className="text-red-600" size={200} />,
     },
     {
         heading: "Постоянна връзка с мен",
-        p: 'Непрекъсната подкрепа и отговори на Вашите въпроси по всяко време.',
-        icon: <Phone size={200}/>
-    }
-]
+        p: "Непрекъсната подкрепа и отговори на Вашите въпроси по всяко време.",
+        icon: <Phone size={200} />,
+    },
+];
+
+export const contactFormInputs = (data) => [
+    {
+        name: "Email",
+        value: data.email,
+    },
+    {
+        name: "Phone Number",
+        value: data.phone,
+    },
+    {
+        name: "Message",
+        value: data.additional_info,
+    },
+];
+
+export const contactFormGridThree = [
+    {
+        heading: "Chat with us",
+        p: "Speak to our friendly team via live chat",
+        add: [
+            {
+                icon: <MessageCircle />,
+                text: "Start a live chat",
+            },
+            {
+                icon: <Send />,
+                text: "Shoot us an email",
+            },
+            {
+                icon: <Twitter />,
+                text: "Message us on X",
+            },
+        ],
+    },
+    {
+        heading: "Call Us",
+        p: "Call our team Mon-Fri 8am to 5pm",
+        add: [
+            {
+                icon: <PhoneCall />,
+                text: "+1+(555) 000-0000",
+            },
+        ],
+    },
+    {
+        heading: "Visit ss",
+        p: "Chat to us in person at our Melboure HQ",
+        add: [
+            {
+                icon: <Pin />,
+                text: "100 Smith Street, Collingwood VIC 3065",
+            },
+        ],
+    },
+];
+
+export const customStyles = {
+    rows: {
+        style: {
+            backgroundColor: "#202020",
+            color: "#a8a29e",
+            borderTop: "1px solid #3f3f3f",
+        },
+    },
+    headCells: {
+        style: {
+            backgroundColor: "#202020",
+            color: "#a8a29e",
+            border: "none",
+        },
+    },
+    cells: {
+        style: {
+            backgroundColor: "#202020",
+            color: "#a8a29e",
+        },
+    },
+    pagination: {
+        style: {
+            backgroundColor: "#202020", // Pagination background color
+            color: "#a8a29e", // Text color for pagination
+            borderTop: "1px solid #3f3f3f", // Optional border top for separation
+            padding: "8px 16px", // Padding around pagination controls
+        },
+        pageButtonsStyle: {
+            color: "#a8a29e", // Button text color
+            borderRadius: "5px", // Button border radius
+            padding: "5px 10px", // Padding inside buttons
+            margin: "0 4px", // Space between buttons
+            cursor: "pointer",
+            transition: "0.3s", // Smooth hover transition
+
+            "&:disabled": {
+                cursor: "not-allowed",
+            },
+            "&.active": {
+                fontWeight: "bold", // Make active button text bold
+            },
+        },
+    },
+};
