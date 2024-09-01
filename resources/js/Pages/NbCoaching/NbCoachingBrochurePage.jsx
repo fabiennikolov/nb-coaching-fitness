@@ -43,7 +43,7 @@ const NbCoachingBrochurePage = () => {
                     {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map(
                         (_, id) => (
                             <img
-                                src={`/assets/brochureOne/05cdb2d5-93b2-4258-9a23-929be231661f-${id}.jpg`}
+                                src={`/assets/brochureOne/pic-${id + 1}.jpg`}
                                 alt={id}
                             />
                         )
