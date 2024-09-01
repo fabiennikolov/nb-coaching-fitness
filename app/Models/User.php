@@ -45,4 +45,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getFormattedCreatedAtAttribute()
+    {
+        return $this->created_at->diffForHumans();
+    }
+
+    public function getFormattedUpdatedAtAttribute()
+    {
+        return $this->updated_at->diffForHumans();
+    }
 }
