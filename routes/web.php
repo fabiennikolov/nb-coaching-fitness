@@ -37,11 +37,11 @@ Route::get('/contact', function() {
 });
 
 Route::get('/nb-coaching', function() {
-    return Inertia::render('NbCoachingPage');
+    return Inertia::render('NbCoaching/NbCoachingPage');
 });
 
 Route::get('/nb-coaching/brochure', function() {
-    return Inertia::render('NbCoachingPage');
+    return Inertia::render('NbCoaching/NbCoachingBrochurePage');
 });
 
 
