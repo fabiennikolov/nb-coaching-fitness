@@ -62,11 +62,11 @@ export default function DeleteUserForm({ className }) {
 
             <Modal show={confirmingUserDeletion} onClose={closeModal}>
                 <form onSubmit={deleteUser} className="p-6">
-                    <h2 className="text-lg font-medium text-stone-400">
+                    <h2 className="text-lg font-bold">
                         Are you sure you want to delete your account?
                     </h2>
 
-                    <p className="mt-1 text-sm text-gray-600">
+                    <p className="mt-1 text-sm">
                         Once your account is deleted, all of its resources and
                         data will be permanently deleted. Please enter your
                         password to confirm you would like to permanently delete
@@ -74,11 +74,7 @@ export default function DeleteUserForm({ className }) {
                     </p>
 
                     <div className="mt-6">
-                        <InputLabel
-                            htmlFor="password"
-                            value="Password"
-                            className="sr-only"
-                        />
+                        <label className="text-white">Password</label>
 
                         <TextInput
                             id="password"
@@ -91,7 +87,6 @@ export default function DeleteUserForm({ className }) {
                             }
                             className="mt-1 block w-3/4"
                             isFocused
-                            placeholder="Password"
                         />
 
                         <InputError

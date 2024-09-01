@@ -1,27 +1,69 @@
-import React, { useState, useCallback, useRef } from "react";
+import { inputsContainer } from "@/Constants/StaticData";
+import React, { useState, useCallback, useRef, useEffect } from "react";
 
 const BorchureController = () => {
-    const flipBook = useRef(null);
+  const flipBook = useRef(null);
 
-    const [currentPage, setCurrentPage] = useState(0);
-    const [allPages, setAllPages ] = useState(0)
 
-    const onFlip = useCallback((e) => {
-        setCurrentPage(e.data);
-    }, []);
+  const [collables, setIsCollapsed] = useState(false)
+  const [currentPage, setCurrentPage] = useState(0);
+  const [confirmingUserDeletion, setConfirmingUserDeletion] = useState(false);
+  const [ data, setData ] = useState({
+    name: '',
+    url : "",
+    description: ""
+  })
 
-    const handleNextPage = () => {
-      if (flipBook.current) {
-        flipBook.current.pageFlip().flipNext();
-      }
+  const inputs = inputsContainer(data)
+
+  const handleChange = e => {
+    const { name, value } = e.target
+    setData((state) => ({
+      ...state,
+      [name] : value
+    }))
+  }
+
+  const onFlip = useCallback((e) => {
+    setCurrentPage(e.data);
+  }, []);
+
+  const handleNextPage = () => {
+    if (flipBook.current) {
+      flipBook.current.pageFlip().flipNext();
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (flipBook.current) {
+      flipBook.current.pageFlip().flipPrev();
+    }
+  };
+
+  const closeModal = () => {
+    setConfirmingUserDeletion(false);
+
+    reset();
+  };
+
+  const confirmUserDeletion = () => {
+    setConfirmingUserDeletion(true);
+  };
+
+  useEffect(() => {
+    setIsCollapsed(window.innerWidth <= 768);
+
+    const handleResize = () => {
+      setIsCollapsed(window.innerWidth <= 768);
     };
-  
-    const handlePreviousPage = () => {
-      if (flipBook.current) {
-        flipBook.current.pageFlip().flipPrev();
-      }
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
     };
-  return {currentPage, allPages, handlePreviousPage, handleNextPage, onFlip, flipBook}
+  }, []);
+
+  return { currentPage, handlePreviousPage, handleNextPage, onFlip, flipBook, collables, closeModal, confirmUserDeletion, confirmingUserDeletion, handleChange, inputsContainer, inputs}
 }
 
 export default BorchureController

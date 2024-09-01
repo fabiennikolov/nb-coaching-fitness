@@ -39,7 +39,7 @@ Route::get('/contact', function() {
 Route::get('/nb-coaching', function() {
     $userId = auth()->user()->id;
     $clientTables = FitnessTable::where('user_id', $userId)->get();
-    return Inertia::render('NbCoachingPage', ['tables' => $clientTables]);
+    return Inertia::render('NbCoaching/NbCoachingPage', ['tables' => $clientTables]);
 })->middleware('auth');
 
 Route::get('/nb-coaching/brochure', function() {

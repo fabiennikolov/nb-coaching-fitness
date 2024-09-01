@@ -105,6 +105,21 @@ export const footerLinks = [
     },
 ];
 
+export const inputsContainer = (data) => [
+    {
+        name: 'Name',
+        value: data.name
+    },
+    {
+        name: 'URL',
+        value: data.url
+    },
+    {
+        name: 'Description',
+        value: data.description
+    },
+]
+
 export const aboutCards = [
     {
         heading: "Наръчник за хранене",
