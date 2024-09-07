@@ -11,7 +11,7 @@ const Welcome = (props) => {
     const { title, subtitle, description } = headerDataText;
 
     const { auth, permissions } = props;
-    
+
     return (
         <div className="relative">
             <img
@@ -19,7 +19,7 @@ const Welcome = (props) => {
                 src="/assets/white-dots.png"
             />
             <Navbar />
-            <header className="flex flex-col overflow-hidden">
+            <header className="flex flex-col overflow-hidden px-5">
                 <ContainerScroll
                     titleComponent={
                         <div className="flex-col-5 mb-14 mt-10">
@@ -39,9 +39,12 @@ const Welcome = (props) => {
                                         {auth.user ? "Профил" : "Вход"}
                                     </button>
                                 </a>
-                                <button className="fill-button">
+                                <a
+                                    href="#научи-повече"
+                                    className="fill-button text-black"
+                                >
                                     Научи повече
-                                </button>
+                                </a>
                             </div>
                         </div>
                     }
@@ -57,8 +60,11 @@ const Welcome = (props) => {
                 </ContainerScroll>
             </header>
 
-            <section className="flex-col-5 flex-center min-h-[80vh] my-10">
-                <div className="flex-col-3 text-center">
+            <section
+                id="научи-повече"
+                className="flex-col-5 flex-center min-h-[80vh] my-10"
+            >
+                <div className="flex-col-3 text-center px-5">
                     <h1 className="font-bold text-3xl lg:text-6xl">
                         It's time to trust yourself
                     </h1>
@@ -75,15 +81,17 @@ const Welcome = (props) => {
                             className="relative flex-col-3 bg-[var(--mainDarkenLightColor)] p-5 rounded-md overflow-hidden"
                         >
                             <i
-                                className="absolute -right-[20%] z-1 -top-10 text-orange-600 opacity-[0.5]"
+                                className="absolute -right-[20%] z-0 -top-10 text-orange-600 opacity-[0.25]"
                                 size={200}
                             >
                                 {item.icon}
                             </i>
-                            <h1 className="text-xl font-bold">
-                                {item.heading}
-                            </h1>
-                            <p>{item.p}</p>
+                            <di className="flex-col-1 z-10">
+                                <h1 className="text-xl font-bold">
+                                    {item.heading}
+                                </h1>
+                                <p>{item.p}</p>
+                            </di>
                         </div>
                     ))}
                 </div>
@@ -94,7 +102,7 @@ const Welcome = (props) => {
                     className="absolute opacity-[0.02] lg:opacity-30 right-[-12%] top-[40%] z-[-1]"
                     src="/assets/white-dots.png"
                 />
-                <div className="flex-col-3 text-center">
+                <div className="flex-col-3 text-center px-5">
                     <h1 className="font-bold text-3xl lg:text-6xl">
                         За кого е подходяща услугата?
                     </h1>
@@ -120,12 +128,15 @@ const Welcome = (props) => {
                         {!auth.user && (
                             <div className="absolute text-center mx-auto flex-center flex-col">
                                 <h1 className="text-3xl font-bold">
-                                    Doesnt have an account?
+                                    Нямаш профил?
                                 </h1>
-                                <p>Create an account to see the full data</p>
+                                <p>
+                                    Влезни си в акаунта за да видиш цялата
+                                    информация
+                                </p>
                                 <a className="text-black" href="/login">
                                     <button className="fill-button mt-3">
-                                        Login
+                                        Вход
                                     </button>
                                 </a>
                             </div>
@@ -153,7 +164,9 @@ const Welcome = (props) => {
                             своята трансформация. С NBcoaching имате всичко
                             необходимо, за да реализирате амбициите си.
                         </p>
-                        <button className="fill-button">Контакт</button>
+                        <a href="/contact">
+                            <button className="fill-button">Контакт</button>
+                        </a>
                     </div>
                 </div>
             </section>

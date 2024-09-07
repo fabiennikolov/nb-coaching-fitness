@@ -9,7 +9,7 @@ const Navbar = () => {
     const sidebarRef = useRef();
     const navbarRef = useRef();
 
-    const { auth  } = usePage().props;
+    const { auth } = usePage().props;
 
     const [toggleIcon, setToggleIcon] = useState(true);
 
@@ -41,8 +41,6 @@ const Navbar = () => {
         };
     }, []);
 
-
-
     return (
         <div
             ref={navbarRef}
@@ -58,9 +56,13 @@ const Navbar = () => {
                 </div>
                 <ul className="hidden lg:flex gap-3 items-center">
                     {navbarLinks.map((link, index) => (
-                        <li key={index} >
+                        <li key={index}>
                             <a
-                                className={`${window.location.pathname === link.path ? 'text-white' : ''} hover:text-white transition-all cursor-pointer`}
+                                className={`${
+                                    window.location.pathname === link.path
+                                        ? "text-white"
+                                        : ""
+                                } hover:text-white transition-all cursor-pointer`}
                                 href={link.path}
                             >
                                 {link.name}
@@ -110,7 +112,7 @@ const Navbar = () => {
                             </Dropdown.Content>
                         </Dropdown>
                     ) : (
-                        <a className="text-white" href="/login">
+                        <a className="text-white hidden lg:flex" href="/login">
                             <button className="outline-button">Вход</button>
                         </a>
                     )}
@@ -145,6 +147,13 @@ const Navbar = () => {
                         </li>
                     ))}
                 </ul>
+                {auth.user ? (
+                    ""
+                ) : (
+                    <a className="text-white" href="/login">
+                        <button className="outline-button">Вход</button>
+                    </a>
+                )}
             </div>
         </div>
     );

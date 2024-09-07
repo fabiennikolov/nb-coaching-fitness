@@ -35,7 +35,7 @@ export default function Register() {
     };
 
     return (
-        <form onSubmit={submit} className="grid-2 min-h-screen">
+        <form onSubmit={submit} className="grid-2 max-h-screen overflow-y-hidden">
             <div className="flex-center min-h-screen">
                 <div className="w-full px-5 lg:px-10 xl:px-32 mx-auto">
                     <div className="flex-col-3">

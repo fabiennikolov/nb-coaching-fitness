@@ -35,7 +35,7 @@ export default function Login({ permissions, status, canResetPassword }) {
     };
 
     return (
-        <form onSubmit={submit} className="grid-2 min-h-screen">
+        <form onSubmit={submit} className="grid-2 overflow-y-hidden max-h-screen">
             <div className="bg-panel-image bg-center bg-cover" />
             <div className="flex-center min-h-screen">
                 <div className="w-full px-5 lg:px-10 xl:px-32 mx-auto">
@@ -74,14 +74,14 @@ export default function Login({ permissions, status, canResetPassword }) {
 
                             <label>Password</label>
                         </div>
-                        <div className="flex-between">
+                        <div className="flex flex-col sm:flex-row lg:items-center justify-between">
                             <div className="flex-3">
                                 <input type="checkbox" />
                                 <p>Запомни за 30 дни</p>
                             </div>
                             <a
-                                href="/forgot-password"
-                                className="text-[#dc2626] underline"
+                                href="/forgot-password "
+                                className="text-[#dc2626] underline hidden sm:flex"
                             >
                                 Забравена парола?
                             </a>
@@ -89,6 +89,13 @@ export default function Login({ permissions, status, canResetPassword }) {
                         <button className="w-full mt-3 bg-white rounded-md p-3 transition-all hover:-translate-y-1">
                             Вход
                         </button>
+                        <a
+                                href="/forgot-password "
+                                className="text-[#dc2626] underline flex sm:hidden justify-end "
+                            >
+                                Забравена парола?
+                            </a>
+                        
                         {!permissions.includes("register users") &&
                         permissions.length === 0 ? (
                             ""

@@ -20,11 +20,11 @@ export const navbarLinks = [
     },
     {
         name: "За нас",
-        path: "/",
+        path: "/about-us",
     },
     {
         name: "Лични тренировки",
-        path: "/",
+        path: "/personal-workout",
     },
     {
         name: "Конктакт",
