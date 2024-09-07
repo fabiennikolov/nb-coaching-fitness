@@ -104,7 +104,7 @@ const NbCoachingPage = (props) => {
                                     your account.
                                 </p>
 
-                                <div className="mt-6">
+                                <div className="mt-6 flex-col-2">
                                     {inputs.map((input, index) => (
                                         <div key={index} className="flex-col-1">
                                             <label className="text-white">
