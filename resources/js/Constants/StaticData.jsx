@@ -1,6 +1,5 @@
 import {
     Book,
-    ChartBar,
     Drumstick,
     Dumbbell,
     MessageCircle,
@@ -15,12 +14,8 @@ import {
 
 export const navbarLinks = [
     {
-        name: "Home",
+        name: "Начало",
         path: "/",
-    },
-    {
-        name: "За нас",
-        path: "/about-us",
     },
     {
         name: "Лични тренировки",
@@ -143,7 +138,7 @@ export const aboutCards = [
     },
     {
         heading: "Мониторинг",
-        p: ": Проследяване на напредъка Ви и корекции на плановете.",
+        p: "Проследяване на напредъка Ви и корекции на плановете.",
         icon: <Monitor className="text-red-600" size={200} />,
     },
     {

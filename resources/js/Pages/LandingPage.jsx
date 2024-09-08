@@ -66,13 +66,8 @@ const Welcome = (props) => {
             >
                 <div className="flex-col-3 text-center px-5">
                     <h1 className="font-bold text-3xl lg:text-6xl">
-                        It's time to trust yourself
+                        Какво включва NB Coaching
                     </h1>
-                    <p className="max-w-[800px] mx-auto">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Nesciunt recusandae saepe accusamus quo consequatur quia
-                        nam quis aspernatur esse. Accusamus!
-                    </p>
                 </div>
                 <div className="max-w-wrapper grid-3 gap-3">
                     {aboutCards.map((item, index) => (
@@ -146,7 +141,7 @@ const Welcome = (props) => {
                         <div>
                             <p>За мен</p>
                             <h1 className="text-2xl md:text-4xl font-bold">
-                                Никола Бугов (Фитнес Инструктор)
+                                Никола Бугов 
                             </h1>
                         </div>
 

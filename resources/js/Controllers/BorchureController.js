@@ -1,8 +1,11 @@
 import { inputsContainer } from "@/Constants/StaticData";
+import { usePage } from "@inertiajs/react";
 import React, { useState, useCallback, useRef, useEffect } from "react";
 
 const BorchureController = () => {
   const flipBook = useRef(null);
+
+  const { auth } = usePage().props
 
 
   const [collables, setIsCollapsed] = useState(false)
@@ -63,7 +66,7 @@ const BorchureController = () => {
     };
   }, []);
 
-  return { currentPage, handlePreviousPage, handleNextPage, onFlip, flipBook, collables, closeModal, confirmUserDeletion, confirmingUserDeletion, handleChange, inputsContainer, inputs}
+  return { currentPage, handlePreviousPage, handleNextPage, onFlip, flipBook, collables, closeModal, confirmUserDeletion, confirmingUserDeletion, handleChange, inputsContainer, inputs, auth}
 }
 
 export default BorchureController

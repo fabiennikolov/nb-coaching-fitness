@@ -15,8 +15,7 @@ const Footer = () => {
                         alt="footer_logo"
                     />
                     <div className="px-5">
-                        <p>Направи перфектното тяло с NB Coaching</p>
-                        {auth.user ? (
+                        {/* {auth.user ? (
                             <a href="/profile">
                                 {" "}
                                 <button className="outline-button mt-2">
@@ -30,7 +29,7 @@ const Footer = () => {
                                     Вход{" "}
                                 </button>
                             </a>
-                        )}
+                        )} */}
                         <h1 className="z-0 hidden xl:flex absolute special-footer-outline-text text-[10em] -right-[30%] font-bold leading-[70px] mt-20 uppercase bottom-0">
                             NB Coaching
                         </h1>

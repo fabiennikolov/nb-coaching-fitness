@@ -37,14 +37,14 @@ Route::get('/contact', function() {
 });
 
 Route::get('/nb-coaching', function() {
-    $userId = auth()->user()->id;
+    $userId = auth()->user()?->id;
     $clientTables = FitnessTable::where('user_id', $userId)->get();
     return Inertia::render('NbCoaching/NbCoachingPage', ['tables' => $clientTables]);
-})->middleware('auth');
+});
 
 Route::get('/nb-coaching/brochure', function() {
     return Inertia::render('NbCoaching/NbCoachingBrochurePage');
-});
+})->middleware('auth');
 
 Route::get('/dashboard', function () {
     $user = auth()->user();
