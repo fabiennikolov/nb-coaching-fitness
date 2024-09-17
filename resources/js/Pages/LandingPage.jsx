@@ -23,12 +23,12 @@ const Welcome = (props) => {
                 <ContainerScroll
                     titleComponent={
                         <div className="flex-col-5 mb-14 mt-10">
-                            <h1 className="text-3xl md:text-4xl font-semibold dark:text-white">
+                            {/* <h1 className="text-3xl md:text-4xl font-semibold dark:text-white">
                                 {title} <br />
                                 <span className="text-4xl md:text-6xl lg:text-[6rem] font-bold mt-1 leading-none">
                                     {subtitle}
                                 </span>
-                            </h1>
+                            </h1> */}
                             <p className="m-3">{description}</p>
                             <div className="flex flex-col md:flex-row gap-3 items-center flex-center w-full">
                                 <a
@@ -50,7 +50,7 @@ const Welcome = (props) => {
                     }
                 >
                     <img
-                        src={`/assets/panel.png`}
+                        src={`/assets/panel.jpg`}
                         alt="hero"
                         height={720}
                         width={1000}
@@ -116,7 +116,7 @@ const Welcome = (props) => {
                                 className={`${
                                     !auth.user && "blur-lg"
                                 } rounded-lg`}
-                                src="/assets/panel.png"
+                                src="/assets/panel.jpg"
                                 alt="panel"
                             />
                         </div>
@@ -138,6 +138,7 @@ const Welcome = (props) => {
                         )}
                     </div>
                     <div className="flex-col-5">
+                        <img src="/assets/coach.JPG" className=" w-[120px] object-top object-cover h-[120px] rounded-full border-2 border-neutral-100"/>
                         <div>
                             <p>За мен</p>
                             <h1 className="text-2xl md:text-4xl font-bold">
