@@ -125,7 +125,7 @@ const Welcome = (props) => {
                                 <h1 className="text-3xl font-bold">
                                     Нямаш профил?
                                 </h1>
-                                <p>
+                                <p className="text-neutral-300">
                                     Влезни си в акаунта за да видиш цялата
                                     информация
                                 </p>
