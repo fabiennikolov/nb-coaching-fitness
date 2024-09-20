@@ -26,8 +26,8 @@ const Welcome = (props) => {
                             <h1 className="text-3xl md:text-4xl font-semibold dark:text-white">
                                 Добре дошли в  <span className="font-bold text-5xl md:text-5xl">
                                 {/* <span style={{ color: '#E10808', fontFamily: 'Russo one' }}>NBcoaching</span> */}
-                                <span style={{ color: '#E10808', fontFamily: 'Gill Sans MT', textShadow: '2px 2px 0px #BFB0B0, -2px 2px 0px #BFB0B0, 2px -2px 0px #BFB0B0, -2px -2px 0px #BFB0B0' }}>N</span>
-                                <span style={{ color: '#E10808', fontFamily: 'Gill Sans MT', textShadow: '2px 2px 0px #BFB0B0, -2px 2px 0px #BFB0B0, 2px -2px 0px #BFB0B0, -2px -2px 0px #BFB0B0' }}>B</span>
+                                <span style={{ color: '#E10808', fontFamily: 'Gill Sans MT', textShadow: '2px 2px 0px #BFB0B0, -2px 2px 0px white, 2px -2px 0px white, -2px -2px 0px white' }}>N</span>
+                                <span style={{ color: '#E10808', fontFamily: 'Gill Sans MT', textShadow: '2px 2px 0px white, -2px 2px 0px white, 2px -2px 0px white, -2px -2px 0px white' }}>B</span>
                                 <span style={{ color: '#BFB0B0' }}>c</span>
                                 <span style={{ color: '#BFB0B0' }}>o</span>
                                 <span style={{ color: '#BFB0B0' }}>a</span>
