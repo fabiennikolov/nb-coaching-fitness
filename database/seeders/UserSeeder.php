@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
                 'email' => 'nbcoachingfitness@gmail.com',
                 'password' => bcrypt('password'),
                 'role' => 'admin',
-            ],
+            ],       
         ];
 
         // Loop through each user, create the user and assign the appropriate role

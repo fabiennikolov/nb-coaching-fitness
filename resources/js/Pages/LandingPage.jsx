@@ -23,12 +23,25 @@ const Welcome = (props) => {
                 <ContainerScroll
                     titleComponent={
                         <div className="flex-col-5 mb-14 mt-10">
-                            {/* <h1 className="text-3xl md:text-4xl font-semibold dark:text-white">
-                                {title} <br />
-                                <span className="text-4xl md:text-6xl lg:text-[6rem] font-bold mt-1 leading-none">
+                            <h1 className="text-3xl md:text-4xl font-semibold dark:text-white">
+                                Добре дошли в  <span className="font-bold text-5xl md:text-5xl">
+                                {/* <span style={{ color: '#E10808', fontFamily: 'Russo one' }}>NBcoaching</span> */}
+                                <span style={{ color: '#E10808', fontFamily: 'Gill Sans MT', textShadow: '2px 2px 0px #BFB0B0, -2px 2px 0px #BFB0B0, 2px -2px 0px #BFB0B0, -2px -2px 0px #BFB0B0' }}>N</span>
+                                <span style={{ color: '#E10808', fontFamily: 'Gill Sans MT', textShadow: '2px 2px 0px #BFB0B0, -2px 2px 0px #BFB0B0, 2px -2px 0px #BFB0B0, -2px -2px 0px #BFB0B0' }}>B</span>
+                                <span style={{ color: '#BFB0B0' }}>c</span>
+                                <span style={{ color: '#BFB0B0' }}>o</span>
+                                <span style={{ color: '#BFB0B0' }}>a</span>
+                                <span style={{ color: '#BFB0B0' }}>c</span>
+                                <span style={{ color: '#BFB0B0' }}>h</span>
+                                <span style={{ color: '#BFB0B0' }}>i</span>
+                                <span style={{ color: '#BFB0B0' }}>n</span>
+                                <span style={{ color: '#BFB0B0' }}>g</span>
+                                </span> <br />
+    
+                                {/* <span className="text-4xl md:text-6xl lg:text-[6rem] font-bold mt-1 leading-none">
                                     {subtitle}
-                                </span>
-                            </h1> */}
+                                </span> */}
+                            </h1>
                             <p className="m-3">{description}</p>
                             <div className="flex flex-col md:flex-row gap-3 items-center flex-center w-full">
                                 <a
@@ -66,7 +79,7 @@ const Welcome = (props) => {
             >
                 <div className="flex-col-3 text-center px-5">
                     <h1 className="font-bold text-3xl lg:text-6xl">
-                        Какво включва NB Coaching
+                        Какво включва NB Coaching?
                     </h1>
                 </div>
                 <div className="max-w-wrapper grid-3 gap-3">
