@@ -6,7 +6,7 @@ const NbCoachingCard = ({ img, brochureLink, }) => {
     return (
         <div className="flex-col-3 p-3 border border-neutral-800 group hover:border-neutral-300 rounded-md transition-all">
             <img
-                className="w-full h-[200px] object-cotain rounded-md"
+                className="w-full h-[200px] object-cover rounded-md"
                 src={img}
             />
             <div className="flex-between">

@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import HTMLFlipBook from "react-pageflip";
 
-const NbCoachingBrochurePage = () => {
+const NbCoachingBrochurePage = (images) => {
     const {
         currentPage,
         handlePreviousPage,
@@ -38,15 +38,15 @@ const NbCoachingBrochurePage = () => {
                         className="w-full"
                         ref={flipBook}
                         onFlip={onFlip}
-                        height={collables ? 500 : 650}
+                        height={collables ? 550 : 700}
                         width={collables ? 350 : 500}
                     >
-                        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map(
+                        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(
                             (_, id) => (
                                 <img
-                                    src={`/assets/brochureOne/pic-${
+                                    src={`/assets/brochureOne/dobavki-${
                                         id + 1
-                                    }.jpg`}
+                                    }.png`}
                                     alt={id}
                                 />
                             )
