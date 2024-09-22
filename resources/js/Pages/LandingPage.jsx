@@ -26,16 +26,7 @@ const Welcome = (props) => {
                             <h1 className="text-3xl md:text-4xl font-semibold dark:text-white">
                                 Добре дошли в  <span className="font-bold text-5xl md:text-5xl">
                                 {/* <span style={{ color: '#E10808', fontFamily: 'Russo one' }}>NBcoaching</span> */}
-                                <span style={{ color: '#E10808', fontFamily: 'Gill Sans MT', textShadow: '2px 2px 0px #BFB0B0, -2px 2px 0px white, 2px -2px 0px white, -2px -2px 0px white' }}>N</span>
-                                <span style={{ color: '#E10808', fontFamily: 'Gill Sans MT', textShadow: '2px 2px 0px white, -2px 2px 0px white, 2px -2px 0px white, -2px -2px 0px white' }}>B</span>
-                                <span style={{ color: '#BFB0B0' }}>c</span>
-                                <span style={{ color: '#BFB0B0' }}>o</span>
-                                <span style={{ color: '#BFB0B0' }}>a</span>
-                                <span style={{ color: '#BFB0B0' }}>c</span>
-                                <span style={{ color: '#BFB0B0' }}>h</span>
-                                <span style={{ color: '#BFB0B0' }}>i</span>
-                                <span style={{ color: '#BFB0B0' }}>n</span>
-                                <span style={{ color: '#BFB0B0' }}>g</span>
+                                <span style={{ color: '#E10808', fontFamily: 'Russo one' }}>NBcoaching</span>
                                 </span> <br />
     
                                 {/* <span className="text-4xl md:text-6xl lg:text-[6rem] font-bold mt-1 leading-none">
@@ -173,9 +164,9 @@ const Welcome = (props) => {
                             своята трансформация. С NBcoaching имате всичко
                             необходимо, за да реализирате амбициите си.
                         </p>
-                        <a href="/contact">
+                        {/* <a href="/contact">
                             <button className="fill-button">Контакт</button>
-                        </a>
+                        </a> */}
                     </div>
                 </div>
             </section>
