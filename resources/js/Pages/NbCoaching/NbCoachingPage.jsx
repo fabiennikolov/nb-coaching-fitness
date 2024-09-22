@@ -8,9 +8,11 @@ import Modal from "@/Components/Modal";
 import SecondaryButton from "@/Components/SecondaryButton";
 import TextInput from "@/Components/TextInput";
 import NbCoachingCard from "@/CustomComponents/NbCoachingCard";
+import { brochures } from "@/Constants/StaticData";
 
 const NbCoachingPage = (props) => {
     const { tables } = props;
+
 
     const {
         confirmUserDeletion,
@@ -21,10 +23,11 @@ const NbCoachingPage = (props) => {
         auth,
     } = BrochureCotroller();
 
+
     return (
         <div>
             {!auth.user && (
-                <div className="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 text-center flex-col-1 ">
+                    <div className="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 text-center flex-col-1 z-[100000]">
                     <h1 className="text-2xl font-bold">Не си регистриран</h1>
                     <p>Свържи се с мен за да повече информация</p>
                     <a href="/contact" className="text-black mt-2">
@@ -39,13 +42,14 @@ const NbCoachingPage = (props) => {
                         className={`${
                             auth.user
                                 ? ""
-                                : "overflow-hidden max-h-screen blur-lg pointer-events-none select-none"
+                                : "overflow-hidden max-h-screen blur-lg pointer-events-none select-none z-[1000]"
                         } flex-col-2`}
                     >
                         <h1 className="text-2xl font-bold">Наръчници</h1>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 min-h-[50vh] justify-center items-center">
-                            <NbCoachingCard img={'/assets/brochureOne/dobavki-1.png'} brochureLink={'/nb-coaching/brochure'}/>
-                            <NbCoachingCard img={'/assets/brochureTwo/naruchnik-01.png'}  brochureLink={'/nb-coaching/brochure'}/>
+                            {brochures.map((brochure, id) => (
+                                <NbCoachingCard {...brochure} key={id}/>
+                            ))}
                         </div>
                     </div>
                     <div
