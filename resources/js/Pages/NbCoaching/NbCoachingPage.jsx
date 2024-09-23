@@ -44,8 +44,8 @@ const NbCoachingPage = (props) => {
                     >
                         <h1 className="text-2xl font-bold">Наръчници</h1>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 min-h-[50vh] justify-center items-center">
-                            <NbCoachingCard img={'/assets/brochureOne/dobavki-1.png'} brochureLink={'/nb-coaching/brochure'}/>
-                            <NbCoachingCard img={'/assets/brochureTwo/naruchnik-01.png'}  brochureLink={'/nb-coaching/brochure'}/>
+                            <NbCoachingCard img={'/assets/brochureOne/dobavki-1.png'} brochureLink={'/nb-coaching/brochure/1'}/>
+                            <NbCoachingCard img={'/assets/brochureTwo/naruchnik-01.png'}  brochureLink={'/nb-coaching/brochure/2'}/>
                         </div>
                     </div>
                     <div

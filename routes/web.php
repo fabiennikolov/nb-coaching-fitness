@@ -42,7 +42,11 @@ Route::get('/nb-coaching', function() {
     return Inertia::render('NbCoaching/NbCoachingPage', ['tables' => $clientTables]);
 });
 
-Route::get('/nb-coaching/brochure', function() {
+Route::get('/nb-coaching/brochure/1', function() {
+    return Inertia::render('NbCoaching/NbCoachingBrochurePage');
+})->middleware('auth');
+
+Route::get('/nb-coaching/brochure/2', function() {
     return Inertia::render('NbCoaching/NbCoachingBrochurePage');
 })->middleware('auth');
 
