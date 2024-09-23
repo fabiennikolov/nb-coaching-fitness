@@ -17,6 +17,7 @@ const NbCoachingBrochurePage = ({ id: paramsId }) => {
         return  window.history.back();
     }
 
+    const brochureLength = paramsId == 1 ? 16 : 28  
 
     return (
         <div>
@@ -46,7 +47,7 @@ const NbCoachingBrochurePage = ({ id: paramsId }) => {
                         height={collables ? 550 : 700}
                         width={collables ? 350 : 500}
                     >
-                        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(
+                        {[...Array(brochureLength)].map(
                             (_, id) => (
                                 <img
                                     src={`/assets${paramsId == 1 ? '/brochureOne/dobavki' : '/brochureTwo/naruchnik'}-${
