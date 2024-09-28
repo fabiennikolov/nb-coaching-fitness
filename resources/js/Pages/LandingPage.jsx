@@ -24,14 +24,11 @@ const Welcome = (props) => {
                     titleComponent={
                         <div className="flex-col-5 mb-14 mt-10">
                             <h1 className="text-3xl md:text-4xl font-semibold dark:text-white">
-                                Добре дошли в  <span className="font-bold text-5xl md:text-5xl">
-                                {/* <span style={{ color: '#E10808', fontFamily: 'Russo one' }}>NBcoaching</span> */}
-                                <span style={{ color: '#E10808', fontFamily: 'Russo one' }}>NBcoaching</span>
-                                </span> <br />
-    
-                                {/* <span className="text-4xl md:text-6xl lg:text-[6rem] font-bold mt-1 leading-none">
-                                    {subtitle}
-                                </span> */}
+                                Добре дошли в
+                                    <span className="text-red-600 font-bold text-5xl md:text-5xl ml-2">
+                                        NBCoaching
+                                    </span>
+                                <br />
                             </h1>
                             <p className="m-3">{description}</p>
                             <div className="flex flex-col md:flex-row gap-3 items-center flex-center w-full">
@@ -58,7 +55,7 @@ const Welcome = (props) => {
                         alt="hero"
                         height={720}
                         width={1000}
-                        className="mx-auto rounded-2xl object-cover h-full object-left-top"
+                        className="mx-auto rounded-2xl h-full w-full"
                         draggable={false}
                     />
                 </ContainerScroll>
@@ -70,7 +67,7 @@ const Welcome = (props) => {
             >
                 <div className="flex-col-3 text-center px-5">
                     <h1 className="font-bold text-3xl lg:text-6xl">
-                        Какво включва NB Coaching?
+                        Какво включва NBCoaching?
                     </h1>
                 </div>
                 <div className="max-w-wrapper grid-3 gap-3">
@@ -101,7 +98,7 @@ const Welcome = (props) => {
                     className="absolute opacity-[0.02] lg:opacity-30 right-[-12%] top-[40%] z-[-1]"
                     src="/assets/white-dots.png"
                 />
-                <div className="flex-col-3 text-center px-5">
+                <div className="flex-col-3 lg:text-center px-5">
                     <h1 className="font-bold text-3xl lg:text-6xl">
                         За кого е подходяща услугата?
                     </h1>
@@ -113,40 +110,19 @@ const Welcome = (props) => {
                         постигане на Вашите цели, аз съм тук, за да Ви помогна.
                     </p>
                 </div>
-                <div className="max-w-wrapper grid-2 gap-10 ">
-                    <div className="relative flex-center">
-                        <div className="bg-neutral-900 p-3 rounded-lg">
-                            <img
-                                className={`${
-                                    !auth.user && "blur-lg"
-                                } rounded-lg`}
-                                src="/assets/panel.jpg"
-                                alt="panel"
-                            />
-                        </div>
-                        {!auth.user && (
-                            <div className="absolute text-center mx-auto flex-center flex-col">
-                                <h1 className="text-3xl font-bold">
-                                    Нямаш профил?
-                                </h1>
-                                <p className="text-neutral-300">
-                                    Влезни си в акаунта за да видиш цялата
-                                    информация
-                                </p>
-                                <a className="text-black" href="/login">
-                                    <button className="fill-button mt-3">
-                                        Вход
-                                    </button>
-                                </a>
-                            </div>
-                        )}
+                <div className="max-w-2xl px-5 2xl:px-0 grid-3 gap-10 items-center justify-center">
+                    <div className="w-full flex items-center lg:justify-end">
+                         <img
+                            src="/assets/coach.JPG"
+                            className="w-[150px] h-[150px] object-cover object-top rounded-full border-2 border-neutral-100"
+                        />
                     </div>
-                    <div className="flex-col-5">
-                        <img src="/assets/coach.JPG" className=" w-[120px] object-top object-cover h-[120px] rounded-full border-2 border-neutral-100"/>
+
+                    <div className="flex-col-5 col-span-2">
                         <div>
                             <p>За мен</p>
                             <h1 className="text-2xl md:text-4xl font-bold">
-                                Никола Бугов 
+                                Никола Бугов
                             </h1>
                         </div>
 

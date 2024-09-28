@@ -12,7 +12,7 @@ const NbCoachingCard = ({ img, link, }) => {
             <div className="flex-between">
                 <div className="flex-col-1">
                     <h1 className="font-bold text-white text-lg">
-                        Nb Coaching
+                        NbCoaching
                     </h1>
                 </div>
                 <Download className="text-white cursor-pointer text-xl" />

@@ -36,15 +36,20 @@
     border-radius: 0.5em;
     color: var(--mainDarkLightTextColor);
     outline: none;
-    padding: 1em 0.5em 0.5em 0.5em;
-    resize: vertical; /* Allows resizing of textarea only vertically */
+    transition: border 0.3s ease;
 }
 
+
+.input-container input::placeholder,
+.input-container textarea::placeholder{
+    color:var(--mainDarkLightTextColor);
+}
+
+.input-container input:hover,
+.input-container textarea:hover,
 .input-container input:focus,
-.input-container textarea:focus,
-.input-container input:valid,
-.input-container textarea:valid {
-    border-radius: 0.5em;
+.input-container textarea:focus {
+    border: 1px solid red; 
 }
 
 .input-container label {
@@ -62,23 +67,20 @@
     padding: 0 0.25em;
 }
 
-/* Move the label up when input or textarea is focused or valid (has content) */
 .input-container input:focus ~ label,
 .input-container textarea:focus ~ label,
 .input-container input:not(:placeholder-shown) ~ label,
 .input-container textarea:not(:placeholder-shown) ~ label {
     transform: translateY(-150%);
     color: var(--mainDarkLightTextColor);
-    background-color: var(--mainDarkColor);
+    background-color: var(--mainDarkColor); 
 }
 
-/* Keep the label in place when input or textarea is empty and not focused */
 .input-container input:placeholder-shown ~ label,
 .input-container textarea:placeholder-shown ~ label {
     transform: translateY(-50%);
     color: gray;
 }
-
 iframe {
   overflow: auto; 
 }

@@ -37,21 +37,15 @@ const ContactPage = () => {
             <div className="flex-col-3 max-w-wrapper min-h-screen flex-center w-full ">
                 <div className="flex-col-5 w-full py-5 mt-20 lg:mt-0">
                     <div className="w-full lg:text-center">
-                        <h1 className="font-bold text-4xl">Contact me</h1>
-                        <p className="max-w-[600px] mx-auto">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing
-                            elit. Excepturi tempora mollitia vitae, accusantium
-                            porro in consequatur ab praesentium maiores
-                            nesciunt.
-                        </p>
+                        <h1 className="font-bold text-4xl">Свържете се с мен</h1>
                     </div>
 
                     <div className="grid-3 gap-10 items-center">
                         <form
                             onSubmit={onSubmit}
-                            className="flex-col-10 col-span-2"
+                            className="flex-col-5 col-span-2"
                         >
-                            <div className="grid-2 gap-10">
+                            <div className="grid-2 gap-5">
                                 <div className="input-container">
                                     <input
                                         id={data.firstName}
@@ -59,8 +53,8 @@ const ContactPage = () => {
                                         autoComplete="name"
                                         onChange={handleChange}
                                         required
+                                        placeholder="First Name"
                                     />
-                                    <label>First Name</label>
                                 </div>
                                 <div className="input-container">
                                     <input
@@ -69,8 +63,8 @@ const ContactPage = () => {
                                         autoComplete="name"
                                         onChange={handleChange}
                                         required
+                                        placeholder="Last Name"
                                     />
-                                    <label>Last Name</label>
                                 </div>
                             </div>
                             {contactFormInput.map((data, index) => (
@@ -78,17 +72,16 @@ const ContactPage = () => {
                                     <input
                                         id={data.value}
                                         name="name"
-                                        // value={data.name}
                                         autoComplete="name"
                                         onChange={handleChange}
                                         required
+                                        placeholder={data.placeholder}
                                     />
-                                    <label>{data.name}</label>
                                 </div>
                             ))}
                             <button className="flex-3 bg-white p-3 text-center flex items-center justify-center rounded-md w-full">
                                 <Send />
-                                Submit Message
+                                Изпрати съобщение
                             </button>
                         </form>
                         <div className="flex-col-5">

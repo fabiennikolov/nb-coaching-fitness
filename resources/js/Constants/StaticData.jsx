@@ -2,6 +2,8 @@ import {
     Book,
     Drumstick,
     Dumbbell,
+    Instagram,
+    Mail,
     MessageCircle,
     Monitor,
     Phone,
@@ -22,14 +24,14 @@ export const navbarLinks = [
         path: "/contact",
     },
     {
-        name: "NB Coaching",
+        name: "NBCoaching",
         path: "/nb-coaching",
     },
 ];
 
 export const headerDataText = {
-    title: "Добре дошли в NB coaching",
-    subtitle: "NB Coaching Fitness",
+    title: "Добре дошли в NBscoaching",
+    subtitle: "NBCoaching Fitness",
     description:
         "Тази платформа е тук, за да Ви предостави необходимите ресурси и насоки за постигане на Вашите фитнес цели. С акцент на практичността и ефективността, услугата предлага разнообразие от стратегии, които ще Ви помогнат да постигнете желаните резултати. Тук ще намерите полезна информация и подкрепа, за да реализирате пълния си потенциал.",
 };
@@ -148,14 +150,17 @@ export const contactFormInputs = (data) => [
     {
         name: "Email",
         value: data.email,
+        placeholder: "Email"
     },
     {
         name: "Phone Number",
         value: data.phone,
+        placeholder: "Phone Number"
     },
     {
         name: "Message",
         value: data.additional_info,
+        placeholder: "Опишете вашите фитнес цели, опит и очаквания, за да ви помогна по най-добрия начин."
     },
 ];
 
@@ -165,36 +170,25 @@ export const contactFormGridThree = [
         p: "Speak to our friendly team via live chat",
         add: [
             {
+                icon: <Mail />,
+                text: "nbcoachingfitness@gmail.com",
+            },
+            {
+                icon: <Instagram />,
+                text: "Message us on Instagram",
+            },
+            {
                 icon: <MessageCircle />,
-                text: "Start a live chat",
-            },
-            {
-                icon: <Send />,
-                text: "Shoot us an email",
-            },
-            {
-                icon: <Twitter />,
-                text: "Message us on X",
+                text: "Message us on WhatsApp",
             },
         ],
     },
     {
         heading: "Call Us",
-        p: "Call our team Mon-Fri 8am to 5pm",
         add: [
             {
                 icon: <PhoneCall />,
-                text: "+1+(555) 000-0000",
-            },
-        ],
-    },
-    {
-        heading: "Visit ss",
-        p: "Chat to us in person at our Melboure HQ",
-        add: [
-            {
-                icon: <Pin />,
-                text: "100 Smith Street, Collingwood VIC 3065",
+                text: "+359 878920042",
             },
         ],
     },
@@ -259,3 +253,87 @@ export const customStyles = {
         },
     },
 };
+
+
+
+export const LoginInputs = (data, errors) => [
+    {
+        id: "email",
+        name: "email",
+        type: "email",
+        label: "Email",
+        autoComplete: "username",
+        required: true,
+        value: data.email,
+        error: errors.email,
+    },
+    {
+        id: "password",
+        name: "password",
+        type: "password",
+        label: "Password",
+        required: true,
+        value: data.password,
+        error: errors.password,
+    },
+];
+
+export const ResgiterInputs = (data, errors) => [
+    {
+        id: "name",
+        name: "name",
+        type: "text",
+        label: "Име",
+        required: true,
+        value: data.name,
+        error: errors.name,
+        placeholder: "Име (required)",
+    },
+    {
+        id: "email",
+        name: "email",
+        type: "email",
+        label: "Email",
+        required: true,
+        value: data.email,
+        error: errors.email,
+        placeholder: "Email (required)",
+        autoComplete: "username",
+    },
+    {
+        id: "password",
+        name: "password",
+        type: "password",
+        label: "Парола",
+        required: true,
+        value: data.password,
+        error: errors.password,
+        autoComplete: "new-password",
+    },
+    {
+        id: "password_confirmation",
+        name: "password_confirmation",
+        type: "password",
+        label: "Потвърждение на парола",
+        required: true,
+        value: data.password_confirmation,
+        error: errors.password_confirmation,
+        autoComplete: "new-password",
+    },
+    {
+        id: "instagram",
+        name: "instagram",
+        type: "text",
+        label: "@ Instagram",
+        value: data.instagram,
+        error: errors.instagram,
+    },
+    {
+        id: "phone",
+        name: "phone",
+        type: "number",
+        label: "Телефон",
+        value: data.phone,
+        error: errors.phone,
+    },
+];
