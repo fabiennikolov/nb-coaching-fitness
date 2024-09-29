@@ -15,23 +15,8 @@ const Footer = () => {
                         alt="footer_logo"
                     />
                     <div className="px-5">
-                        {/* {auth.user ? (
-                            <a href="/profile">
-                                {" "}
-                                <button className="outline-button mt-2">
-                                    Профил
-                                </button>
-                            </a>
-                        ) : (
-                            <a href="/login">
-                                {" "}
-                                <button className="outline-button mt-2">
-                                    Вход{" "}
-                                </button>
-                            </a>
-                        )} */}
                         <h1 className="z-0 hidden xl:flex absolute special-footer-outline-text text-[10em] -right-[30%] font-bold leading-[70px] mt-20 uppercase bottom-0">
-                            NB Coaching
+                            NBCoaching
                         </h1>
                     </div>
                 </div>
@@ -57,7 +42,7 @@ const Footer = () => {
             <span className="bg-[var(--mainDarkLightColor)] w-full h-[0.5px]"></span>
             <div className="larger-max-w-wrapper w-full">
                 <p className="w-full p-5">
-                    ©{new Date().getFullYear()} Nb coaching Всички права са
+                    ©{new Date().getFullYear()} Nbcoaching Всички права са
                     запазени
                 </p>
             </div>
