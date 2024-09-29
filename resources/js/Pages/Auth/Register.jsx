@@ -38,7 +38,7 @@ export default function Register() {
                                 className="mt-1 block w-full"
                                 onChange={handleOnChange}
                                 required
-                                placeholder="Опишете вашите фитнес цели, опит и очаквания<"
+                                placeholder="Опишете вашите фитнес цели, опит и очаквания"
                             />
                             {errors.additional_info && (
                                 <InputError message={errors.additional_info} className="mt-2" />

@@ -166,8 +166,8 @@ export const contactFormInputs = (data) => [
 
 export const contactFormGridThree = [
     {
-        heading: "Chat with us",
-        p: "Speak to our friendly team via live chat",
+        heading: "",
+        p: "",
         add: [
             {
                 icon: <Mail />,

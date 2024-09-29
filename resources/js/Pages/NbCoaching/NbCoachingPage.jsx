@@ -33,6 +33,9 @@ const NbCoachingPage = (props) => {
                     <a href="/contact" className="text-black mt-2">
                         <button className="fill-button">Контакт</button>
                     </a>
+                    <a href="/login" className="text-black mt-2">
+                        <button className="fill-button">Вход</button>
+                    </a>
                 </div>
             )}
             <div className={auth.user ? "" : "overflow-hidden max-h-screen"}>
