@@ -13,7 +13,6 @@ import { brochures } from "@/Constants/StaticData";
 const NbCoachingPage = (props) => {
     const { tables } = props;
 
-
     const {
         confirmUserDeletion,
         closeModal,
@@ -22,7 +21,6 @@ const NbCoachingPage = (props) => {
         inputs,
         auth,
     } = BrochureCotroller();
-
 
     return (
         <div>

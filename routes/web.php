@@ -60,7 +60,8 @@ Route::get('/dashboard', function () {
 
 Route::prefix('/admin')->group(function () {
     Route::get('/', [AdminUserController::class, 'index'])->name('admin');
-    Route::get('/user/{user}', [AdminUserController::class, 'show']);
+    Route::get('/user/{user}', [AdminUserController::class, 'show'])->name('admin.users.show');
+    Route::get('/user/{user}/store-table', [AdminUserController::class, 'storeTable']);
 })->middleware(['role:admin,superadmin']);
 
 Route::middleware('auth')->group(function () {

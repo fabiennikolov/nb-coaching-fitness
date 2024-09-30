@@ -7,7 +7,6 @@ const BorchureController = () => {
 
   const { auth } = usePage().props
 
-
   const [collables, setIsCollapsed] = useState(false)
   const [currentPage, setCurrentPage] = useState(0);
   const [confirmingUserDeletion, setConfirmingUserDeletion] = useState(false);
