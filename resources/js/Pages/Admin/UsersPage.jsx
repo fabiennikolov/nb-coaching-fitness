@@ -37,7 +37,11 @@ export default function Admin(props) {
         },
         {
             name: "Action",
-            selector: () => <button className="outline-button">View</button>,
+            cell: (row) => (
+            <a href={`/admin/user/${row.id}`}>
+                <button className="outline-button">Виж</button>
+            </a>
+        ),
         },
     ];
 
@@ -57,7 +61,7 @@ export default function Admin(props) {
                         <div className="grid-1">
                             <div className="flex-col-3">
                                 <h1 className="text-2xl font-bold lg:text-4xl">
-                                    All Members
+                                    Всички клиенти
                                 </h1>
                                 <div>
                                     <DataTable
