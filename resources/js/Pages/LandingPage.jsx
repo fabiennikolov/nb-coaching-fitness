@@ -140,9 +140,28 @@ const Welcome = (props) => {
                             своята трансформация. С NBcoaching имате всичко
                             необходимо, за да реализирате амбициите си.
                         </p>
-                        {/* <a href="/contact">
+                       
+                        <div
+                            className="relative flex-col-3 bg-[var(--mainDarkenLightColor)] p-5 mt-10 rounded-md overflow-hidden border-2  border-white"
+                        >
+                            <i
+                                className="absolute -right-[20%] z-0 -top-10 text-orange-600 opacity-[0.25]"
+                                size={200}
+                            >
+                                
+                            </i>
+                            <di className="flex-col-1 z-10">
+                                <h1 className="text-xl font-bold ">
+                                    Интересувате се от персонални тренировки?
+                                </h1>
+                                <p>Предлагам индивидуален подход, съобразен с
+                                вашите цели и нужди. За повече информация, свържете се с мен.</p>
+                            </di>
+                            <a href="/contact">
                             <button className="fill-button">Контакт</button>
-                        </a> */}
+                        </a>
+                        </div>
+                       
                     </div>
                 </div>
             </section>

@@ -29,20 +29,19 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
         'permissions' => $user ? $user->getAllPermissions()->pluck('name') : [], // Pass permissions if authenticated, empty array otherwise
     ]);
-
 });
 
-Route::get('/contact', function() {
+Route::get('/contact', function () {
     return Inertia::render('ContactPage');
 });
 
-Route::get('/nb-coaching', function() {
+Route::get('/nb-coaching', function () {
     $userId = auth()->user()?->id;
     $clientTables = FitnessTable::where('user_id', $userId)->get();
     return Inertia::render('NbCoaching/NbCoachingPage', ['tables' => $clientTables]);
 });
 
-Route::get('/nb-coaching/brochure/{id}', function($id) {
+Route::get('/nb-coaching/brochure/{id}', function ($id) {
     return Inertia::render('NbCoaching/NbCoachingBrochurePage', [
         'id' => $id
     ]);
@@ -51,17 +50,16 @@ Route::get('/nb-coaching/brochure/{id}', function($id) {
 
 Route::get('/dashboard', function () {
     $user = auth()->user();
-    
+
     return Inertia::render('Dashboard', [
         'user' => $user,
         'permissions' => $user->getAllPermissions()->pluck('name'),
     ]);
-
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/admin', function () {
     $user = auth()->user();
-    
+
     $users = User::whereDoesntHave('roles', function ($query) {
         $query->whereIn('name', ['admin', 'superadmin']);
     })->get();
@@ -70,7 +68,6 @@ Route::get('/admin', function () {
         $user->formatted_created_at = $user->created_at->diffForHumans();
         $user->formatted_updated_at = $user->updated_at->diffForHumans();
     });
-    
 
     return Inertia::render('AdminPage', [
         'user' => $user,
@@ -85,4 +82,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

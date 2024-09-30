@@ -20,7 +20,7 @@ export const navbarLinks = [
         path: "/",
     },
     {
-        name: "Конктакт",
+        name: "Контакт",
         path: "/contact",
     },
     {

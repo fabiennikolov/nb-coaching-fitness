@@ -12,7 +12,7 @@ export default function Login() {
                 <div className="w-full px-5 lg:px-10 xl:px-32 mx-auto">
                     <div className="flex-col-3">
                         <h1 className="font-bold text-3xl">Добре дошли</h1>
-                        <p>Добре дошли обратно! Моля, въведете вашите данни.</p>
+                        <p>Моля, въведете вашите данни.</p>
 
                         {loginInputs.map(({ id, name, type, label, autoComplete, required, value, error }) => (
                             <div key={id} className="input-container">

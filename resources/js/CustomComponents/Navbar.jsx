@@ -8,10 +8,22 @@ import Dropdown from "@/Components/Dropdown";
 const Navbar = () => {
     const sidebarRef = useRef();
     const navbarRef = useRef();
+    const checkIfRoleIsAdmin = (roles) => {
+        if(!Array.isArray(roles))
+        {
+            return false;
+        }
+        return roles.includes('admin') || roles.includes('superadmin')
+    };
 
     const { auth } = usePage().props;
+    
+    let adminRole = checkIfRoleIsAdmin(auth.roles);
+    console.log(adminRole, 'role')
 
     const [toggleIcon, setToggleIcon] = useState(true);
+
+ 
 
     const toggleSidebar = () => {
         sidebarRef.current.classList.toggle("active");
@@ -69,6 +81,16 @@ const Navbar = () => {
                             </a>
                         </li>
                     ))}
+                    {adminRole && (
+                        <li>
+                            <a
+                                className="hover:text-white transition-all cursor-pointer"
+                                href="/admin"
+                            >
+                                Admin
+                            </a>
+                        </li>
+                    )}
                 </ul>
 
                 <div className="flex items-center gap-3">
@@ -150,6 +172,16 @@ const Navbar = () => {
                             </a>
                         </li>
                     ))}
+                    {adminRole && (
+                        <li>
+                            <a
+                                className="hover:text-white transition-all cursor-pointer"
+                                href="/admin"
+                            >
+                                Admin
+                            </a>
+                        </li>
+                    )}
                 </ul>
                 {auth.user ? (
                     ""
