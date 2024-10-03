@@ -23,10 +23,10 @@ export default function Login() {
                                     required={required}
                                     value={value}
                                     className="mt-1 block w-full"
+                                    placeholder={label}
                                     autoComplete={autoComplete}
                                     onChange={handleOnChange}
                                 />
-                                <label htmlFor={id}>{label}</label>
                                 {error && <InputError message={error} className="mt-2" />}
                             </div>
                         ))}
