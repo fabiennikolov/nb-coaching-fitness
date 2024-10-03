@@ -43,6 +43,7 @@ class RolesAndPermissionsSeeder extends Seeder
                 'upload image',
                 'delete image',
             ],
+            'registered_user' => [],
             'client' => [
                 'read table',
                 'edit table',
@@ -60,5 +61,4 @@ class RolesAndPermissionsSeeder extends Seeder
             }
         }
     }
-    
 }

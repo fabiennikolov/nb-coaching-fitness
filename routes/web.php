@@ -37,9 +37,10 @@ Route::get('/contact', function () {
 });
 
 Route::get('/nb-coaching', function () {
-    $userId = auth()->user()?->id;
-    $clientTables = FitnessTable::where('user_id', $userId)->get();
-    return Inertia::render('NbCoaching/NbCoachingPage', ['tables' => $clientTables]);
+    $user = auth()->user();
+    $clientTables = FitnessTable::where('user_id', $user?->id)->get();
+    $userPermissions =  $user->getAllPermissions()->pluck('name');
+    return Inertia::render('NbCoaching/NbCoachingPage', ['tables' => $clientTables, 'userPermissions' => $userPermissions]);
 });
 
 Route::get('/nb-coaching/brochure/{id}', function ($id) {
