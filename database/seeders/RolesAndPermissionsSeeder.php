@@ -24,6 +24,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'delete table',
             'upload image',
             'delete image',
+            'read brochure'
         ];
 
         // Create permissions
@@ -42,12 +43,14 @@ class RolesAndPermissionsSeeder extends Seeder
                 'delete table',
                 'upload image',
                 'delete image',
+                'read brochure'
             ],
             'registered_user' => [],
             'client' => [
                 'read table',
                 'edit table',
                 'upload image',
+                'read brochure'
             ],
         ];
 
