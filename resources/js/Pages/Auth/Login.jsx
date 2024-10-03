@@ -1,9 +1,10 @@
 import InputError from "@/Components/InputError";
 import LoginController from "@/Controllers/LoginController";
+import { Loader } from "lucide-react";
 
 export default function Login() {
     
-    const { loginInputs, submit,  handleOnChange, data, errors } = LoginController()
+    const { loginInputs, submit,  handleOnChange, data, errors, processing } = LoginController()
 
     return (
         <form onSubmit={submit} className="grid-2 overflow-y-hidden max-h-screen">
@@ -46,8 +47,8 @@ export default function Login() {
                             </a>
                         </div>
 
-                        <button className="w-full mt-3 bg-white rounded-md p-3 transition-all hover:-translate-y-1">
-                            Вход
+                        <button disabled={processing} className="w-full mt-3 bg-white disabled:bg-white/50 disabled:cursor-not-allowed rounded-md flex-2 justify-center p-3 transition-all">
+                            {processing ? "Processing..." : "Вход"}{processing && <Loader size={15} className="animate-spin"/>}
                         </button>
 
                         <a href="/forgot-password" className="text-[#dc2626] underline flex sm:hidden justify-end">

@@ -13,11 +13,6 @@ const NbCoachingBrochurePage = ({ id: paramsId }) => {
         onFlip,
         flipBook,
         collables,
-
-        handleImageClick,
-        isImageModalOpen,
-        selectedImage,
-        closeImageModal,
     } = BrochureController();
 
     if (paramsId != 1 && paramsId != 2) {
@@ -69,29 +64,9 @@ const NbCoachingBrochurePage = ({ id: paramsId }) => {
                                 key={id}
                                 alt={id}
                                 className="cursor-pointer" 
-                                onClick={() =>
-                                    handleImageClick(
-                                        `/assets${
-                                            paramsId == 1
-                                                ? "/brochureOne/dobavki"
-                                                : "/brochureTwo/naruchnik"
-                                        }-${id + 1}.png`
-                                    )
-                                }
                             />
                         ))}
                     </HTMLFlipBook>
-
-                    {/* Image Modal */}
-                    {isImageModalOpen && (
-                        <Zoom>
-                            <img
-                                src={selectedImage}
-                                alt="Selected"
-                                className="w-full h-auto  object-contain"
-                            />
-                        </Zoom>
-                    )}
                 </div>
             </div>
         </div>
