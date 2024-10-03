@@ -28,7 +28,10 @@
         "framer-motion": "^11.3.22",
         "lucide-react": "^0.424.0",
         "react-data-table-component": "^7.6.2",
+        "react-medium-image-zoom": "^5.2.10",
         "react-pageflip": "^2.0.3",
+        "react-zoom-pan-pinch": "^3.6.1",
+        "swiper": "^11.1.14",
         "tailwind-merge": "^2.5.2",
         "tailwindcss-animate": "^1.0.7",
         "y": "^0.3.2"

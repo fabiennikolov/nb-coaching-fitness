@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\FitnessTable;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -31,8 +32,10 @@ class AdminUserController extends Controller
 
     public function show(User $user)
     {
+        $clientTables = FitnessTable::where('user_id', $user?->id)->get();
         return Inertia::render('Admin/UserShowPage', [
             'user' => $user,
+            'tables' => $clientTables
         ]);
     }
 }

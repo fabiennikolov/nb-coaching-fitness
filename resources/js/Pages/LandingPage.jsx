@@ -23,13 +23,15 @@ const Welcome = (props) => {
                 <ContainerScroll
                     titleComponent={
                         <div className="flex-col-5 mb-14 mt-10">
-                            <h1 className="text-3xl md:text-4xl font-semibold dark:text-white">
-                                Добре дошли в
-                                    <span className="text-red-600 font-bold text-5xl md:text-5xl ml-2">
-                                        NBCoaching
-                                    </span>
-                                <br />
-                            </h1>
+                            <div className="flex flex-col lg:flex-row items-center justify-center">
+                                <h1 className="text-3xl md:text-4xl font-semibold dark:text-white">
+                                    Добре дошли в
+                                </h1>
+                                <span className="text-red-600 font-bold text-5xl md:text-5xl ml-2">
+                                    NBCoaching
+                                </span>
+                            </div>
+
                             <p className="m-3">{description}</p>
                             <div className="flex flex-col md:flex-row gap-3 items-center flex-center w-full">
                                 <a
@@ -112,7 +114,7 @@ const Welcome = (props) => {
                 </div>
                 <div className="max-w-2xl px-5 2xl:px-0 grid-3 gap-10 items-center justify-center">
                     <div className="w-full flex items-center lg:justify-end">
-                         <img
+                        <img
                             src="/assets/coach.JPG"
                             className="w-[150px] h-[150px] object-cover object-top rounded-full border-2 border-neutral-100"
                         />
@@ -140,28 +142,26 @@ const Welcome = (props) => {
                             своята трансформация. С NBcoaching имате всичко
                             необходимо, за да реализирате амбициите си.
                         </p>
-                       
-                        <div
-                            className="relative flex-col-3 bg-[var(--mainDarkenLightColor)] p-5 mt-10 rounded-md overflow-hidden border-2  border-white"
-                        >
+
+                        <div className="relative flex-col-3 bg-[var(--mainDarkenLightColor)] p-5 mt-10 rounded-md overflow-hidden border-2  border-neutral-800">
                             <i
                                 className="absolute -right-[20%] z-0 -top-10 text-orange-600 opacity-[0.25]"
                                 size={200}
-                            >
-                                
-                            </i>
+                            ></i>
                             <di className="flex-col-1 z-10">
                                 <h1 className="text-xl font-bold ">
                                     Интересувате се от персонални тренировки?
                                 </h1>
-                                <p>Предлагам индивидуален подход, съобразен с
-                                вашите цели и нужди. За повече информация, свържете се с мен.</p>
+                                <p>
+                                    Предлагам индивидуален подход, съобразен с
+                                    вашите цели и нужди. За повече информация,
+                                    свържете се с мен.
+                                </p>
                             </di>
                             <a href="/contact">
-                            <button className="fill-button">Контакт</button>
-                        </a>
+                                <button className="fill-button">Контакт</button>
+                            </a>
                         </div>
-                       
                     </div>
                 </div>
             </section>

@@ -33,16 +33,6 @@ export default function Authenticated({ auth, header, children }) {
                                 >
                                     Dashboard
                                 </a>
-                                {/* {role === "admin" || role === "superadmin" ? (
-                                    <a
-                                        href={route("admin")}
-                                        active={route().current("admin")}
-                                    >
-                                        Admin
-                                    </a>
-                                ) : (
-                                    ""
-                                )} */}
                             </div>
                         </div>
 

@@ -1,7 +1,9 @@
+import Modal from "@/Components/Modal";
 import BrochureController from "@/Controllers/BorchureController";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import HTMLFlipBook from "react-pageflip";
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+
+import Zoom from "react-medium-image-zoom";
 
 const NbCoachingBrochurePage = ({ id: paramsId }) => {
     const {
@@ -10,7 +12,12 @@ const NbCoachingBrochurePage = ({ id: paramsId }) => {
         handleNextPage,
         onFlip,
         flipBook,
-        collables
+        collables,
+
+        handleImageClick,
+        isImageModalOpen,
+        selectedImage,
+        closeImageModal,
     } = BrochureController();
 
     if (paramsId != 1 && paramsId != 2) {
@@ -41,44 +48,50 @@ const NbCoachingBrochurePage = ({ id: paramsId }) => {
                 </div>
 
                 {/* Zoom and Pan Wrapper */}
-                 <div className="w-full mx-auto flex-center px-20">
-                    <TransformWrapper
-                        defaultScale={1}
-                        options={{
-                            maxScale: 2,
-                            minScale: 1,
-                            centerContent: true,
-                        }}
-                        style={{
-                            width: "100%",
-                            height: "auto",
-                            overflow: "hidden",
-                        }}
+                <div className="w-full mx-auto flex-center px-20">
+                  
+                    <HTMLFlipBook
+                        className="w-full"
+                        ref={flipBook}
+                        onFlip={onFlip}
+                        height={collables ? 550 : 700}
+                        width={collables ? 350 : 500}
+                        mobileScrollSupport={false}
+                        showCover={false}
                     >
-                        <TransformComponent>
-                            <HTMLFlipBook
-                                className="w-full"
-                                ref={flipBook}
-                                onFlip={onFlip}
-                                height={collables ? 550 : 700}
-                                width={isMobile ? 350 : 1000} // Larger width for desktop
-                                mobileScrollSupport={false} // Disable mobile scroll support on desktop
-                                showCover={false} // Ensure it shows two pages
-                            >
-                                {[...Array(brochureLength)].map((_, id) => (
-                                    <img
-                                        src={`/assets${
+                        {[...Array(brochureLength)].map((_, id) => (
+                            <img
+                                src={`/assets${
+                                    paramsId == 1
+                                        ? "/brochureOne/dobavki"
+                                        : "/brochureTwo/naruchnik"
+                                }-${id + 1}.png`}
+                                key={id}
+                                alt={id}
+                                className="cursor-pointer" 
+                                onClick={() =>
+                                    handleImageClick(
+                                        `/assets${
                                             paramsId == 1
                                                 ? "/brochureOne/dobavki"
                                                 : "/brochureTwo/naruchnik"
-                                        }-${id + 1}.png`}
-                                        key={id}
-                                        alt={id}
-                                    />
-                                ))}
-                            </HTMLFlipBook>
-                        </TransformComponent>
-                    </TransformWrapper>
+                                        }-${id + 1}.png`
+                                    )
+                                }
+                            />
+                        ))}
+                    </HTMLFlipBook>
+
+                    {/* Image Modal */}
+                    {isImageModalOpen && (
+                        <Zoom>
+                            <img
+                                src={selectedImage}
+                                alt="Selected"
+                                className="w-full h-auto  object-contain"
+                            />
+                        </Zoom>
+                    )}
                 </div>
             </div>
         </div>

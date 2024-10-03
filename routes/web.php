@@ -39,7 +39,7 @@ Route::get('/contact', function () {
 Route::get('/nb-coaching', function () {
     $user = auth()->user();
     $clientTables = FitnessTable::where('user_id', $user?->id)->get();
-    $userPermissions =  $user->getAllPermissions()->pluck('name');
+    $userPermissions =  $user?->getAllPermissions()->pluck('name');
     return Inertia::render('NbCoaching/NbCoachingPage', ['tables' => $clientTables, 'userPermissions' => $userPermissions]);
 });
 
@@ -55,7 +55,7 @@ Route::get('/dashboard', function () {
 
     return Inertia::render('Dashboard', [
         'user' => $user,
-        'permissions' => $user->getAllPermissions()->pluck('name'),
+        'permissions' => $user?->getAllPermissions()->pluck('name'),
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
