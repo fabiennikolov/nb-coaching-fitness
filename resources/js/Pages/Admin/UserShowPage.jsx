@@ -13,14 +13,33 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function UserShowPage(props) {
-    const { user, tables } = props;
+    const { user, tables, images} = props;
 
-    const g = 4
     const tableForm = useForm({
         name: '',
         url: '',
         description: ''
     });
+
+    const imageForm = useForm({
+        image : null
+    });
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+
+        if (file) {
+            setImageFile(file);
+            const previewUrl = URL.createObjectURL(file);
+            setImagePreview(previewUrl);
+        }
+        imageForm.setData('images', e.target.files); // Store the files as an array
+    };
+
+     const handleClearImage = () => {
+        setImageFile(null);
+        setImagePreview(null);
+    };
 
     const {
         isModalOneOpen,
@@ -29,9 +48,9 @@ export default function UserShowPage(props) {
         setIsModalTwoOpen,
         handleChange,
         inputs,
-        handleClearImage,
-        handleFileChange,
         imagePreview,
+        setImageFile,
+        setImagePreview
     } = UserPageController();
 
      const handleSubmit = (e) => {
@@ -41,6 +60,23 @@ export default function UserShowPage(props) {
             onSuccess: () => {
                 setIsModalOneOpen(false); // Close the modal on success
                 toast.success('Програмата е добавена успешно!'); // Trigger success toast
+            },
+        });
+    };
+
+    const handleImageSubmit = (e) => {
+        e.preventDefault();
+        
+        // Create a FormData object to send the file
+        const formData = new FormData();
+        formData.append('image', imageForm.data.image); // Append single image
+
+        imageForm.post(route('admin.storeImage', { user: user.id}), {
+            data: formData,
+            onSuccess: () => {
+                setIsModalTwoOpen(false); // Close modal after success
+                handleClearImage();
+                toast.success('Сниката е качена успешно!');
             },
         });
     };
@@ -162,7 +198,7 @@ export default function UserShowPage(props) {
                 </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                            {user ? (
+                            {user && tables.length != 0 ? (
                                 tables.map((table, id) => (
                                     <div
                                         key={id}
@@ -190,8 +226,11 @@ export default function UserShowPage(props) {
                                     </div>
                                 ))
                             ) : (
-                                <NbCoachingCard />
+                            <div className="flex justify-center items-center w-full h-[200px] border border-neutral-800 rounded-md p-5 text-white col-span-1 sm:col-span-2 lg:col-span-4">
+                                Този потребител няма добавени програми. 
+                            </div>
                             )}
+
                     </div>
             </div>
 
@@ -210,7 +249,7 @@ export default function UserShowPage(props) {
                         show={isModalTwoOpen}
                         onClose={() => setIsModalTwoOpen(false)}
                     >
-                        <form className="p-6">
+                        <form className="p-6" onSubmit={handleImageSubmit}>
                             <h2 className="text-2xl font-bold">
                                 Добавяне на Снимка
                             </h2>
@@ -291,15 +330,21 @@ export default function UserShowPage(props) {
                         },
                     }}
                 >
-                    {mockPorgressData.map((data, id) => (
-                        <SwiperSlide key={id} className="flex-col-3">
-                            <img
-                                className="w-[400px] h-[300px] object-cover"
-                                src={data.image}
-                            />
-                            <p className="mt-2">{data.date}</p>
-                        </SwiperSlide>
-                    ))}
+                    {user && images.length != 0 ? (
+                            images.map((image) => (
+                                <SwiperSlide key={image.id} className="flex-col-3">
+                                    <img
+                                        className="w-[400px] h-[300px] object-cover"
+                                        src={image.path}
+                                    />
+                                    <p className="mt-2">{image.date}</p>
+                                </SwiperSlide>
+                                ))
+                            ) : (
+                            <div className="flex justify-center items-center w-full h-[200px] border border-neutral-800 rounded-md p-5 text-white col-span-1 sm:col-span-2 lg:col-span-4">
+                                Този потребител няма качени снимки. 
+                            </div>
+                    )}
                 </Swiper>
             </div>
         </AuthenticatedLayout>

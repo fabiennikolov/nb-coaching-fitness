@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\FitnessTableController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserImageController;
 use App\Models\FitnessTable;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -64,6 +65,7 @@ Route::prefix('/admin')->group(function () {
     Route::get('/', [AdminUserController::class, 'index'])->name('admin');
     Route::get('/user/{user}', [AdminUserController::class, 'show'])->name('admin.users.show');
     Route::post('/user/{user}/store-table', [FitnessTableController::class, 'store'])->name('admin.storeTable');
+    Route::post('/user/{user}/store-image', [UserImageController::class, 'store'])->name('admin.storeImage');
 })->middleware(['role:admin,superadmin']);
 
 Route::middleware('auth')->group(function () {

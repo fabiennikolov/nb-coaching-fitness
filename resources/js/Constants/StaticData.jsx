@@ -336,7 +336,7 @@ export const ResgiterInputs = (data, errors) => [
 
 export const mockPorgressData = [
     {
-        image: 'https://images.pexels.com/photos/1431282/pexels-photo-1431282.jpeg?auto=compress&cs=tinysrgb&w=600',
+        image: 'http://127.0.0.1:8000/storage/image/Op8oCjzBKPC7pKGO5q3U68CTEuurbiHynjzzJyq0.jpg',
         date: '04.02.2020'
     },
     {

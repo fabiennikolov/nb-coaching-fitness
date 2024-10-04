@@ -10,7 +10,7 @@ export default function Admin(props) {
 
     const columns = [
         {
-            name: "Username",
+            name: "Име",
             selector: (row) => row.name,
             sortable: true,
         },
@@ -20,7 +20,7 @@ export default function Admin(props) {
             sortable: true,
         },
         {
-            name: "Phone Number",
+            name: "Телефонен номер",
             selector: (row) => row.phone,
             sortable: true,
         },
@@ -31,7 +31,7 @@ export default function Admin(props) {
             //   cell: row => <a href={`https://instagram.com/${row.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer">{row.instagram}</a>,
         },
         {
-            name: "Message",
+            name: "Фитнес цели",
             selector: (row) => row.additional_info,
             sortable: false,
         },

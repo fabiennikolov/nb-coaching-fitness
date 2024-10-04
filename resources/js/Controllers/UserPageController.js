@@ -61,6 +61,8 @@ const UserPageController = () => {
         setIsModalTwoOpen,
         handleChange,
         auth,
+        setImageFile,
+        setImagePreview
     }
 }
 

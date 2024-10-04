@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreFitnessTableRequest;
 use App\Models\FitnessTable;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -33,9 +34,19 @@ class AdminUserController extends Controller
     public function show(User $user)
     {
         $clientTables = FitnessTable::where('user_id', $user?->id)->get();
+
+        $imagePaths = [];
+
+        foreach ($user->images as $image) {
+            $imageDetails['path'] = asset('storage/' . $image->file_path);
+            $imageDetails['date'] = $image->uploaded_at->format('d.m.Y h:i:s');
+            $imagePaths[] = $imageDetails;
+        }
+
         return Inertia::render('Admin/UserShowPage', [
             'user' => $user,
-            'tables' => $clientTables
+            'tables' => $clientTables,
+            'images' => $imagePaths
         ]);
     }
 }
