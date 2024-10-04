@@ -15,6 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function UserShowPage(props) {
     const { user, tables } = props;
 
+    const g = 4
     const tableForm = useForm({
         name: '',
         url: '',
@@ -31,13 +32,12 @@ export default function UserShowPage(props) {
         handleClearImage,
         handleFileChange,
         imagePreview,
-        handleStoreTable
     } = UserPageController();
 
      const handleSubmit = (e) => {
         e.preventDefault();
 
-        tableForm.post(route('admin.storeTable', { user: 1 }), {
+        tableForm.post(route('admin.storeTable', { user: user.id }), {
             onSuccess: () => {
                 setIsModalOneOpen(false); // Close the modal on success
                 toast.success('Програмата е добавена успешно!'); // Trigger success toast
@@ -81,38 +81,39 @@ export default function UserShowPage(props) {
                 <div className="grid-2 border flex-col-3 border-neutral-800 rounded-md p-5">
                     <div className="flex-col-3">
                         <h1 className="text-xl font-bold">
-                            Personal Information
+                            Информация
                         </h1>
                         <div className="grid-2">
                             <div className="flex-col-1">
-                                <h1>First Name</h1>
+                                <h1>Име</h1>
                                 <p>{name.split(" ")[0]}</p>
                             </div>
                             <div className="flex-col-1">
-                                <h1>Last Name</h1>
+                                <h1>Фамилия</h1>
                                 <p>{name.split(" ")[1]}</p>
                             </div>
                         </div>
                         <div className="grid-2">
                             <div className="flex-col-1">
-                                <h1>Email</h1>
+                                <h1>Имейл</h1>
                                 <p>{email}</p>
                             </div>
                             <div className="flex-col-1">
-                                <h1>Phone</h1>
+                                <h1>Мобилен телефон</h1>
                                 <p>{phone ?? "No Phone provided"}</p>
                             </div>
                         </div>
                     </div>
                     <div className="flex md:justify-end">
                         <button className="border border-neutral-800 p-2 rounded-md px-4 flex-2 text-stone-400 w-max h-max">
-                            Edit
+                            Редактирай
                             <PenLine size={20} />
                         </button>
                     </div>
                 </div>
 
-                <div className="flex-between">
+            <div className="flex flex-col gap-4">
+                <div className="flex items-center justify-between">
                     <h1 className="text-2xl font-bold">Програми</h1>
                     <button
                         className="flex-2 bg-white rounded-md p-2 пь-4"
@@ -123,7 +124,6 @@ export default function UserShowPage(props) {
                     </button>
                     <Modal
                         show={isModalOneOpen}
-                        onClose={() => setIsModalOneOpen(false)}
                     >
                         <form className="p-6" onSubmit={handleSubmit}>
                             <h2 className="text-2xl font-bold">
@@ -160,6 +160,40 @@ export default function UserShowPage(props) {
                         </form>
                     </Modal>
                 </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                            {user ? (
+                                tables.map((table, id) => (
+                                    <div
+                                        key={id}
+                                        className="flex-col-3 p-3 border border-neutral-800 group hover:border-neutral-300 rounded-md transition-all"
+                                    >
+                                        <iframe
+                                            className="h-[200px] w-full pointer-events-none blur-sm"
+                                            src={table.url}
+                                        />
+                                        <div className="flex-between">
+                                            <div className="flex-col-1">
+                                                <h1 className="font-bold text-white text-lg">
+                                                    {table.name}
+                                                </h1>
+                                            </div>
+                                        </div>
+                                        <a
+                                            className="w-full text-black"
+                                            href={table.url}
+                                        >
+                                            <button className="bg-white p-3 rounded-md flex-center w-full gap-3 hover:bg-neutral-300 transition-all">
+                                                See
+                                            </button>
+                                        </a>
+                                    </div>
+                                ))
+                            ) : (
+                                <NbCoachingCard />
+                            )}
+                    </div>
+            </div>
 
                 {/* Modal Two: Add Picture */}
                 <div className="flex-between mb-2">

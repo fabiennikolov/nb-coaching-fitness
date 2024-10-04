@@ -31,7 +31,7 @@ class FitnessTableController extends Controller
     public function store(StoreFitnessTableRequest $request, User $user)
     {
         // Create a new fitness entry
-        $fitnessEntry = FitnessTable::create([
+        FitnessTable::create([
             'user_id' => $user->id,
             'name' => $request->name,
             'description' => $request->description,

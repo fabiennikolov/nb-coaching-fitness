@@ -50,12 +50,6 @@ const UserPageController = () => {
         setImagePreview(null);
     };
 
-    const handleStoreTable = () => {
-        console.log('asdas')
-        post(route('admin.users.storeTable', { user: userId }), {
-            onSuccess: () => setIsModalOneOpen(false), // Close the modal on success
-        });
-    };
     return {
         handleClearImage,
         handleFileChange,
@@ -67,7 +61,6 @@ const UserPageController = () => {
         setIsModalTwoOpen,
         handleChange,
         auth,
-        handleStoreTable
     }
 }
 
