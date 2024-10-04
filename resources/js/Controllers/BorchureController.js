@@ -8,19 +8,6 @@ const BrochureController = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [collables, setIsCollapsed] = useState(false)
 
-  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
-
-  const handleImageClick = (image) => {
-    setSelectedImage(image);
-    setIsImageModalOpen(true);
-  };
-
-  // Function to close the image modal
-  const closeImageModal = () => {
-    setSelectedImage(null);
-    setIsImageModalOpen(false);
-  };
 
   const onFlip = useCallback((e) => {
     setCurrentPage(e.data);
@@ -39,10 +26,6 @@ const BrochureController = () => {
 
   return {
     currentPage,
-    handleImageClick,
-    isImageModalOpen,
-    selectedImage,
-    closeImageModal,
     flipBook,
     onFlip,
     collables,

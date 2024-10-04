@@ -1,5 +1,6 @@
 import InputError from "@/Components/InputError";
 import RegisterController from "@/Controllers/RegisterController";
+import { Loader } from "lucide-react";
 
 export default function Register() {
    
@@ -59,10 +60,11 @@ export default function Register() {
                                 Забравена парола?
                             </a>
                         </div>
-
-                        <button className="w-full mt-3 bg-white rounded-md p-3 transition-all hover:-translate-y-1" disabled={processing}>
-                            Създаване на акаунт
+                       
+                        <button disabled={processing} className="w-full mt-3 bg-white disabled:bg-white/50 disabled:cursor-not-allowed rounded-md flex-2 justify-center p-3 transition-all">
+                            {processing ? "Processing..." : "Създаване на акаунт"}{processing && <Loader size={15} className="animate-spin"/>}
                         </button>
+
 
                         <p className="flex-end gap-1">
                             Вече имаш акаунт?{" "}

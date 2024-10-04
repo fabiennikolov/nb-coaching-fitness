@@ -32,7 +32,7 @@ const LoginController = () => {
 
     const loginInputs = LoginInputs(data, errors)
 
-  return { loginInputs, submit,  handleOnChange, data, errors }
+  return { loginInputs, submit,  handleOnChange, data, errors, processing}
 }
 
 export default LoginController
