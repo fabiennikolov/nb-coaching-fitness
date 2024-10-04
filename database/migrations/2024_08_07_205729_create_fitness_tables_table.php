@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id')->required();
             $table->string('name')->max('255');
+            $table->string('description')->nullable()->max('255');
             $table->string('url')->max('255');
             $table->timestamps();
         });

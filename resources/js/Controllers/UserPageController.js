@@ -1,5 +1,6 @@
 import { usePage } from '@inertiajs/react';
 import React, { useState } from 'react'
+import { useForm } from '@inertiajs/react';
 
 const UserPageController = () => {
     const { auth } = usePage().props;
@@ -38,6 +39,8 @@ const UserPageController = () => {
             ...prevState,
             [name]: value,
         }));
+        console.log(name, value)
+        tableForm.setData(name, value)
     };
 
 
@@ -45,6 +48,13 @@ const UserPageController = () => {
     const handleClearImage = () => {
         setImageFile(null);
         setImagePreview(null);
+    };
+
+    const handleStoreTable = () => {
+        console.log('asdas')
+        post(route('admin.users.storeTable', { user: userId }), {
+            onSuccess: () => setIsModalOneOpen(false), // Close the modal on success
+        });
     };
     return {
         handleClearImage,
@@ -57,6 +67,7 @@ const UserPageController = () => {
         setIsModalTwoOpen,
         handleChange,
         auth,
+        handleStoreTable
     }
 }
 

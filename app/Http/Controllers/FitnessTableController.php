@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreFitnessTableRequest;
 use App\Models\FitnessTable;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class FitnessTableController extends Controller
 {
-       /**
+    /**
      * Display a listing of the fitness entries.
      *
      * @return \Illuminate\Http\Response
@@ -26,20 +28,18 @@ class FitnessTableController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreFitnessTableRequest $request, User $user)
     {
-        // Validate incoming request data
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'type' => 'required|string|max:255',
-            'duration' => 'required|integer',
-            'calories' => 'required|integer',
+        // Create a new fitness entry
+        $fitnessEntry = FitnessTable::create([
+            'user_id' => $user->id,
+            'name' => $request->name,
+            'description' => $request->description,
+            'url' => $request->url,
+
         ]);
 
-        // Create a new fitness entry
-        $fitnessEntry = FitnessTable::create($validatedData);
-
-        return response()->json($fitnessEntry, 201); // 201 Created
+        return redirect()->route('admin.users.show', $user->id)->with('success', 'Table added successfully');
     }
 
     /**

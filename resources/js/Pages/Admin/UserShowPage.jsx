@@ -1,3 +1,4 @@
+import { useForm } from '@inertiajs/react';
 import Modal from "@/Components/Modal";
 import TextInput from "@/Components/TextInput";
 import SecondaryButton from "@/Components/SecondaryButton";
@@ -7,9 +8,18 @@ import { PenLine, Plus } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { mockPorgressData } from "@/Constants/StaticData";
 import UserPageController from "@/Controllers/UserPageController";
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function UserShowPage(props) {
     const { user, tables } = props;
+
+    const tableForm = useForm({
+        name: '',
+        url: '',
+        description: ''
+    });
 
     const {
         isModalOneOpen,
@@ -21,7 +31,19 @@ export default function UserShowPage(props) {
         handleClearImage,
         handleFileChange,
         imagePreview,
+        handleStoreTable
     } = UserPageController();
+
+     const handleSubmit = (e) => {
+        e.preventDefault();
+
+        tableForm.post(route('admin.storeTable', { user: 1 }), {
+            onSuccess: () => {
+                setIsModalOneOpen(false); // Close the modal on success
+                toast.success('Програмата е добавена успешно!'); // Trigger success toast
+            },
+        });
+    };
 
     const { email, name, phone } = user;
   
@@ -37,53 +59,8 @@ export default function UserShowPage(props) {
         >
             <div className="max-w-wrapper flex-col-5 py-5">
                 {/* Modal One: Add Table */}
-                <div className="flex-between">
-                    <h1 className="text-2xl font-bold">Програми</h1>
-                    <button
-                        className="flex-2 bg-white rounded-md p-2 пь-4"
-                        onClick={() => setIsModalOneOpen(true)}
-                    >
-                        Добави Програма
-                        <Plus />
-                    </button>
-                    <Modal
-                        show={isModalOneOpen}
-                        onClose={() => setIsModalOneOpen(false)}
-                    >
-                        <form className="p-6">
-                            <h2 className="text-2xl font-bold">
-                                Добавяне на таблица за потребител
-                            </h2>
-
-                            <div className="mt-6 flex-col-2">
-                                {inputs.map((input, index) => (
-                                    <div key={index} className="flex-col-1">
-                                        <label className="text-white">
-                                            {input.name}
-                                        </label>
-                                        <TextInput
-                                            name={input.value}
-                                            onChange={handleChange}
-                                            className="w-full"
-                                            type="text"
-                                        />
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div className="mt-6 flex gap-3 justify-end">
-                                <SecondaryButton
-                                    onClick={() => setIsModalOneOpen(false)}
-                                >
-                                    Откажи
-                                </SecondaryButton>
-                                <button className="outline-button">
-                                    Добави
-                                </button>
-                            </div>
-                        </form>
-                    </Modal>
-                </div>
+                <ToastContainer />
+                
 
                 <div className="flex-between border border-neutral-800 rounded-md p-5">
                     <div className="flex-3">
@@ -133,6 +110,55 @@ export default function UserShowPage(props) {
                             <PenLine size={20} />
                         </button>
                     </div>
+                </div>
+
+                <div className="flex-between">
+                    <h1 className="text-2xl font-bold">Програми</h1>
+                    <button
+                        className="flex-2 bg-white rounded-md p-2 пь-4"
+                        onClick={() => setIsModalOneOpen(true)}
+                    >
+                        Добави Програма
+                        <Plus />
+                    </button>
+                    <Modal
+                        show={isModalOneOpen}
+                        onClose={() => setIsModalOneOpen(false)}
+                    >
+                        <form className="p-6" onSubmit={handleSubmit}>
+                            <h2 className="text-2xl font-bold">
+                                Добавяне на таблица за потребител
+                            </h2>
+
+                            <div className="mt-6 flex-col-2">
+                                {inputs.map((input, index) => (
+                                    <div key={index} className="flex-col-1">
+                                        <label className="text-white">
+                                            {input.name}
+                                        </label>
+                                        <TextInput
+                                            name={input.value}
+                                            onChange={(e) => tableForm.setData(input.value, e.target.value)}
+                                            className="w-full"
+                                            type="text"
+                                        />
+                                        {tableForm.errors[input.value] && <p className="text-red-500 text-sm mt-1">{tableForm.errors[input.value]}</p>}
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="mt-6 flex gap-3 justify-end">
+                                <SecondaryButton
+                                    onClick={() => setIsModalOneOpen(false)}
+                                >
+                                    Откажи
+                                </SecondaryButton>
+                                <button className="outline-button"  type="submit">
+                                    Добави
+                                </button>
+                            </div>
+                        </form>
+                    </Modal>
                 </div>
 
                 {/* Modal Two: Add Picture */}

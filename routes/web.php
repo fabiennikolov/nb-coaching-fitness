@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\FitnessTableController;
 use App\Http\Controllers\ProfileController;
 use App\Models\FitnessTable;
 use Illuminate\Foundation\Application;
@@ -49,7 +50,6 @@ Route::get('/nb-coaching/brochure/{id}', function ($id) {
     ]);
 })->middleware('auth');
 
-
 Route::get('/dashboard', function () {
     $user = auth()->user();
 
@@ -59,10 +59,11 @@ Route::get('/dashboard', function () {
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
 Route::prefix('/admin')->group(function () {
     Route::get('/', [AdminUserController::class, 'index'])->name('admin');
     Route::get('/user/{user}', [AdminUserController::class, 'show'])->name('admin.users.show');
-    Route::get('/user/{user}/store-table', [AdminUserController::class, 'storeTable']);
+    Route::post('/user/{user}/store-table', [FitnessTableController::class, 'store'])->name('admin.storeTable');
 })->middleware(['role:admin,superadmin']);
 
 Route::middleware('auth')->group(function () {
