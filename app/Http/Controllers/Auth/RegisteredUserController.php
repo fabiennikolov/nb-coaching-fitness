@@ -47,7 +47,7 @@ class RegisteredUserController extends Controller
                 'max:255',
             ],
             'additional_info' => [
-                'nullable',
+                'required',
                 'string',
                 'max:500',
             ],
