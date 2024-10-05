@@ -2,15 +2,7 @@ import React from "react";
 
 import { Download } from "lucide-react";
 
-const NbCoachingCard = ({ img, link, permission, setToggleBlur  }) => {
-
-    const handleDownloadClick = () => {
-        if (permission?.includes('read table')) {
-            window.location.href = link;    
-        } else {
-            setToggleBlur(true);
-        }
-    };
+const NbCoachingCard = ({ img, link, }) => {
     return (
         <div className="flex-col-3 p-3 border border-neutral-800 group hover:border-neutral-300 rounded-md transition-all">
             <img
@@ -20,14 +12,16 @@ const NbCoachingCard = ({ img, link, permission, setToggleBlur  }) => {
             <div className="flex-between">
                 <div className="flex-col-1">
                     <h1 className="font-bold text-white text-lg">
-                        NbCoaching
+                        NBcoaching
                     </h1>
                 </div>
                 <Download className="text-white cursor-pointer text-xl" />
             </div>
-                <button onClick={handleDownloadClick} className="bg-white p-3 rounded-md flex-center w-full gap-3 hover:bg-neutral-300 transition-all">
+            <a className="w-full text-black" href={link}>
+                <button className="bg-white p-3 rounded-md flex-center w-full gap-3 hover:bg-neutral-300 transition-all">
                     Brochure
                 </button>
+            </a>
         </div>
     );
 };
