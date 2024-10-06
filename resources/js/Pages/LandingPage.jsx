@@ -158,8 +158,8 @@ const Welcome = (props) => {
                                     свържете се с мен.
                                 </p>
                             </di>
-                            <a href="/contact">
-                                <button className="fill-button">Контакт</button>
+                            <a href="/contact" className="text-black">
+                                <button className="fill-button ">Контакт</button>
                             </a>
                         </div>
                     </div>

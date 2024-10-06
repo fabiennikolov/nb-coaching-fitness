@@ -1,4 +1,4 @@
-import "./bootstrap";
+// import "./bootstrap";
 import "../css/app.css";
 import 'swiper/css';
 import "react-medium-image-zoom/dist/styles.css";
