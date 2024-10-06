@@ -63,8 +63,8 @@ const NbCoachingBrochurePage = ({ id: paramsId }) => {
                         className="w-full"
                         ref={flipBook}
                         onFlip={onFlip}
-                        height={isCollapsed ? 550 : 700}
-                        width={isCollapsed ? 350 : 600}
+                        height={isCollapsed ? 550 : 870}
+                        width={isCollapsed ? 350 : 640}
                         mobileScrollSupport={false}
                         showCover={false}
                     >
