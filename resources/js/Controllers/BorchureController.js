@@ -6,30 +6,44 @@ const BrochureController = () => {
   const { auth } = usePage().props;
 
   const [currentPage, setCurrentPage] = useState(0);
-  const [collables, setIsCollapsed] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(window.innerWidth <= 768); 
+  const [isSinglePage, setIsSinglePage] = useState(window.innerWidth <= 789);
 
+  const updatePageMode = useCallback(() => {
+    setIsSinglePage(window.innerWidth <= 789);
+    setIsCollapsed(window.innerWidth <= 768);
+  }, []);
+
+  useEffect(() => {
+    updatePageMode();
+    window.addEventListener("resize", updatePageMode);
+    
+    return () => {
+      window.removeEventListener("resize", updatePageMode);
+    };
+  }, [updatePageMode]);
 
   const onFlip = useCallback((e) => {
     setCurrentPage(e.data);
   }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsCollapsed(window.innerWidth <= 768);
-    };
-    window.addEventListener("resize", handleResize);
+  const handleNextPage = () => {
+    flipBook.current?.pageFlip().flipNext();
+  };
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const handlePreviousPage = () => {
+    flipBook.current?.pageFlip().flipPrev();
+  };
 
   return {
     currentPage,
     flipBook,
     onFlip,
-    collables,
-    auth
+    isCollapsed,
+    handleNextPage,
+    handlePreviousPage,
+    auth,
+    isSinglePage,
   };
 };
 
