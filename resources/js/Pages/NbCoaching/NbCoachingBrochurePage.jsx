@@ -1,67 +1,51 @@
-import HTMLFlipBook from "react-pageflip";
 import BrochureController from "@/Controllers/BorchureController";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { SwiperSlide, Swiper } from "swiper/react";
+import Zoom from 'react-medium-image-zoom'
+
+import { Navigation } from "swiper/modules";
 
 const NbCoachingBrochurePage = ({ id: paramsId }) => {
+    const swiperRef = useRef(null);
     if (paramsId != 1 && paramsId != 2) {
         return window.history.back();
     }
 
     const brochureLength = paramsId == 1 ? 16 : 28;
 
-    const {
-        currentPage,
-        handlePreviousPage,
-        handleNextPage,
-        onFlip,
-        flipBook,
-        collables,
-        isSinglePage,
-    } = BrochureController();
+    const { handlePreviousPage, handleNextPage } = BrochureController();
+
+    const [slides, setSlides] = useState([]);
+    const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+    useEffect(() => {
+        setSlides(brochureLength);
+    }, []);
+
+    const handleSlideChange = (swiper) => {
+        setCurrentSlideIndex(swiper.activeIndex);
+    };
 
     return (
         <div>
-            <div className=" max-w-wrapper flex flex-col gap-3 overflow-hidden items-center justify-center lg:min-h-screen">
-                <div className="flex-between w-full lg:px-32">
-                    <ChevronLeft
-                        className="text-white cursor-pointer"
-                        size={50}
-                        onClick={handlePreviousPage}
-                    />
+            <div className="py-5 max-w-wrapper flex flex-col gap-3 items-center justify-center">
+                <div className="flex-center w-full lg:px-32">
                     <div className="flex-3 text-white">
-                        <p>{currentPage}</p>
+                        <p>{currentSlideIndex}</p>
                         <p>/</p>
-                        <p>{flipBook?.current?.pageFlip()?.getPageCount()}</p>
+                        <p>{slides}</p>
                     </div>
-                    <ChevronRight
-                        className="text-white cursor-pointer"
-                        size={50}
-                        onClick={handleNextPage}
-                    />
                 </div>
-                <div className="w-full mx-auto  flex-center px-20">
-                    <HTMLFlipBook
-                        width={isSinglePage ? 300 : 600}
-                        height={isSinglePage ? 500 : 700}
-                        size="stretch"
-                        minWidth={315}
-                        maxWidth={1000}
-                        minHeight={400}
-                        maxHeight={1536}
-                        drawShadow={true}
-                        ref={flipBook}
-                        flippingTime={1000}
-                        autoSize={true}
-                        mobileScrollSupport={false}
-                        maxShadowOpacity={0.5}
-                        clickEventForward={false}
-                        swipeDistance={30}
-                        className="custom-flipbook z-[-1]"
-                        singlePage={isSinglePage}
-                    >
-                        {[...Array(brochureLength)].map((_, id) => (
-                            <div key={id}>
+                <Swiper
+                    className="swiper"
+                    onSlideChange={handleSlideChange}
+                    onSwiper={(swiper) => (swiperRef.current = swiper)}
+                    navigation={true}
+                    modules={[Navigation]}
+                >
+                    {[...Array(brochureLength)].map((_, id) => (
+                        <SwiperSlide key={id}>
+                            <Zoom>
                                 <img
                                     src={`/assets${
                                         paramsId == 1
@@ -69,12 +53,12 @@ const NbCoachingBrochurePage = ({ id: paramsId }) => {
                                             : "/brochureTwo/naruchnik"
                                     }-${id + 1}.png`}
                                     alt={id}
-                                    className="w-full h-auto"
+                                    className="max-w-[450px] h-auto mx-auto"
                                 />
-                            </div>
-                        ))}
-                    </HTMLFlipBook>
-                </div>
+                            </Zoom>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
             </div>
         </div>
     );

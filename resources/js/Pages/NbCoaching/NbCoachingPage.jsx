@@ -13,6 +13,8 @@ import { brochures } from "@/Constants/StaticData";
 const NbCoachingPage = (props) => {
     const { tables } = props;
 
+    console.log(props)
+
     const {
         confirmUserDeletion,
         closeModal,

@@ -40,7 +40,7 @@
     outline: none;
     transition: border 0.3s ease;
     user-select: none;
-    box-shadow: none; /* Ensure no default box-shadow */
+    box-shadow: none; 
 }
 
 .input-container input::placeholder,
@@ -52,14 +52,14 @@
 .input-container textarea:hover,
 .input-container input:focus,
 .input-container textarea:focus {
-    border: 1px solid red; /* Your red border */
+    border: 1px solid red;
     outline: none;
-    box-shadow: none; /* Remove default browser focus shadow */
+    box-shadow: none; 
 }
 
-
-
-
+.swiper .swiper-button-next, .swiper .swiper-button-prev {
+    color: red;
+}
 iframe {
   overflow: auto; 
 }
