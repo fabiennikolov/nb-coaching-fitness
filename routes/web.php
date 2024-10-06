@@ -49,7 +49,7 @@ Route::get('/nb-coaching/brochure/{id}', function ($id) {
     return Inertia::render('NbCoaching/NbCoachingBrochurePage', [
         'id' => $id
     ]);
-})->middleware('auth');
+})->middleware(['role:admin,superadmin']);
 
 Route::get('/dashboard', function () {
     $user = auth()->user();
