@@ -28,7 +28,7 @@ const Welcome = (props) => {
                                     Добре дошли в
                                 </h1>
                                 <span className="text-red-600 font-bold text-5xl md:text-5xl ml-2">
-                                    NBCoaching
+                                    NBcoaching
                                 </span>
                             </div>
 
@@ -69,7 +69,7 @@ const Welcome = (props) => {
             >
                 <div className="flex-col-3 text-center px-5">
                     <h1 className="font-bold text-3xl lg:text-6xl">
-                        Какво включва NBCoaching?
+                        Какво включва NBcoaching?
                     </h1>
                 </div>
                 <div className="max-w-wrapper grid-3 gap-3">
