@@ -49,7 +49,7 @@ Route::get('/nb-coaching/brochure/{id}', function ($id) {
     return Inertia::render('NbCoaching/NbCoachingBrochurePage', [
         'id' => $id
     ]);
-})->middleware('auth');
+})->middleware(['role:admin,superadmin']);
 
 Route::get('/dashboard', function () {
     $user = auth()->user();
@@ -60,13 +60,12 @@ Route::get('/dashboard', function () {
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-
-Route::prefix('/admin')->group(function () {
+Route::prefix('/admin')->middleware(['role:admin,superadmin'])->group(function () {
     Route::get('/', [AdminUserController::class, 'index'])->name('admin');
     Route::get('/user/{user}', [AdminUserController::class, 'show'])->name('admin.users.show');
     Route::post('/user/{user}/store-table', [FitnessTableController::class, 'store'])->name('admin.storeTable');
     Route::post('/user/{user}/store-image', [UserImageController::class, 'store'])->name('admin.storeImage');
-})->middleware(['role:admin,superadmin']);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
