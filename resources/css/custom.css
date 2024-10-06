@@ -1,3 +1,6 @@
+
+
+
 .sidebar {
     position: fixed;
     top: 0;
@@ -20,14 +23,13 @@
     color: white;
     z-index: -1; opacity: 0.01;
 }
-.input-container {
-    position: relative;
-}
+
+
 .input-container {
     position: relative;
     width: 100%;
+    outline: none;
 }
-
 .input-container input,
 .input-container textarea {
     width: 100%;
@@ -38,50 +40,26 @@
     outline: none;
     transition: border 0.3s ease;
     user-select: none;
+    box-shadow: none; /* Ensure no default box-shadow */
 }
 
-
 .input-container input::placeholder,
-.input-container textarea::placeholder{
-    color:var(--mainDarkLightTextColor);
+.input-container textarea::placeholder {
+    color: var(--mainDarkLightTextColor);
 }
 
 .input-container input:hover,
 .input-container textarea:hover,
 .input-container input:focus,
 .input-container textarea:focus {
-    border: 1px solid red; 
+    border: 1px solid red; /* Your red border */
+    outline: none;
+    box-shadow: none; /* Remove default browser focus shadow */
 }
 
-.input-container label {
-    position: absolute;
-    color: gray;
-    top: 50%;
-    left: 0.5em;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    pointer-events: none;
-    transition: all 0.4s ease;
-    background-color: transparent;
-    padding: 0 0.25em;
-}
 
-.input-container input:focus ~ label,
-.input-container textarea:focus ~ label,
-.input-container input:not(:placeholder-shown) ~ label,
-.input-container textarea:not(:placeholder-shown) ~ label {
-    transform: translateY(-150%);
-    color: var(--mainDarkLightTextColor);
-    background-color: var(--mainDarkColor); 
-}
 
-.input-container input:placeholder-shown ~ label,
-.input-container textarea:placeholder-shown ~ label {
-    transform: translateY(-50%);
-    color: gray;
-}
+
 iframe {
   overflow: auto; 
 }
