@@ -16,7 +16,7 @@ const Footer = () => {
                     />
                     <div className="px-5">
                         <h1 className="z-0 hidden xl:flex absolute special-footer-outline-text text-[10em] -right-[30%] font-bold leading-[70px] mt-20 uppercase bottom-0">
-                            NBCoaching
+                            NBcoaching
                         </h1>
                     </div>
                 </div>

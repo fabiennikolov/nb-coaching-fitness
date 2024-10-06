@@ -21,14 +21,14 @@ export const navbarLinks = [
         path: "/contact",
     },
     {
-        name: "NBCoaching",
+        name: "NBcoaching",
         path: "/nb-coaching",
     },
 ];
 
 export const headerDataText = {
     title: "Добре дошли в NBscoaching",
-    subtitle: "NBCoaching Fitness",
+    subtitle: "NBcoaching Fitness",
     description:
         "Тази платформа е тук, за да Ви предостави необходимите ресурси и насоки за постигане на Вашите фитнес цели. С акцент на практичността и ефективността, услугата предлага разнообразие от стратегии, които ще Ви помогнат да постигнете желаните резултати. Тук ще намерите полезна информация и подкрепа, за да реализирате пълния си потенциал.",
 };
