@@ -84,12 +84,12 @@ const Welcome = (props) => {
                             >
                                 {item.icon}
                             </i>
-                            <di className="flex-col-1 z-10">
+                            <div className="flex-col-1 z-10">
                                 <h1 className="text-xl font-bold">
                                     {item.heading}
                                 </h1>
                                 <p>{item.p}</p>
-                            </di>
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -148,7 +148,7 @@ const Welcome = (props) => {
                                 className="absolute -right-[20%] z-0 -top-10 text-orange-600 opacity-[0.25]"
                                 size={200}
                             ></i>
-                            <di className="flex-col-1 z-10">
+                            <div className="flex-col-1 z-10">
                                 <h1 className="text-xl font-bold ">
                                     Интересувате се от персонални тренировки?
                                 </h1>
@@ -157,7 +157,7 @@ const Welcome = (props) => {
                                     вашите цели и нужди. За повече информация,
                                     свържете се с мен.
                                 </p>
-                            </di>
+                            </div>
                             <a href="/contact" className="text-black">
                                 <button className="fill-button ">Контакт</button>
                             </a>
