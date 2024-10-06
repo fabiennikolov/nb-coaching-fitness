@@ -2,9 +2,10 @@ import BrochureController from "@/Controllers/BorchureController";
 
 import { useEffect, useRef, useState } from "react";
 import { SwiperSlide, Swiper } from "swiper/react";
-import Zoom from 'react-medium-image-zoom'
+import Zoom from "react-medium-image-zoom";
 
 import { Navigation } from "swiper/modules";
+import HTMLFlipBook from "react-pageflip";
 
 const NbCoachingBrochurePage = ({ id: paramsId }) => {
     const swiperRef = useRef(null);
@@ -14,29 +15,28 @@ const NbCoachingBrochurePage = ({ id: paramsId }) => {
 
     const brochureLength = paramsId == 1 ? 16 : 28;
 
-    const { handlePreviousPage, handleNextPage } = BrochureController();
-
-    const [slides, setSlides] = useState([]);
-    const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-    useEffect(() => {
-        setSlides(brochureLength);
-    }, []);
-
-    const handleSlideChange = (swiper) => {
-        setCurrentSlideIndex(swiper.activeIndex);
-    };
+    const {
+        currentPage,
+        flipBook,
+        onFlip,
+        isCollapsed,
+        handleNextPage,
+        handlePreviousPage,
+        auth,
+        isSinglePage,
+    } = BrochureController();
 
     return (
         <div>
-            <div className="py-5 max-w-wrapper flex flex-col gap-3 items-center justify-center">
-                <div className="flex-center w-full lg:px-32">
+            <div className="py-5 max-w-wrapper flex flex-col gap-3 items-center justify-center overflow-hidden">
+                <div className="flex-center w-full">
                     <div className="flex-3 text-white">
-                        <p>{currentSlideIndex}</p>
+                        <p>{currentPage}</p>
                         <p>/</p>
-                        <p>{slides}</p>
+                        <p>{flipBook?.current?.pageFlip()?.getPageCount()}</p>
                     </div>
                 </div>
-                <Swiper
+                {/* <Swiper
                     className="swiper"
                     onSlideChange={handleSlideChange}
                     onSwiper={(swiper) => (swiperRef.current = swiper)}
@@ -53,12 +53,36 @@ const NbCoachingBrochurePage = ({ id: paramsId }) => {
                                             : "/brochureTwo/naruchnik"
                                     }-${id + 1}.png`}
                                     alt={id}
-                                    className="max-w-[450px] h-auto mx-auto"
+                                    className="w-full lg:max-w-[450px] mx-auto"
                                 />
                             </Zoom>
                         </SwiperSlide>
                     ))}
-                </Swiper>
+                </Swiper> */}
+                    <HTMLFlipBook
+                        className="w-full"
+                        ref={flipBook}
+                        onFlip={onFlip}
+                        height={isCollapsed ? 550 : 700}
+                        width={isCollapsed ? 350 : 600}
+                        mobileScrollSupport={false}
+                        showCover={false}
+                    >
+                        {[...Array(brochureLength)].map((_, id) => (
+                            <div className="demoPage">
+                                <img
+                                    src={`/assets${
+                                        paramsId === 1
+                                            ? "/brochureOne/dobavki"
+                                            : "/brochureTwo/naruchnik"
+                                    }-${id + 1}.png`}
+                                    key={id}
+                                    alt={`Slide ${id + 1}`}
+                                    className="w-full h-auto"
+                                />
+                            </div>
+                        ))}
+                    </HTMLFlipBook>
             </div>
         </div>
     );
