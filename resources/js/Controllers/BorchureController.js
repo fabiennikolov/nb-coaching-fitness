@@ -14,9 +14,7 @@ const BrochureController = (paramsId) => {
     setIsCollapsed(window.innerWidth <= 768);
   }, []);
 
-  if (paramsId != 1 && paramsId != 2) {
-    return window.history.back();
-  }
+
 
   const brochureLength = paramsId == 1 ? 16 : 28;
 

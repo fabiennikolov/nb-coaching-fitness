@@ -193,16 +193,15 @@ export const contactFormGridThree = [
 
 export const brochures  = [
     {
+        path: '/assets/brochureTwo/',
+        link: `/nb-coaching/brochure/2`,
+        img: "/assets/brochureTwo/naruchnik-1.png",
+    },
+    {
         path: '/assets/brochureOne/',
         link: `/nb-coaching/brochure/1`,
         img: "/assets/brochureOne/dobavki-1.png",
     },
-    {
-        path: '/assets/brochureTwo/',
-        link: `/nb-coaching/brochure/2`,
-        img: "/assets/brochureTwo/naruchnik-1.png",
-    }
-    
 ]
 
 export const customStyles = {

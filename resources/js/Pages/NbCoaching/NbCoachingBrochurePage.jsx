@@ -3,6 +3,10 @@ import HTMLFlipBook from "react-pageflip";
 
 const NbCoachingBrochurePage = ({ id: paramsId }) => {
 
+    if (paramsId != 1 && paramsId != 2) {
+        return window.history.back();
+      }
+
     const {
         currentPage,
         flipBook,
