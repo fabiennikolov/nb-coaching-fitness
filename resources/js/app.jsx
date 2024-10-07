@@ -1,6 +1,5 @@
-// import "./bootstrap";
-import "../css/app.css";
 import 'swiper/css';
+import "../css/app.css";
 import 'swiper/css/navigation';
 import 'react-medium-image-zoom/dist/styles.css'; 
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,7 +13,7 @@ const appName =
     window.document.getElementsByTagName("title")[0]?.innerText || "Laravel";
 
 createInertiaApp({
-    title: (title) => `${title} - ${appName}`,
+    title: (title) => `${title} ${appName}`,
     resolve: (name) =>
         resolvePageComponent(
             `./Pages/${name}.jsx`,

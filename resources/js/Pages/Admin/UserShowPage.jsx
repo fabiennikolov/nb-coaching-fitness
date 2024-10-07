@@ -125,8 +125,8 @@ export default function UserShowPage(props) {
                     </button>
 
                     <Modal show={toggleEditProfileModal}>
-                        <form className="flex flex-col gap-5 p-5">
-                            <div className="flex flex-col gap-1">
+                        <form className="flex-col-5 p-5">
+                            <div className="flex-col-1">
                                 <h1 className="text-2xl font-bold">
                                     Променя на роля/статус
                                 </h1>
@@ -136,7 +136,7 @@ export default function UserShowPage(props) {
                                 </p>
                             </div>
 
-                            <div className="flex flex-col gap-3">
+                            <div className="flex-col-3">
                                 {userRoles.map((roles, id) => (
                                     <div className="form-group flex items-center gap-5" key={id}>
                                         <input type="checkbox" id={roles.name}  />
@@ -256,7 +256,7 @@ export default function UserShowPage(props) {
                                     ))}
                                 </div>
 
-                                <div className="mt-6 flex gap-3 justify-end">
+                                <div className="mt-6 flex-3 justify-end">
                                     <button
                                         type="button"
                                         className="fill-button"
@@ -425,7 +425,7 @@ export default function UserShowPage(props) {
                                 </SwiperSlide>
                             ))
                         ) : (
-                            <h1 className="text-lg">
+                            <h1 className="text-lg text-center py-5">
                                 {" "}
                                 Този потребител няма качени снимки.
                             </h1>

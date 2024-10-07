@@ -17,7 +17,7 @@ const NbCoachingBrochurePage = ({ id: paramsId }) => {
 
     return (
         <div>
-            <div className="py-5 max-w-wrapper flex flex-col gap-3 items-center justify-center overflow-hidden">
+            <div className="py-5 max-w-wrapper flex-col-3 items-center justify-center overflow-hidden">
                 <div className="flex-center w-full">
                     <div className="flex-3 text-white">
                         <p>{currentPage}</p>
