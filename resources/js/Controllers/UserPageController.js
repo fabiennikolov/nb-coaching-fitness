@@ -9,6 +9,7 @@ const UserPageController = () => {
     const [imagePreview, setImagePreview] = useState(null);
     const [isModalOneOpen, setIsModalOneOpen] = useState(false);
     const [isModalTwoOpen, setIsModalTwoOpen] = useState(false);
+    const [toggleEditProfileModal, setToggleEditProfileModal] = useState(false)
     const [data, setData] = useState({
         name: "",
         url: "",
@@ -61,6 +62,8 @@ const UserPageController = () => {
         setIsModalTwoOpen,
         handleChange,
         auth,
+        toggleEditProfileModal, 
+        setToggleEditProfileModal,
         setImageFile,
         setImagePreview
     }

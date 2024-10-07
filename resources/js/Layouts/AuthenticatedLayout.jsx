@@ -3,12 +3,15 @@ import { Link } from "@inertiajs/react";
 ``;
 import Dropdown from "@/Components/Dropdown";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
+import { checkIfRoleIsAdmin } from "@/Libs/utils";
+import { navbarLinks } from "@/Constants/StaticData";
+import { AlignJustify, LogOut } from "lucide-react";
 
 export default function Authenticated({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
 
-    // const role = auth.user?.roles?.length === 0 ? '' : auth.user.roles[0].name;
+    let adminRole = checkIfRoleIsAdmin(auth.roles);
 
     return (
         <div className="min-h-screen">
@@ -26,14 +29,33 @@ export default function Authenticated({ auth, header, children }) {
                                 </Link>
                             </div>
 
-                            <div className="flex-3">
-                                <a
-                                    href={route("dashboard")}
-                                    active={route().current("dashboard")}
-                                >
-                                    Dashboard
-                                </a>
-                            </div>
+                            <ul className="flex-3">
+                                {navbarLinks.map((link, index) => (
+                                    <li key={index} className="hidden lg:flex">
+                                        <a
+                                            className={`${
+                                                window.location.pathname ===
+                                                link.path
+                                                    ? "text-white"
+                                                    : ""
+                                            } hover:text-white transition-all cursor-pointer`}
+                                            href={link.path}
+                                        >
+                                            {link.name}
+                                        </a>
+                                    </li>
+                                ))}
+                                {adminRole && (
+                                    <li className="hidden lg:flex">
+                                        <a
+                                            className="hover:text-white transition-all cursor-pointer"
+                                            href="/admin"
+                                        >
+                                            Admin
+                                        </a>
+                                    </li>
+                                )}
+                            </ul>
                         </div>
 
                         <div className="hidden sm:flex sm:items-center sm:ml-6">
@@ -85,40 +107,12 @@ export default function Authenticated({ auth, header, children }) {
                             <button
                                 onClick={() =>
                                     setShowingNavigationDropdown(
-                                        (previousState) => !previousState
+                                        (previousState) => !previousState,
                                     )
                                 }
                                 className="inline-flex items-center justify-center p-2 rounded-md transition duration-150 ease-in-out"
                             >
-                                <svg
-                                    className="h-6 w-6"
-                                    stroke="currentColor"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        className={
-                                            !showingNavigationDropdown
-                                                ? "inline-flex"
-                                                : "hidden"
-                                        }
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M4 6h16M4 12h16M4 18h16"
-                                    />
-                                    <path
-                                        className={
-                                            showingNavigationDropdown
-                                                ? "inline-flex"
-                                                : "hidden"
-                                        }
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M6 18L18 6M6 6l12 12"
-                                    />
-                                </svg>
+                                <AlignJustify className="text-white"/>
                             </button>
                         </div>
                     </div>
@@ -130,38 +124,48 @@ export default function Authenticated({ auth, header, children }) {
                         " sm:hidden"
                     }
                 >
-                    <div className="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink
+                        {/* <ResponsiveNavLink
                             href={route("dashboard")}
                             active={route().current("dashboard")}
                         >
                             Dashboard
-                        </ResponsiveNavLink>
-                    </div>
-
-                    <div className="pt-4 pb-1 border-t ">
-                        <div className="px-4">
-                            <div className="font-medium text-base">
-                                <p>{auth?.user?.name}</p>
-                            </div>
-                            <div className="font-medium text-sm ">
-                                <p>{auth?.user?.email}</p>
-                            </div>
-                        </div>
-
-                        <div className="mt-3 space-y-1">
-                            <ResponsiveNavLink href={route("profile.edit")}>
-                                Profile
+                        </ResponsiveNavLink> */}
+                        {navbarLinks.map((link, index) => (
+                            <ResponsiveNavLink key={index}>
+                                <a
+                                    className={`${
+                                        window.location.pathname === link.path
+                                            ? "text-white"
+                                            : ""
+                                    } hover:text-white transition-all cursor-pointer`}
+                                    href={link.path}
+                                >
+                                    {link.name}
+                                </a>
                             </ResponsiveNavLink>
-                            <ResponsiveNavLink
-                                method="post"
-                                href={route("logout")}
-                                as="button"
-                            >
-                                Log Out
+                        ))}
+                        {adminRole && (
+                            <ResponsiveNavLink>
+                                <a
+                                    className="hover:text-white transition-all cursor-pointer"
+                                    href="/admin"
+                                >
+                                    Admin
+                                </a>
                             </ResponsiveNavLink>
-                        </div>
-                    </div>
+                        )}
+
+                    <ResponsiveNavLink href={route("profile.edit")}>
+                        Profile
+                    </ResponsiveNavLink>
+                    <ResponsiveNavLink
+                        method="post"
+                        className="text-white flex-2 mb-2"
+                        href={route("logout")}
+                        as="button"
+                    >
+                       <LogOut className="text-white" size={20}/> Log Out
+                    </ResponsiveNavLink>
                 </div>
             </nav>
 

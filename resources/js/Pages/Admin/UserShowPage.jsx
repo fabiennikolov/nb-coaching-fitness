@@ -1,28 +1,26 @@
-import { useForm } from '@inertiajs/react';
 import Modal from "@/Components/Modal";
 import TextInput from "@/Components/TextInput";
 import SecondaryButton from "@/Components/SecondaryButton";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-
-import { PenLine, Plus } from "lucide-react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { mockPorgressData } from "@/Constants/StaticData";
 import UserPageController from "@/Controllers/UserPageController";
-import { toast } from 'react-toastify';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
+import { toast } from "react-toastify";
+import { useForm } from "@inertiajs/react";
+import { PenLine, Plus, Check, X } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { ToastContainer } from "react-toastify";
 
 export default function UserShowPage(props) {
-    const { user, tables, images} = props;
+    const { user, tables, images } = props;
 
     const tableForm = useForm({
-        name: '',
-        url: '',
-        description: ''
+        name: "",
+        url: "",
+        description: "",
     });
 
     const imageForm = useForm({
-        image : null
+        image: null,
     });
 
     const handleFileChange = (e) => {
@@ -33,56 +31,59 @@ export default function UserShowPage(props) {
             const previewUrl = URL.createObjectURL(file);
             setImagePreview(previewUrl);
         }
-        imageForm.setData('images', e.target.files); // Store the files as an array
+        imageForm.setData("images", e.target.files); // Store the files as an array
     };
 
-     const handleClearImage = () => {
+    const handleClearImage = () => {
         setImageFile(null);
         setImagePreview(null);
     };
 
-    const {
-        isModalOneOpen,
-        setIsModalOneOpen,
-        isModalTwoOpen,
-        setIsModalTwoOpen,
-        handleChange,
-        inputs,
-        imagePreview,
-        setImageFile,
-        setImagePreview
-    } = UserPageController();
-
-     const handleSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        tableForm.post(route('admin.storeTable', { user: user.id }), {
+        tableForm.post(route("admin.storeTable", { user: user.id }), {
             onSuccess: () => {
                 setIsModalOneOpen(false); // Close the modal on success
-                toast.success('Програмата е добавена успешно!'); // Trigger success toast
+                toast.success("Програмата е добавена успешно!"); // Trigger success toast
             },
         });
     };
 
     const handleImageSubmit = (e) => {
         e.preventDefault();
-        
+
         // Create a FormData object to send the file
         const formData = new FormData();
-        formData.append('image', imageForm.data.image); // Append single image
+        formData.append("image", imageForm.data.image); // Append single image
 
-        imageForm.post(route('admin.storeImage', { user: user.id}), {
+        imageForm.post(route("admin.storeImage", { user: user.id }), {
             data: formData,
             onSuccess: () => {
                 setIsModalTwoOpen(false); // Close modal after success
                 handleClearImage();
-                toast.success('Сниката е качена успешно!');
+                toast.success("Сниката е качена успешно!");
             },
         });
     };
 
-    const { email, name, phone } = user;
-  
+    const {
+        inputs,
+        imagePreview,
+        isModalTwoOpen,
+        isModalOneOpen,
+        toggleEditProfileModal,
+        setToggleEditProfileModal,
+        setIsModalOneOpen,
+        setIsModalTwoOpen,
+        setImageFile,
+        setImagePreview,
+    } = UserPageController();
+
+   
+
+    const { email, name, phone, status = "Подвърден" } = user;
+
     return (
         <AuthenticatedLayout
             auth={props.auth}
@@ -96,7 +97,6 @@ export default function UserShowPage(props) {
             <div className="max-w-wrapper flex-col-5 py-5">
                 {/* Modal One: Add Table */}
                 <ToastContainer />
-                
 
                 <div className="flex-between border border-neutral-800 rounded-md p-5">
                     <div className="flex-3">
@@ -107,19 +107,39 @@ export default function UserShowPage(props) {
                         <div className="flex-col-1">
                             <h1 className="text-lg font-bold">{name}</h1>
                             <p>{email}</p>
+                            <p className="flex-2">
+                                {status}{" "}
+                                {status !== "Подвърден" ? (
+                                    <X className="text-red-600" />
+                                ) : (
+                                    <Check className="text-green-600" />
+                                )}
+                            </p>
                         </div>
                     </div>
-                    <button className="border border-neutral-800 p-2 rounded-md px-4 flex-2 text-stone-400 w-max">
-                        Edit
+                    <button onClick={() => setToggleEditProfileModal(true)} className="bg-white text-black p-2 rounded-md px-4 flex-2 w-max">
+                        <span className="hidden sm:flex">Редактирай</span>
                         <PenLine size={20} />
                     </button>
+
+                    <Modal  show={toggleEditProfileModal}>
+                        <form className="flex flex-col gap-5 p-5">
+                            <div className="flex flex-col gap-1"> 
+                                <h1 className="text-2xl font-bold">Променя на роля/статус</h1>
+                                <p>Промени статуса или ролята на даденият потребител.</p>
+                            </div>
+
+                            <div className="flex-2 justify-end">
+                                <button type="button" onClick={() => setToggleEditProfileModal(false)} className="fill-button">Откажи</button>
+                                <button type="submit" className="outline-button">Промени</button>
+                            </div>
+                        </form>
+                    </Modal>
                 </div>
                 <div className="grid-2 border flex-col-3 border-neutral-800 rounded-md p-5">
                     <div className="flex-col-3">
-                        <h1 className="text-xl font-bold">
-                            Информация
-                        </h1>
-                        <div className="grid-2">
+                        <h1 className="text-xl font-bold">Информация</h1>
+                        <div className="grid-2 gap-3">
                             <div className="flex-col-1">
                                 <h1>Име</h1>
                                 <p>{name.split(" ")[0]}</p>
@@ -129,77 +149,97 @@ export default function UserShowPage(props) {
                                 <p>{name.split(" ")[1]}</p>
                             </div>
                         </div>
-                        <div className="grid-2">
+                        <div className="grid-2 gap-3">
                             <div className="flex-col-1">
                                 <h1>Имейл</h1>
                                 <p>{email}</p>
                             </div>
                             <div className="flex-col-1">
                                 <h1>Мобилен телефон</h1>
-                                <p>{phone ?? "No Phone provided"}</p>
+                                <p>{phone ?? "Не е предоставен телефон"}</p>
+                            </div>
+                        </div>
+                        <div className="grid-2 gap-3">
+                            <div className="flex-col-1">
+                                <h1>Роля</h1>
+                                <p>{phone ?? "Регистриран потребител"}</p>
+                            </div>
+                            <div className="flex-col-1">
+                                <h1>Статус</h1>
+                                <p className="flex-2">
+                                    {phone ?? "Потвърден"}{" "}
+                                    <Check className="text-green-600" />
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div className="flex md:justify-end">
-                        <button className="border border-neutral-800 p-2 rounded-md px-4 flex-2 text-stone-400 w-max h-max">
-                            Редактирай
-                            <PenLine size={20} />
+                </div>
+
+                <div className="flex flex-col gap-4">
+                    <div className="flex items-center justify-between">
+                        <h1 className="text-2xl font-bold">Програми</h1>
+                        <button
+                            className="flex-2 bg-white rounded-md p-2 пь-4"
+                            onClick={() => setIsModalOneOpen(true)}
+                        >
+                            <span className="hidden sm:flex">Добави Програма</span>
+                            <Plus />
                         </button>
+                        <Modal show={isModalOneOpen}>
+                            <form className="p-6" onSubmit={handleSubmit}>
+                                <h2 className="text-2xl font-bold">
+                                    Добавяне на таблица за потребител
+                                </h2>
+                                <p>Добавете табалица с упражнения за даденият потребител</p>
+                                <div className="mt-6 flex-col-2">
+                                    {inputs.map((input, index) => (
+                                        <div key={index} className="input-container flex-col-1">
+                                            <input
+                                                name={input.value}
+                                                placeholder={input.name}
+                                                onChange={(e) =>
+                                                    tableForm.setData(
+                                                        input.value,
+                                                        e.target.value,
+                                                    )
+                                                }
+                                                className="w-full"
+                                                type="text"
+                                            />
+                                            {tableForm.errors[input.value] && (
+                                                <p className="text-red-500 text-sm mt-1">
+                                                    {
+                                                        tableForm.errors[
+                                                            input.value
+                                                        ]
+                                                    }
+                                                </p>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div className="mt-6 flex gap-3 justify-end">
+                                    <SecondaryButton
+                                        onClick={() => setIsModalOneOpen(false)}
+                                    >
+                                        Откажи
+                                    </SecondaryButton>
+                                    <button
+                                        className="outline-button"
+                                        type="submit"
+                                    >
+                                        Добави
+                                    </button>
+                                </div>
+                            </form>
+                        </Modal>
                     </div>
-                </div>
 
-            <div className="flex flex-col gap-4">
-                <div className="flex items-center justify-between">
-                    <h1 className="text-2xl font-bold">Програми</h1>
-                    <button
-                        className="flex-2 bg-white rounded-md p-2 пь-4"
-                        onClick={() => setIsModalOneOpen(true)}
-                    >
-                        Добави Програма
-                        <Plus />
-                    </button>
-                    <Modal
-                        show={isModalOneOpen}
-                    >
-                        <form className="p-6" onSubmit={handleSubmit}>
-                            <h2 className="text-2xl font-bold">
-                                Добавяне на таблица за потребител
-                            </h2>
-
-                            <div className="mt-6 flex-col-2">
-                                {inputs.map((input, index) => (
-                                    <div key={index} className="flex-col-1">
-                                        <label className="text-white">
-                                            {input.name}
-                                        </label>
-                                        <TextInput
-                                            name={input.value}
-                                            onChange={(e) => tableForm.setData(input.value, e.target.value)}
-                                            className="w-full"
-                                            type="text"
-                                        />
-                                        {tableForm.errors[input.value] && <p className="text-red-500 text-sm mt-1">{tableForm.errors[input.value]}</p>}
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div className="mt-6 flex gap-3 justify-end">
-                                <SecondaryButton
-                                    onClick={() => setIsModalOneOpen(false)}
-                                >
-                                    Откажи
-                                </SecondaryButton>
-                                <button className="outline-button"  type="submit">
-                                    Добави
-                                </button>
-                            </div>
-                        </form>
-                    </Modal>
-                </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                            {user && tables.length != 0 ? (
-                                tables.map((table, id) => (
+                    <div className="border border-neutral-800 p-5 rounded-md">
+                        {user && tables.length != 0 ? (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                                {tables.map((table, id) => (
                                     <div
                                         key={id}
                                         className="flex-col-3 p-3 border border-neutral-800 group hover:border-neutral-300 rounded-md transition-all"
@@ -224,15 +264,15 @@ export default function UserShowPage(props) {
                                             </button>
                                         </a>
                                     </div>
-                                ))
-                            ) : (
-                            <div className="flex justify-center items-center w-full h-[200px] border border-neutral-800 rounded-md p-5 text-white col-span-1 sm:col-span-2 lg:col-span-4">
-                                Този потребител няма добавени програми. 
+                                ))}
                             </div>
-                            )}
-
+                        ) : (
+                            <h1 className="text-center text-lg w-full py-10">
+                                Този потребител няма добавени програми.{" "}
+                            </h1>
+                        )}
                     </div>
-            </div>
+                </div>
 
                 {/* Modal Two: Add Picture */}
                 <div className="flex-between mb-2">
@@ -241,7 +281,7 @@ export default function UserShowPage(props) {
                         className="flex-2 bg-white rounded-md p-2 пь-4"
                         onClick={() => setIsModalTwoOpen(true)}
                     >
-                        Добави Снимка
+                        <span className="hidden sm:flex">Добави Снимка</span>
                         <Plus />
                     </button>
 
@@ -331,19 +371,19 @@ export default function UserShowPage(props) {
                     }}
                 >
                     {user && images.length != 0 ? (
-                            images.map((image) => (
-                                <SwiperSlide key={image.id} className="flex-col-3">
-                                    <img
-                                        className="w-[400px] h-[300px] object-cover"
-                                        src={image.path}
-                                    />
-                                    <p className="mt-2">{image.date}</p>
-                                </SwiperSlide>
-                                ))
-                            ) : (
-                            <div className="flex justify-center items-center w-full h-[200px] border border-neutral-800 rounded-md p-5 text-white col-span-1 sm:col-span-2 lg:col-span-4">
-                                Този потребител няма качени снимки. 
-                            </div>
+                        images.map((image) => (
+                            <SwiperSlide key={image.id} className="flex-col-3">
+                                <img
+                                    className="w-[300px] h-[300px] mx-auto object-cover  object-center"
+                                    src={image.path}
+                                />
+                                <p className="mt-2">{image.date}</p>
+                            </SwiperSlide>
+                        ))
+                    ) : (
+                        <div className="flex justify-center items-center w-full h-[200px] border border-neutral-800 rounded-md p-5 text-white col-span-1 sm:col-span-2 lg:col-span-4">
+                            Този потребител няма качени снимки.
+                        </div>
                     )}
                 </Swiper>
             </div>

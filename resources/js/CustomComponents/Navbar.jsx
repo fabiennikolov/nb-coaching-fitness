@@ -4,26 +4,17 @@ import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { usePage } from "@inertiajs/react";
 import Dropdown from "@/Components/Dropdown";
+import { checkIfRoleIsAdmin } from "@/Libs/utils";
 
 const Navbar = () => {
+    const { auth } = usePage().props;
+
     const sidebarRef = useRef();
     const navbarRef = useRef();
-    const checkIfRoleIsAdmin = (roles) => {
-        if(!Array.isArray(roles))
-        {
-            return false;
-        }
-        return roles.includes('admin') || roles.includes('superadmin')
-    };
-
-    const { auth } = usePage().props;
-    
-    let adminRole = checkIfRoleIsAdmin(auth.roles);
-    console.log(adminRole, 'role')
 
     const [toggleIcon, setToggleIcon] = useState(true);
-
- 
+    
+    let adminRole = checkIfRoleIsAdmin(auth.roles);
 
     const toggleSidebar = () => {
         sidebarRef.current.classList.toggle("active");

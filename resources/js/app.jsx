@@ -1,8 +1,9 @@
 // import "./bootstrap";
 import "../css/app.css";
 import 'swiper/css';
-import 'react-medium-image-zoom/dist/styles.css'; 
 import 'swiper/css/navigation';
+import 'react-medium-image-zoom/dist/styles.css'; 
+import 'react-toastify/dist/ReactToastify.css';
 
 
 import { createRoot } from "react-dom/client";
