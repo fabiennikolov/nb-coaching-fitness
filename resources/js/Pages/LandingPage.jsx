@@ -55,9 +55,9 @@ const Welcome = (props) => {
                     <img
                         src={`/assets/panel.jpg`}
                         alt="hero"
-                        height={720}
-                        width={1000}
-                        className="mx-auto rounded-2xl h-full w-full"
+                        height={420}
+                        width={700}
+                        className="mx-auto w-full object-contain rounded-2xl h-auto"
                         draggable={false}
                     />
                 </ContainerScroll>
@@ -76,7 +76,7 @@ const Welcome = (props) => {
                     {aboutCards.map((item, index) => (
                         <div
                             key={index}
-                            className="relative flex-col-3 bg-[var(--mainDarkenLightColor)] p-5 rounded-md overflow-hidden"
+                            className="relative flex-col-3 bg-neutral-900 border border-neutral-800 p-5 rounded-md overflow-hidden"
                         >
                             <i
                                 className="absolute -right-[20%] z-0 -top-10 text-orange-600 opacity-[0.25]"

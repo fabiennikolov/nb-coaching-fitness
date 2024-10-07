@@ -7,7 +7,7 @@ export default function Register() {
     const { submit, registerInputs, handleOnChange, data, errors, processing } = RegisterController();
 
     return (
-        <form onSubmit={submit} className="grid-2 max-h-screen">
+        <form onSubmit={submit} className="grid-2 max-h-screen py-5">
             <div className="flex-center min-h-screen">
                 <div className="w-full px-5 lg:px-10 xl:px-32 mx-auto">
                     <div className="flex-col-3">
@@ -51,6 +51,7 @@ export default function Register() {
                                 <input
                                     type="checkbox"
                                     name="remember"
+                                    className="custom-checkbox"
                                     checked={data.remember}
                                     onChange={handleOnChange}
                                 />

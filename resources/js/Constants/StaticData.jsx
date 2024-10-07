@@ -147,12 +147,12 @@ export const contactFormInputs = (data) => [
     {
         name: "Email",
         value: data.email,
-        placeholder: "Email"
+        placeholder: "Имейл"
     },
     {
         name: "Phone Number",
         value: data.phone,
-        placeholder: "Phone Number"
+        placeholder: "Телефонен номер"
     },
     {
         name: "Message",
@@ -332,54 +332,25 @@ export const ResgiterInputs = (data, errors) => [
     },
 ];
 
-
-export const mockPorgressData = [
+export const userRoles = [
     {
-        image: 'http://127.0.0.1:8000/storage/image/Op8oCjzBKPC7pKGO5q3U68CTEuurbiHynjzzJyq0.jpg',
-        date: '04.02.2020'
+        name: 'Admin',
+        role: 'Admin',
+        id: '',
     },
     {
-        image: 'https://images.pexels.com/photos/2247179/pexels-photo-2247179.jpeg?auto=compress&cs=tinysrgb&w=600',
-        date: '04.02.2021'
+        name: 'Super-Admin',
+        role: 'Super-Admin',
+        id: '',
     },
     {
-        image: 'https://images.pexels.com/photos/416809/pexels-photo-416809.jpeg?auto=compress&cs=tinysrgb&w=600',
-        date: '01.01.2022'
+        name: 'Registered',
+        role: 'Registered',
+        id: '',
     },
     {
-        image: 'https://images.pexels.com/photos/1552249/pexels-photo-1552249.jpeg?auto=compress&cs=tinysrgb&w=600',
-        date: '12.04.2022'
-    },
-    {
-        image: 'https://images.pexels.com/photos/3289711/pexels-photo-3289711.jpeg?auto=compress&cs=tinysrgb&w=600',
-        date: '12.04.2022'
-    },
-    {
-        image: 'https://images.pexels.com/photos/2294403/pexels-photo-2294403.jpeg?auto=compress&cs=tinysrgb&w=600',
-        date: '12.04.2022'
-    },
-    {
-        image: 'https://media.istockphoto.com/id/1679800838/photo/close-up-of-feet-sportman-runner-running-on-treadmill-in-fitness-club-cardio-workout-healthy.jpg?b=1&s=612x612&w=0&k=20&c=bi0WKWPpDAWNAfX7CSMrwY3BcD7_QoWbufgJMs4o0Nk=',
-        date: '12.04.2022'
-    },
-    {
-        image: 'https://media.istockphoto.com/id/1438034462/photo/latino-and-african-sport-woman-exercising-and-build-muscle-in-stadium-active-strong-beautiful.jpg?b=1&s=612x612&w=0&k=20&c=Xvt9uAoqSHRlKncVEhlvan1dARifx2wZrtKM3XFlBBY=',
-        date: '12.04.2022'
-    },
-    {
-        image: 'https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=600',
-        date: '12.04.2022'
-    },
-    {
-        image: 'https://images.pexels.com/photos/1865131/pexels-photo-1865131.jpeg?auto=compress&cs=tinysrgb&w=600',
-        date: '12.04.2022'
-    },
-    {
-        image: 'https://images.pexels.com/photos/1547248/pexels-photo-1547248.jpeg?auto=compress&cs=tinysrgb&w=600',
-        date: '12.04.2022'
-    },
-    {
-        image: 'https://images.pexels.com/photos/703012/pexels-photo-703012.jpeg?auto=compress&cs=tinysrgb&w=600',
-        date: '12.04.2022'
+        name: 'Blocked',
+        role: 'Blocked',
+        id: '',
     },
 ]

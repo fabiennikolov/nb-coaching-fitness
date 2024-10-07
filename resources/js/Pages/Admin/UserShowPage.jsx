@@ -9,6 +9,7 @@ import { useForm } from "@inertiajs/react";
 import { PenLine, Plus, Check, X } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { ToastContainer } from "react-toastify";
+import { userRoles } from "@/Constants/StaticData";
 
 export default function UserShowPage(props) {
     const { user, tables, images } = props;
@@ -80,8 +81,6 @@ export default function UserShowPage(props) {
         setImagePreview,
     } = UserPageController();
 
-   
-
     const { email, name, phone, status = "Подвърден" } = user;
 
     return (
@@ -117,21 +116,51 @@ export default function UserShowPage(props) {
                             </p>
                         </div>
                     </div>
-                    <button onClick={() => setToggleEditProfileModal(true)} className="bg-white text-black p-2 rounded-md px-4 flex-2 w-max">
+                    <button
+                        onClick={() => setToggleEditProfileModal(true)}
+                        className="bg-white text-black p-2 rounded-md px-4 flex-2 w-max"
+                    >
                         <span className="hidden sm:flex">Редактирай</span>
                         <PenLine size={20} />
                     </button>
 
-                    <Modal  show={toggleEditProfileModal}>
+                    <Modal show={toggleEditProfileModal}>
                         <form className="flex flex-col gap-5 p-5">
-                            <div className="flex flex-col gap-1"> 
-                                <h1 className="text-2xl font-bold">Променя на роля/статус</h1>
-                                <p>Промени статуса или ролята на даденият потребител.</p>
+                            <div className="flex flex-col gap-1">
+                                <h1 className="text-2xl font-bold">
+                                    Променя на роля/статус
+                                </h1>
+                                <p>
+                                    Промени статуса или ролята на даденият
+                                    потребител.
+                                </p>
+                            </div>
+
+                            <div className="flex flex-col gap-3">
+                                {userRoles.map((roles, id) => (
+                                    <div className="form-group flex items-center gap-5" key={id}>
+                                        <input type="checkbox" id={roles.name}  />
+                                        <label className="text-white" for={roles.name}>{roles.name}</label>
+                                    </div>
+                                ))}
                             </div>
 
                             <div className="flex-2 justify-end">
-                                <button type="button" onClick={() => setToggleEditProfileModal(false)} className="fill-button">Откажи</button>
-                                <button type="submit" className="outline-button">Промени</button>
+                                <button
+                                    type="button"
+                                    onClick={() =>
+                                        setToggleEditProfileModal(false)
+                                    }
+                                    className="fill-button"
+                                >
+                                    Откажи
+                                </button>
+                                <button
+                                    type="submit"
+                                    className="outline-button"
+                                >
+                                    Промени
+                                </button>
                             </div>
                         </form>
                     </Modal>
@@ -182,7 +211,9 @@ export default function UserShowPage(props) {
                             className="flex-2 bg-white rounded-md p-2 пь-4"
                             onClick={() => setIsModalOneOpen(true)}
                         >
-                            <span className="hidden sm:flex">Добави Програма</span>
+                            <span className="hidden sm:flex">
+                                Добави Програма
+                            </span>
                             <Plus />
                         </button>
                         <Modal show={isModalOneOpen}>
@@ -190,10 +221,16 @@ export default function UserShowPage(props) {
                                 <h2 className="text-2xl font-bold">
                                     Добавяне на таблица за потребител
                                 </h2>
-                                <p>Добавете табалица с упражнения за даденият потребител</p>
+                                <p>
+                                    Добавете табалица с упражнения за даденият
+                                    потребител
+                                </p>
                                 <div className="mt-6 flex-col-2">
                                     {inputs.map((input, index) => (
-                                        <div key={index} className="input-container flex-col-1">
+                                        <div
+                                            key={index}
+                                            className="input-container flex-col-1"
+                                        >
                                             <input
                                                 name={input.value}
                                                 placeholder={input.name}
@@ -220,11 +257,13 @@ export default function UserShowPage(props) {
                                 </div>
 
                                 <div className="mt-6 flex gap-3 justify-end">
-                                    <SecondaryButton
+                                    <button
+                                        type="button"
+                                        className="fill-button"
                                         onClick={() => setIsModalOneOpen(false)}
                                     >
                                         Откажи
-                                    </SecondaryButton>
+                                    </button>
                                     <button
                                         className="outline-button"
                                         type="submit"
@@ -238,19 +277,19 @@ export default function UserShowPage(props) {
 
                     <div className="border border-neutral-800 p-5 rounded-md">
                         {user && tables.length != 0 ? (
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                            <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
                                 {tables.map((table, id) => (
                                     <div
                                         key={id}
                                         className="flex-col-3 p-3 border border-neutral-800 group hover:border-neutral-300 rounded-md transition-all"
                                     >
                                         <iframe
-                                            className="h-[200px] w-full pointer-events-none blur-sm"
+                                            className="lg:h-[200px] w-full pointer-events-none blur-sm"
                                             src={table.url}
                                         />
                                         <div className="flex-between">
                                             <div className="flex-col-1">
-                                                <h1 className="font-bold text-white text-lg">
+                                                <h1 className="font-bold text-white lg:text-lg">
                                                     {table.name}
                                                 </h1>
                                             </div>
@@ -260,7 +299,7 @@ export default function UserShowPage(props) {
                                             href={table.url}
                                         >
                                             <button className="bg-white p-3 rounded-md flex-center w-full gap-3 hover:bg-neutral-300 transition-all">
-                                                See
+                                                Виж
                                             </button>
                                         </a>
                                     </div>
@@ -334,11 +373,13 @@ export default function UserShowPage(props) {
                             )}
 
                             <div className="mt-6 flex gap-3 justify-end">
-                                <SecondaryButton
+                                <button
+                                    className="fill-button"
+                                    type="button"
                                     onClick={() => setIsModalTwoOpen(false)}
                                 >
                                     Откажи
-                                </SecondaryButton>
+                                </button>
 
                                 <button
                                     className="outline-button"
@@ -351,41 +392,47 @@ export default function UserShowPage(props) {
                     </Modal>
                 </div>
 
+                <div className="flex justify-center items-center w-full border border-neutral-800 rounded-md p-5 text-white col-span-1 sm:col-span-2 lg:col-span-4">
+                    <Swiper
+                        spaceBetween={50}
+                        slidesPerView={1}
+                        breakpoints={{
+                            480: {
+                                slidesPerView: 1,
+                                spaceBetween: 20,
+                            },
+                            768: {
+                                slidesPerView: 3,
+                                spaceBetween: 30,
+                            },
+                            1024: {
+                                slidesPerView: 4,
+                                spaceBetween: 40,
+                            },
+                        }}
+                    >
+                        {user && images.length != 0 ? (
+                            images.map((image) => (
+                                <SwiperSlide
+                                    key={image.id}
+                                    className="flex-col-3"
+                                >
+                                    <img
+                                        className="w-full lg:w-[300px] h-[300px] mx-auto lg:object-cover  object-center"
+                                        src={image.path}
+                                    />
+                                    <p className="mt-2">{image.date}</p>
+                                </SwiperSlide>
+                            ))
+                        ) : (
+                            <h1 className="text-lg">
+                                {" "}
+                                Този потребител няма качени снимки.
+                            </h1>
+                        )}
+                    </Swiper>
+                </div>
                 {/* Swiper for displaying progress */}
-                <Swiper
-                    spaceBetween={50}
-                    slidesPerView={1}
-                    breakpoints={{
-                        480: {
-                            slidesPerView: 2,
-                            spaceBetween: 20,
-                        },
-                        768: {
-                            slidesPerView: 3,
-                            spaceBetween: 30,
-                        },
-                        1024: {
-                            slidesPerView: 4,
-                            spaceBetween: 40,
-                        },
-                    }}
-                >
-                    {user && images.length != 0 ? (
-                        images.map((image) => (
-                            <SwiperSlide key={image.id} className="flex-col-3">
-                                <img
-                                    className="w-[300px] h-[300px] mx-auto object-cover  object-center"
-                                    src={image.path}
-                                />
-                                <p className="mt-2">{image.date}</p>
-                            </SwiperSlide>
-                        ))
-                    ) : (
-                        <div className="flex justify-center items-center w-full h-[200px] border border-neutral-800 rounded-md p-5 text-white col-span-1 sm:col-span-2 lg:col-span-4">
-                            Този потребител няма качени снимки.
-                        </div>
-                    )}
-                </Swiper>
             </div>
         </AuthenticatedLayout>
     );
