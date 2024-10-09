@@ -22,7 +22,8 @@ export default function UserShowPage(props) {
     });
 
     const imageForm = useForm({
-        image : null
+        image : null,
+        admin: true
     });
 
     const handleFileChange = (e) => {

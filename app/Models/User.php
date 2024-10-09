@@ -49,6 +49,6 @@ class User extends Authenticatable
 
     protected function images(): HasMany
     {
-        return $this->hasMany(UserImage::class);
+        return $this->hasMany(UserImage::class)->orderBy('updated_at', 'desc');
     }
 }

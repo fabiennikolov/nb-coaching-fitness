@@ -33,6 +33,10 @@ class UserImageController extends Controller
         }
 
         // Redirect back with success message
-        return redirect()->route('admin.users.show', $request->user->id)->with('success', 'Table added successfully');
+        if ($request->admin) {
+            return redirect()->route('admin.users.show', $request->user->id)->with('success', 'Table added successfully');
+        } else {
+            return redirect()->route('nb-coaching')->with('success', 'Table added successfully');
+        }
     }
 }
