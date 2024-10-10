@@ -1,8 +1,10 @@
-import BrochureController from "@/Controllers/BorchureController";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import HTMLFlipBook from "react-pageflip";
+import BrochureController from "@/Controllers/BorchureController";
+
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const NbCoachingBrochurePage = ({ id: paramsId }) => {
+
     if (paramsId != 1 && paramsId != 2) {
         return window.history.back();
     }
@@ -39,14 +41,13 @@ const NbCoachingBrochurePage = ({ id: paramsId }) => {
                     showCover={false}
                 >
                     {[...Array(brochureLength)].map((_, id) => (
-                        <div className="demoPage">
+                        <div className="demoPage" key={id}>
                             <img
                                 src={`/assets${
-                                    paramsId === 1
+                                    paramsId == 1
                                         ? "/brochureOne/dobavki"
                                         : "/brochureTwo/naruchnik"
                                 }-${id + 1}.png`}
-                                key={id}
                                 alt={`Slide ${id + 1}`}
                                 className="w-full h-auto"
                             />

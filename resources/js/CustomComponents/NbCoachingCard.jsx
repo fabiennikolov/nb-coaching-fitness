@@ -3,6 +3,7 @@ import React from "react";
 import { Download } from "lucide-react";
 
 const NbCoachingCard = ({ img, link, userPermissions, setBlur, blur }) => {
+    
     const checkPermission = () => {
         if (!userPermissions.includes("read brochure")) {
             setBlur(false);
