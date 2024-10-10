@@ -1,20 +1,16 @@
 import { usePage } from '@inertiajs/react';
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useForm } from '@inertiajs/react';
+import { toast } from 'react-toastify';
 
 const UserPageController = () => {
-    const { auth } = usePage().props;
+    const { user } = usePage().props.auth;
 
     const [imageFile, setImageFile] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
     const [isModalOneOpen, setIsModalOneOpen] = useState(false);
     const [isModalTwoOpen, setIsModalTwoOpen] = useState(false);
     const [toggleEditProfileModal, setToggleEditProfileModal] = useState(false)
-    const [data, setData] = useState({
-        name: "",
-        url: "",
-        description: "",
-    });
 
     const inputsContainer = () => [
         { name: "Name", value: "name" },
@@ -22,8 +18,62 @@ const UserPageController = () => {
         { name: "Description", value: "description" },
     ];
 
+    
+    const tableForm = useForm({
+        name: "",
+        url: "",
+        description: "",
+    });
 
-    const inputs = inputsContainer(data);
+    const imageForm = useForm({
+        image: null,
+    });
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+
+        if (file) {
+            setImageFile(file);
+            const previewUrl = URL.createObjectURL(file);
+            setImagePreview(previewUrl);
+        }
+        imageForm.setData("images", e.target.files);
+    };
+
+    const handleClearImage = () => {
+        setImageFile(null);
+        setImagePreview(null);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        tableForm.post(route("admin.storeTable", { user: user.id }), {
+            onSuccess: () => {
+                setIsModalOneOpen(false);
+                toast.success("Програмата е добавена успешно!"); 
+            },
+        });
+    };
+
+    const handleImageSubmit = (e) => {
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append("image", imageForm.data.image); 
+
+        imageForm.post(route("admin.storeImage", { user: user.id }), {
+            data: formData,
+            onSuccess: () => {
+                setIsModalTwoOpen(false); 
+                handleClearImage();
+                toast.success("Сниката е качена успешно!");
+            },
+        });
+    };
+
+
+    const inputs = inputsContainer(tableForm);
 
 
     return {
@@ -36,7 +86,14 @@ const UserPageController = () => {
         toggleEditProfileModal, 
         setToggleEditProfileModal,
         setImageFile,
-        setImagePreview
+        setImagePreview,
+
+        handleFileChange,
+        handleImageSubmit,
+        handleSubmit,
+        handleClearImage,
+        imageFile,
+        tableForm
     }
 }
 

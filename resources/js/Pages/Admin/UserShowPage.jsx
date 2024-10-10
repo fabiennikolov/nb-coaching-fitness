@@ -1,71 +1,16 @@
 import Modal from "@/Components/Modal";
+import Zoom from "react-medium-image-zoom";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import UserPageController from "@/Controllers/UserPageController";
 
-import { toast } from "react-toastify";
-import { useForm } from "@inertiajs/react";
-import { PenLine, Plus, Check, X, CloudUpload } from "lucide-react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { ToastContainer } from "react-toastify";
 import { userRoles } from "@/Constants/StaticData";
-import Zoom from 'react-medium-image-zoom'
+import { Swiper, SwiperSlide } from "swiper/react";
+import { PenLine, Plus, Check, X, CloudUpload } from "lucide-react";
 
 export default function UserShowPage(props) {
+
     const { user, tables, images } = props;
-
-    const tableForm = useForm({
-        name: "",
-        url: "",
-        description: "",
-    });
-
-    const imageForm = useForm({
-        image: null,
-    });
-
-    const handleFileChange = (e) => {
-        const file = e.target.files[0];
-
-        if (file) {
-            setImageFile(file);
-            const previewUrl = URL.createObjectURL(file);
-            setImagePreview(previewUrl);
-        }
-        imageForm.setData("images", e.target.files);
-    };
-
-    const handleClearImage = () => {
-        setImageFile(null);
-        setImagePreview(null);
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        tableForm.post(route("admin.storeTable", { user: user.id }), {
-            onSuccess: () => {
-                setIsModalOneOpen(false); // Close the modal on success
-                toast.success("Програмата е добавена успешно!"); // Trigger success toast
-            },
-        });
-    };
-
-    const handleImageSubmit = (e) => {
-        e.preventDefault();
-
-        // Create a FormData object to send the file
-        const formData = new FormData();
-        formData.append("image", imageForm.data.image); // Append single image
-
-        imageForm.post(route("admin.storeImage", { user: user.id }), {
-            data: formData,
-            onSuccess: () => {
-                setIsModalTwoOpen(false); // Close modal after success
-                handleClearImage();
-                toast.success("Сниката е качена успешно!");
-            },
-        });
-    };
 
     const {
         inputs,
@@ -76,11 +21,13 @@ export default function UserShowPage(props) {
         setToggleEditProfileModal,
         setIsModalOneOpen,
         setIsModalTwoOpen,
-        setImageFile,
-        setImagePreview,
-    } = UserPageController();
 
-  
+        handleFileChange,
+        handleImageSubmit,
+        handleSubmit,
+        handleClearImage,
+        tableForm,
+    } = UserPageController();
 
     const { email, name, phone, status = "Подвърден" } = user;
 
@@ -95,7 +42,6 @@ export default function UserShowPage(props) {
             }
         >
             <div className="max-w-wrapper flex-col-5 py-5">
-                {/* Modal One: Add Table */}
                 <ToastContainer />
 
                 <div className="flex-between border border-neutral-800 rounded-md p-5">
@@ -439,10 +385,12 @@ export default function UserShowPage(props) {
                                     key={image.id}
                                     className="flex-col-3"
                                 >
-                                    <img
-                                        className="w-full lg:w-[300px] h-[300px] mx-auto lg:object-cover  object-center"
-                                        src={image.path}
-                                    />
+                                    <Zoom>
+                                        <img
+                                            className="w-full lg:w-[300px] h-[300px] mx-auto lg:object-cover  object-center"
+                                            src={image.path}
+                                        />
+                                    </Zoom>
                                     <p className="mt-2">{image.date}</p>
                                 </SwiperSlide>
                             ))
