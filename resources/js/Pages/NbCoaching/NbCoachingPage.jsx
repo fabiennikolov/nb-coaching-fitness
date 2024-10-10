@@ -9,14 +9,7 @@ const NbCoachingPage = (props) => {
     const [blur, setBlur] = useState(true);
 
     const { tables, userPermissions } = props;
-
-    const {
-        confirmUserDeletion,
-        closeModal,
-        confirmingUserDeletion,
-        handleChange,
-        auth,
-    } = BrochureCotroller();
+    const { auth } = BrochureCotroller();
 
     return (
         <div>
@@ -63,7 +56,7 @@ const NbCoachingPage = (props) => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 min-h-[50vh] justify-center items-center">
                             {brochures.map((brochure, id) => (
                                 <NbCoachingCard
-                                blur={blur}
+                                    blur={blur}
                                     setBlur={setBlur}
                                     userPermissions={userPermissions}
                                     {...brochure}

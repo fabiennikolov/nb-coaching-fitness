@@ -2,22 +2,20 @@ import React from "react";
 
 import { Download } from "lucide-react";
 
-const NbCoachingCard = ({ img, link, userPermissions, setBlur, blur}) => {
-
-    console.log(userPermissions)
-
-
-    const checkPremission = () => {
+const NbCoachingCard = ({ img, link, userPermissions, setBlur, blur }) => {
+    const checkPermission = () => {
         if (!userPermissions.includes("read brochure")) {
-            return setBlur(false)
-        } 
+            setBlur(false);
+            return;
+        }
+        window.location.href = link;
     };
+    
 
     return (
         <div className="flex-col-3 p-3 border border-neutral-800 group hover:border-neutral-300 rounded-md transition-all">
             <img
-
-                className={`${blur ? "" : "opacity-20" } w-full h-[200px] object-cover rounded-md`}
+                className={`${blur ? "" : "opacity-20"} w-full h-[200px] object-cover rounded-md`}
                 src={img}
             />
             <div className="flex-between">
@@ -27,8 +25,8 @@ const NbCoachingCard = ({ img, link, userPermissions, setBlur, blur}) => {
                 <Download className="text-white cursor-pointer text-xl" />
             </div>
             <button
-                onClick={checkPremission}
-                className={`bg-white p-3 rounded-md flex-center w-full gap-3 hover:bg-neutral-300 transition-all ${blur ? "" : "opacity-20" }`}
+                onClick={checkPermission}
+                className={`bg-white p-3 rounded-md flex-center w-full gap-3 hover:bg-neutral-300 transition-all ${blur ? "" : "opacity-20"}`}
             >
                 Brochure
             </button>

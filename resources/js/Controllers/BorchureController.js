@@ -32,13 +32,13 @@ const BrochureController = (paramsId) => {
     setCurrentPage(e.data);
   }, []);
 
-  // const handleNextPage = () => {
-  //   flipBook.current?.pageFlip().flipNext();
-  // };
+  const handleNextPage = () => {
+    flipBook.current?.pageFlip().flipNext();
+  };
 
-  // const handlePreviousPage = () => {
-  //   flipBook.current?.pageFlip().flipPrev();
-  // };
+  const handlePreviousPage = () => {
+    flipBook.current?.pageFlip().flipPrev();
+  };
 
   return {
     currentPage,
@@ -47,7 +47,9 @@ const BrochureController = (paramsId) => {
     isCollapsed,
     auth,
     isSinglePage,
-    brochureLength
+    brochureLength,
+    handleNextPage,
+    handlePreviousPage
   };
 };
 
