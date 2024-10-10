@@ -1,15 +1,14 @@
 import Modal from "@/Components/Modal";
-import TextInput from "@/Components/TextInput";
-import SecondaryButton from "@/Components/SecondaryButton";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import UserPageController from "@/Controllers/UserPageController";
 
 import { toast } from "react-toastify";
 import { useForm } from "@inertiajs/react";
-import { PenLine, Plus, Check, X } from "lucide-react";
+import { PenLine, Plus, Check, X, CloudUpload } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { ToastContainer } from "react-toastify";
 import { userRoles } from "@/Constants/StaticData";
+import Zoom from 'react-medium-image-zoom'
 
 export default function UserShowPage(props) {
     const { user, tables, images } = props;
@@ -32,7 +31,7 @@ export default function UserShowPage(props) {
             const previewUrl = URL.createObjectURL(file);
             setImagePreview(previewUrl);
         }
-        imageForm.setData("images", e.target.files); // Store the files as an array
+        imageForm.setData("images", e.target.files);
     };
 
     const handleClearImage = () => {
@@ -81,6 +80,8 @@ export default function UserShowPage(props) {
         setImagePreview,
     } = UserPageController();
 
+  
+
     const { email, name, phone, status = "Подвърден" } = user;
 
     return (
@@ -89,7 +90,7 @@ export default function UserShowPage(props) {
             errors={props.errors}
             header={
                 <h2 className="font-semibold text-xl leading-tight">
-                    User's Info
+                    Информация на потребител
                 </h2>
             }
         >
@@ -138,9 +139,20 @@ export default function UserShowPage(props) {
 
                             <div className="flex-col-3">
                                 {userRoles.map((roles, id) => (
-                                    <div className="form-group flex items-center gap-5" key={id}>
-                                        <input type="checkbox" id={roles.name}  />
-                                        <label className="text-white" for={roles.name}>{roles.name}</label>
+                                    <div
+                                        className="form-group flex items-center gap-5"
+                                        key={id}
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            id={roles.name}
+                                        />
+                                        <label
+                                            className="text-white"
+                                            for={roles.name}
+                                        >
+                                            {roles.name}
+                                        </label>
                                     </div>
                                 ))}
                             </div>
@@ -277,7 +289,7 @@ export default function UserShowPage(props) {
 
                     <div className="border border-neutral-800 p-5 rounded-md">
                         {user && tables.length != 0 ? (
-                            <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                                 {tables.map((table, id) => (
                                     <div
                                         key={id}
@@ -326,6 +338,7 @@ export default function UserShowPage(props) {
 
                     <Modal
                         show={isModalTwoOpen}
+                        className="relative"
                         onClose={() => setIsModalTwoOpen(false)}
                     >
                         <form className="p-6" onSubmit={handleImageSubmit}>
@@ -340,35 +353,44 @@ export default function UserShowPage(props) {
 
                             {/* File Upload Input */}
                             <div className="mt-6 flex-col-1">
-                                <label className="text-white">
-                                    Изберете Снимка
-                                </label>
+                                <div className="drag-n-drop h-[200px]">
+                                    <CloudUpload
+                                        className="text-white bg-neutral-800 p-2 rounded-full"
+                                        size={45}
+                                    />
+                                    <p>
+                                        <span className="underline text-white">
+                                            Click to upload
+                                        </span>{" "}
+                                        or drag and drop
+                                    </p>
+                                    <p>PNG, JPEG, JPG or GIF (max 10mb)</p>
+                                </div>
                                 <input
                                     type="file"
                                     accept="image/*"
                                     onChange={handleFileChange}
-                                    className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-neutral-700 file:text-white hover:file:bg-neutral-600 focus:border-none outline-none"
+                                    className="h-[200px] opacity-0 w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-neutral-700 file:text-white hover:file:bg-neutral-600 focus:border-none outline-none"
                                 />
                             </div>
 
                             {/* Image Preview */}
                             {imagePreview && (
-                                <div className="mt-4">
-                                    <h3 className="text-white mb-2">
-                                        Preview:
-                                    </h3>
-                                    <img
-                                        src={imagePreview}
-                                        alt="Preview"
-                                        className="w-[300px] h-[200px] object-cover border border-gray-500 rounded-md"
-                                    />
-                                    <button
-                                        type="button"
-                                        onClick={handleClearImage}
-                                        className="mt-2 bg-red-600 text-white px-3 py-1 rounded-md"
-                                    >
-                                        Премахни снимка
-                                    </button>
+                                <div className="flex-col-1 mt-5">
+                                    <h1 className="text-lg">Преглед</h1>
+                                    <div className="w-full bg-neutral-800 rounded-md p-3 flex-between">
+                                        <Zoom>
+                                            <img
+                                                src={imagePreview}
+                                                alt="Preview"
+                                                className="w-[100px] h-[50px] object-cover border border-gray-500 rounded-md"
+                                            />
+                                        </Zoom>
+                                        <X
+                                            onClick={handleClearImage}
+                                            className="text-red-600 cursor-pointer"
+                                        />
+                                    </div>
                                 </div>
                             )}
 

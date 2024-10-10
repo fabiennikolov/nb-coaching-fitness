@@ -172,10 +172,10 @@ a {
 }
 
 .fill-button {
-    @apply border w-full bg-[var(--mainDarkenLightTextColor)] md:w-max shadow-lg border-neutral-800 px-5 p-[5px] rounded-md;
+    @apply border w-full bg-[var(--mainDarkenLightTextColor)] md:w-max shadow-lg border-neutral-800 px-5 p-[5px] rounded-md hover:bg-neutral-400 transition-all;
 }
 .outline-button {
-    @apply border w-full md:w-max border-neutral-800 shadow-lg text-mainDarkenLightTextColor px-5 p-[5px] rounded-md ;
+    @apply border w-full md:w-max border-neutral-800 shadow-lg text-mainDarkenLightTextColor px-5 p-[5px] rounded-md hover:bg-neutral-800 transition-all;
 }
 
 .grid-2 {

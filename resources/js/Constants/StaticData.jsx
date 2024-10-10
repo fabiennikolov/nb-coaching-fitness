@@ -11,6 +11,7 @@ import {
     SquareChartGantt,
 } from "lucide-react";
 
+
 export const navbarLinks = [
     {
         name: "Начало",
@@ -95,21 +96,6 @@ export const footerLinks = [
     },
 ];
 
-export const inputsContainer = (data) => [
-    {
-        name: 'Name',
-        value: data.name
-    },
-    {
-        name: 'URL',
-        value: data.url
-    },
-    {
-        name: 'Description',
-        value: data.description
-    },
-]
-
 export const aboutCards = [
     {
         heading: "Наръчник за хранене",
@@ -140,24 +126,6 @@ export const aboutCards = [
         heading: "Постоянна връзка с мен",
         p: "Непрекъсната подкрепа и отговори на Вашите въпроси по всяко време.",
         icon: <Phone size={200} />,
-    },
-];
-
-export const contactFormInputs = (data) => [
-    {
-        name: "Email",
-        value: data.email,
-        placeholder: "Имейл"
-    },
-    {
-        name: "Phone Number",
-        value: data.phone,
-        placeholder: "Телефонен номер"
-    },
-    {
-        name: "Message",
-        value: data.additional_info,
-        placeholder: "Опишете вашите фитнес цели, опит и очаквания, за да ви помогна по най-добрия начин."
     },
 ];
 
@@ -204,6 +172,33 @@ export const brochures  = [
     },
 ]
 
+export const userRoles = [
+    {
+        name: 'Admin',
+        role: 'Admin',
+        id: '',
+    },
+    {
+        name: 'Super-Admin',
+        role: 'Super-Admin',
+        id: '',
+    },
+    {
+        name: 'Registered',
+        role: 'Registered',
+        id: '',
+    },
+    {
+        name: 'Blocked',
+        role: 'Blocked',
+        id: '',
+    },
+]
+
+
+
+
+// ------------------------------------data table styles ---------------------------------------------//
 export const customStyles = {
     rows: {
         style: {
@@ -249,108 +244,3 @@ export const customStyles = {
         },
     },
 };
-
-export const LoginInputs = (data, errors) => [
-    {
-        id: "email",
-        name: "email",
-        type: "email",
-        label: "Email",
-        autoComplete: "username",
-        required: true,
-        value: data.email,
-        error: errors.email,
-    },
-    {
-        id: "password",
-        name: "password",
-        type: "password",
-        label: "Password",
-        required: true,
-        value: data.password,
-        error: errors.password,
-    },
-];
-
-export const ResgiterInputs = (data, errors) => [
-    {
-        id: "name",
-        name: "name",
-        type: "text",
-        label: "Име",
-        required: true,
-        value: data.name,
-        error: errors.name,
-        placeholder: "Име (required)",
-    },
-    {
-        id: "email",
-        name: "email",
-        type: "email",
-        label: "Email",
-        required: true,
-        value: data.email,
-        error: errors.email,
-        placeholder: "Email (required)",
-        autoComplete: "username",
-    },
-    {
-        id: "password",
-        name: "password",
-        type: "password",
-        label: "Парола",
-        required: true,
-        value: data.password,
-        error: errors.password,
-        autoComplete: "new-password",
-    },
-    {
-        id: "password_confirmation",
-        name: "password_confirmation",
-        type: "password",
-        label: "Потвърждение на парола",
-        required: true,
-        value: data.password_confirmation,
-        error: errors.password_confirmation,
-        autoComplete: "new-password",
-    },
-    {
-        id: "instagram",
-        name: "instagram",
-        type: "text",
-        label: "@ Instagram",
-        value: data.instagram,
-        error: errors.instagram,
-    },
-    {
-        id: "phone",
-        name: "phone",
-        type: "number",
-        label: "Телефон",
-        value: data.phone,
-        error: errors.phone,
-    },
-];
-
-export const userRoles = [
-    {
-        name: 'Admin',
-        role: 'Admin',
-        id: '',
-    },
-    {
-        name: 'Super-Admin',
-        role: 'Super-Admin',
-        id: '',
-    },
-    {
-        name: 'Registered',
-        role: 'Registered',
-        id: '',
-    },
-    {
-        name: 'Blocked',
-        role: 'Blocked',
-        id: '',
-    },
-]

@@ -2,48 +2,10 @@ import DataTable from "react-data-table-component";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
 import { customStyles } from "@/Constants/StaticData";
+import { adminPageUsersColumn } from "@/Constants/DynamicData";
 
 export default function Admin(props) {
     const { user, usersData } = props;
-
-    console.log(usersData);
-
-    const columns = [
-        {
-            name: "Име",
-            selector: (row) => row.name,
-            sortable: true,
-        },
-        {
-            name: "Email",
-            selector: (row) => row.email,
-            sortable: true,
-        },
-        {
-            name: "Телефонен номер",
-            selector: (row) => row.phone,
-            sortable: true,
-        },
-        {
-            name: "Instagram",
-            selector: (row) => row.instagram,
-            sortable: true,
-            //   cell: row => <a href={`https://instagram.com/${row.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer">{row.instagram}</a>,
-        },
-        {
-            name: "Фитнес цели",
-            selector: (row) => row.additional_info,
-            sortable: false,
-        },
-        {
-            name: "Action",
-            cell: (row) => (
-            <a href={`/admin/user/${row.id}`}>
-                <button className="outline-button">Виж</button>
-            </a>
-        ),
-        },
-    ];
 
     return (
         <AuthenticatedLayout
@@ -51,7 +13,7 @@ export default function Admin(props) {
             errors={props.errors}
             header={
                 <h2 className="font-semibold text-xl leading-tight">
-                    Admin
+                    Админ
                 </h2>
             }
         >
@@ -66,7 +28,7 @@ export default function Admin(props) {
                                 <div>
                                     <DataTable
                                         customStyles={customStyles}
-                                        columns={columns}
+                                        columns={adminPageUsersColumn}
                                         data={usersData}
                                         pagination
                                     />

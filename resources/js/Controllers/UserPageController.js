@@ -16,52 +16,23 @@ const UserPageController = () => {
         description: "",
     });
 
-    const handleFileChange = (e) => {
-        const file = e.target.files[0];
-
-        if (file) {
-            setImageFile(file);
-            const previewUrl = URL.createObjectURL(file);
-            setImagePreview(previewUrl);
-        }
-    };
-
-    const inputsContainer = (data) => [
+    const inputsContainer = () => [
         { name: "Name", value: "name" },
         { name: "URL", value: "url" },
         { name: "Description", value: "description" },
     ];
 
+
     const inputs = inputsContainer(data);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setData((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
-        console.log(name, value)
-        tableForm.setData(name, value)
-    };
-
-
-
-    const handleClearImage = () => {
-        setImageFile(null);
-        setImagePreview(null);
-    };
 
     return {
-        handleClearImage,
-        handleFileChange,
         imagePreview,
         inputs,
         isModalOneOpen,
         setIsModalOneOpen,
         isModalTwoOpen,
         setIsModalTwoOpen,
-        handleChange,
-        auth,
         toggleEditProfileModal, 
         setToggleEditProfileModal,
         setImageFile,
