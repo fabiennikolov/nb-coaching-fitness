@@ -44,11 +44,14 @@ Route::get('/nb-coaching', function () {
     $userPermissions =  $user?->getAllPermissions()->pluck('name');
     $imagePaths = [];
 
-    foreach ($user->images as $image) {
-        $imageDetails['path'] = asset('storage/' . $image->file_path);
-        $imageDetails['date'] = $image->uploaded_at->format('d.m.Y h:i:s');
-        $imagePaths[] = $imageDetails;
+    if ($user?->images) {
+        foreach ($user?->images as $image) {
+            $imageDetails['path'] = asset('storage/' . $image->file_path);
+            $imageDetails['date'] = $image->uploaded_at->format('d.m.Y h:i:s');
+            $imagePaths[] = $imageDetails;
+        }
     }
+
     return Inertia::render(
         'NbCoaching/NbCoachingPage',
         [
