@@ -28,7 +28,7 @@ const Welcome = (props) => {
                                     Добре дошли в
                                 </h1>
                                 <span className="text-red-600 font-bold text-5xl md:text-5xl ml-2">
-                                    NBCoaching
+                                    NBcoaching
                                 </span>
                             </div>
 
@@ -55,9 +55,9 @@ const Welcome = (props) => {
                     <img
                         src={`/assets/panel.jpg`}
                         alt="hero"
-                        height={720}
-                        width={1000}
-                        className="mx-auto rounded-2xl h-full w-full"
+                        height={420}
+                        width={700}
+                        className="mx-auto w-full object-contain rounded-2xl h-auto"
                         draggable={false}
                     />
                 </ContainerScroll>
@@ -69,14 +69,14 @@ const Welcome = (props) => {
             >
                 <div className="flex-col-3 text-center px-5">
                     <h1 className="font-bold text-3xl lg:text-6xl">
-                        Какво включва NBCoaching?
+                        Какво включва NBcoaching?
                     </h1>
                 </div>
                 <div className="max-w-wrapper grid-3 gap-3">
                     {aboutCards.map((item, index) => (
                         <div
                             key={index}
-                            className="relative flex-col-3 bg-[var(--mainDarkenLightColor)] p-5 rounded-md overflow-hidden"
+                            className="relative flex-col-3 bg-neutral-900 border border-neutral-800 p-5 rounded-md overflow-hidden"
                         >
                             <i
                                 className="absolute -right-[20%] z-0 -top-10 text-orange-600 opacity-[0.25]"
@@ -84,12 +84,12 @@ const Welcome = (props) => {
                             >
                                 {item.icon}
                             </i>
-                            <di className="flex-col-1 z-10">
+                            <div className="flex-col-1 z-10">
                                 <h1 className="text-xl font-bold">
                                     {item.heading}
                                 </h1>
                                 <p>{item.p}</p>
-                            </di>
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -148,7 +148,7 @@ const Welcome = (props) => {
                                 className="absolute -right-[20%] z-0 -top-10 text-orange-600 opacity-[0.25]"
                                 size={200}
                             ></i>
-                            <di className="flex-col-1 z-10">
+                            <div className="flex-col-1 z-10">
                                 <h1 className="text-xl font-bold ">
                                     Интересувате се от персонални тренировки?
                                 </h1>
@@ -157,7 +157,7 @@ const Welcome = (props) => {
                                     вашите цели и нужди. За повече информация,
                                     свържете се с мен.
                                 </p>
-                            </di>
+                            </div>
                             <a href="/contact" className="text-black">
                                 <button className="fill-button ">Контакт</button>
                             </a>

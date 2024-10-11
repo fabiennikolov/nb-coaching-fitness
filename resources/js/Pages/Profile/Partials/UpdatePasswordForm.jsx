@@ -47,21 +47,17 @@ export default function UpdatePasswordForm({ className }) {
     return (
         <section className={className}>
             <header>
-                <h2 className="text-lg font-medium ">Update Password</h2>
+                <h2 className="text-lg font-medium ">Актуализирай пароалта си</h2>
 
                 <p className="mt-1 text-sm ">
-                    Ensure your account is using a long, random password to stay
-                    secure.
+                Уверете се, че профилът ви използва дълга, случайна парола, за да остане
+                обезопасен.
+
                 </p>
             </header>
 
             <form onSubmit={updatePassword} className="mt-6 space-y-6">
-                <div>
-                    <InputLabel
-                        htmlFor="current_password"
-                        value="Current Password"
-                    />
-
+                <div className="input-container">
                     <TextInput
                         id="current_password"
                         ref={currentPasswordInput}
@@ -72,6 +68,7 @@ export default function UpdatePasswordForm({ className }) {
                         type="password"
                         className="mt-1 block w-full"
                         autoComplete="current-password"
+                        placeholder="Сегашната ви парола"
                     />
 
                     <InputError
@@ -80,9 +77,7 @@ export default function UpdatePasswordForm({ className }) {
                     />
                 </div>
 
-                <div>
-                    <InputLabel htmlFor="password" value="New Password" />
-
+                <div className="input-container">
                     <TextInput
                         id="password"
                         ref={passwordInput}
@@ -91,17 +86,13 @@ export default function UpdatePasswordForm({ className }) {
                         type="password"
                         className="mt-1 block w-full"
                         autoComplete="new-password"
+                        placeholder="Нова парола"
                     />
 
                     <InputError message={errors.password} className="mt-2" />
                 </div>
 
-                <div>
-                    <InputLabel
-                        htmlFor="password_confirmation"
-                        value="Confirm Password"
-                    />
-
+                <div className="input-container">
                     <TextInput
                         id="password_confirmation"
                         value={data.password_confirmation}
@@ -111,6 +102,7 @@ export default function UpdatePasswordForm({ className }) {
                         type="password"
                         className="mt-1 block w-full"
                         autoComplete="new-password"
+                        placeholder="Подвърди парола"
                     />
 
                     <InputError
@@ -121,7 +113,7 @@ export default function UpdatePasswordForm({ className }) {
 
                 <div className="flex items-center gap-4">
                     <button className="fill-button" disabled={processing}>
-                        Save
+                        Запази
                     </button>
 
                     <Transition
@@ -130,7 +122,7 @@ export default function UpdatePasswordForm({ className }) {
                         leaveTo="opacity-0"
                         className="transition ease-in-out"
                     >
-                        <p className="text-sm text-gray-600">Saved.</p>
+                        <p className="text-sm text-gray-600">Запазено</p>
                     </Transition>
                 </div>
             </form>

@@ -1,7 +1,9 @@
 import {
     contactFormGridThree,
-    contactFormInputs,
 } from "@/Constants/StaticData";
+import {
+    contactFormInputs
+} from "@/Constants/DynamicData";
 import Navbar from "@/CustomComponents/Navbar";
 import { Send } from "lucide-react";
 import React, { useState } from "react";
@@ -53,7 +55,7 @@ const ContactPage = () => {
                                         autoComplete="name"
                                         onChange={handleChange}
                                         required
-                                        placeholder="First Name"
+                                        placeholder="Име"
                                     />
                                 </div>
                                 <div className="input-container">
@@ -63,7 +65,7 @@ const ContactPage = () => {
                                         autoComplete="name"
                                         onChange={handleChange}
                                         required
-                                        placeholder="Last Name"
+                                        placeholder="Фамилия"
                                     />
                                 </div>
                             </div>
@@ -80,8 +82,8 @@ const ContactPage = () => {
                                 </div>
                             ))}
                             <button className="flex-3 bg-white p-3 text-center flex items-center justify-center rounded-md w-full">
+                                <span className="hidden sm:flex">Изпрати съобщение</span>
                                 <Send />
-                                Изпрати съобщение
                             </button>
                         </form>
                         <div className="flex-col-5">

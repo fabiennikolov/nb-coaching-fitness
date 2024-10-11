@@ -11,6 +11,7 @@ import {
     SquareChartGantt,
 } from "lucide-react";
 
+
 export const navbarLinks = [
     {
         name: "Начало",
@@ -21,14 +22,14 @@ export const navbarLinks = [
         path: "/contact",
     },
     {
-        name: "NBCoaching",
+        name: "NBcoaching",
         path: "/nb-coaching",
     },
 ];
 
 export const headerDataText = {
     title: "Добре дошли в NBscoaching",
-    subtitle: "NBCoaching Fitness",
+    subtitle: "NBcoaching Fitness",
     description:
         "Тази платформа е тук, за да Ви предостави необходимите ресурси и насоки за постигане на Вашите фитнес цели. С акцент на практичността и ефективността, услугата предлага разнообразие от стратегии, които ще Ви помогнат да постигнете желаните резултати. Тук ще намерите полезна информация и подкрепа, за да реализирате пълния си потенциал.",
 };
@@ -95,21 +96,6 @@ export const footerLinks = [
     },
 ];
 
-export const inputsContainer = (data) => [
-    {
-        name: 'Name',
-        value: data.name
-    },
-    {
-        name: 'URL',
-        value: data.url
-    },
-    {
-        name: 'Description',
-        value: data.description
-    },
-]
-
 export const aboutCards = [
     {
         heading: "Наръчник за хранене",
@@ -140,24 +126,6 @@ export const aboutCards = [
         heading: "Постоянна връзка с мен",
         p: "Непрекъсната подкрепа и отговори на Вашите въпроси по всяко време.",
         icon: <Phone size={200} />,
-    },
-];
-
-export const contactFormInputs = (data) => [
-    {
-        name: "Email",
-        value: data.email,
-        placeholder: "Email"
-    },
-    {
-        name: "Phone Number",
-        value: data.phone,
-        placeholder: "Phone Number"
-    },
-    {
-        name: "Message",
-        value: data.additional_info,
-        placeholder: "Опишете вашите фитнес цели, опит и очаквания, за да ви помогна по най-добрия начин."
     },
 ];
 
@@ -193,18 +161,44 @@ export const contactFormGridThree = [
 
 export const brochures  = [
     {
+        path: '/assets/brochureTwo/',
+        link: `/nb-coaching/brochure/2`,
+        img: "/assets/brochureTwo/naruchnik-1.png",
+    },
+    {
         path: '/assets/brochureOne/',
         link: `/nb-coaching/brochure/1`,
         img: "/assets/brochureOne/dobavki-1.png",
     },
-    {
-        path: '/assets/brochureTwo/',
-        link: `/nb-coaching/brochure/2`,
-        img: "/assets/brochureTwo/naruchnik-1.png",
-    }
-    
 ]
 
+export const userRoles = [
+    {
+        name: 'Admin',
+        role: 'Admin',
+        id: '',
+    },
+    {
+        name: 'Super-Admin',
+        role: 'Super-Admin',
+        id: '',
+    },
+    {
+        name: 'Registered',
+        role: 'Registered',
+        id: '',
+    },
+    {
+        name: 'Blocked',
+        role: 'Blocked',
+        id: '',
+    },
+]
+
+
+
+
+// ------------------------------------data table styles ---------------------------------------------//
 export const customStyles = {
     rows: {
         style: {
@@ -250,137 +244,3 @@ export const customStyles = {
         },
     },
 };
-
-export const LoginInputs = (data, errors) => [
-    {
-        id: "email",
-        name: "email",
-        type: "email",
-        label: "Email",
-        autoComplete: "username",
-        required: true,
-        value: data.email,
-        error: errors.email,
-    },
-    {
-        id: "password",
-        name: "password",
-        type: "password",
-        label: "Password",
-        required: true,
-        value: data.password,
-        error: errors.password,
-    },
-];
-
-export const ResgiterInputs = (data, errors) => [
-    {
-        id: "name",
-        name: "name",
-        type: "text",
-        label: "Име",
-        required: true,
-        value: data.name,
-        error: errors.name,
-        placeholder: "Име (required)",
-    },
-    {
-        id: "email",
-        name: "email",
-        type: "email",
-        label: "Email",
-        required: true,
-        value: data.email,
-        error: errors.email,
-        placeholder: "Email (required)",
-        autoComplete: "username",
-    },
-    {
-        id: "password",
-        name: "password",
-        type: "password",
-        label: "Парола",
-        required: true,
-        value: data.password,
-        error: errors.password,
-        autoComplete: "new-password",
-    },
-    {
-        id: "password_confirmation",
-        name: "password_confirmation",
-        type: "password",
-        label: "Потвърждение на парола",
-        required: true,
-        value: data.password_confirmation,
-        error: errors.password_confirmation,
-        autoComplete: "new-password",
-    },
-    {
-        id: "instagram",
-        name: "instagram",
-        type: "text",
-        label: "@ Instagram",
-        value: data.instagram,
-        error: errors.instagram,
-    },
-    {
-        id: "phone",
-        name: "phone",
-        type: "number",
-        label: "Телефон",
-        value: data.phone,
-        error: errors.phone,
-    },
-];
-
-
-export const mockPorgressData = [
-    {
-        image: 'http://127.0.0.1:8000/storage/image/Op8oCjzBKPC7pKGO5q3U68CTEuurbiHynjzzJyq0.jpg',
-        date: '04.02.2020'
-    },
-    {
-        image: 'https://images.pexels.com/photos/2247179/pexels-photo-2247179.jpeg?auto=compress&cs=tinysrgb&w=600',
-        date: '04.02.2021'
-    },
-    {
-        image: 'https://images.pexels.com/photos/416809/pexels-photo-416809.jpeg?auto=compress&cs=tinysrgb&w=600',
-        date: '01.01.2022'
-    },
-    {
-        image: 'https://images.pexels.com/photos/1552249/pexels-photo-1552249.jpeg?auto=compress&cs=tinysrgb&w=600',
-        date: '12.04.2022'
-    },
-    {
-        image: 'https://images.pexels.com/photos/3289711/pexels-photo-3289711.jpeg?auto=compress&cs=tinysrgb&w=600',
-        date: '12.04.2022'
-    },
-    {
-        image: 'https://images.pexels.com/photos/2294403/pexels-photo-2294403.jpeg?auto=compress&cs=tinysrgb&w=600',
-        date: '12.04.2022'
-    },
-    {
-        image: 'https://media.istockphoto.com/id/1679800838/photo/close-up-of-feet-sportman-runner-running-on-treadmill-in-fitness-club-cardio-workout-healthy.jpg?b=1&s=612x612&w=0&k=20&c=bi0WKWPpDAWNAfX7CSMrwY3BcD7_QoWbufgJMs4o0Nk=',
-        date: '12.04.2022'
-    },
-    {
-        image: 'https://media.istockphoto.com/id/1438034462/photo/latino-and-african-sport-woman-exercising-and-build-muscle-in-stadium-active-strong-beautiful.jpg?b=1&s=612x612&w=0&k=20&c=Xvt9uAoqSHRlKncVEhlvan1dARifx2wZrtKM3XFlBBY=',
-        date: '12.04.2022'
-    },
-    {
-        image: 'https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=600',
-        date: '12.04.2022'
-    },
-    {
-        image: 'https://images.pexels.com/photos/1865131/pexels-photo-1865131.jpeg?auto=compress&cs=tinysrgb&w=600',
-        date: '12.04.2022'
-    },
-    {
-        image: 'https://images.pexels.com/photos/1547248/pexels-photo-1547248.jpeg?auto=compress&cs=tinysrgb&w=600',
-        date: '12.04.2022'
-    },
-    {
-        image: 'https://images.pexels.com/photos/703012/pexels-photo-703012.jpeg?auto=compress&cs=tinysrgb&w=600',
-        date: '12.04.2022'
-    },
-]

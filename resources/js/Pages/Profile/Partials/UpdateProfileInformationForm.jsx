@@ -27,18 +27,16 @@ export default function UpdateProfileInformation({
     return (
         <section className={className}>
             <header>
-                <h2 className="text-lg font-medium ">Profile Information</h2>
+                <h2 className="text-lg font-medium ">Информация за профила.</h2>
 
                 <p className="mt-1 text-sm">
-                    Update your account's profile information and email address.
+                    Актуализирайте вашият имейл или ифнормация отностно акаунта ви.
                 </p>
             </header>
 
             <form onSubmit={submit} className="mt-6 space-y-6">
-                <div>
-                    <InputLabel htmlFor="name" value="Name" />
-
-                    <TextInput
+                <div className="input-container">
+                    <input
                         id="name"
                         className="mt-1 block w-full"
                         value={data.name}
@@ -46,15 +44,14 @@ export default function UpdateProfileInformation({
                         required
                         isFocused
                         autoComplete="name"
+                        placeholder="Име"
                     />
 
                     <InputError className="mt-2" message={errors.name} />
                 </div>
 
-                <div>
-                    <InputLabel htmlFor="email" value="Email" />
-
-                    <TextInput
+                <div className="input-container">
+                    <input
                         id="email"
                         type="email"
                         className="mt-1 block w-full"
@@ -62,6 +59,7 @@ export default function UpdateProfileInformation({
                         onChange={(e) => setData("email", e.target.value)}
                         required
                         autoComplete="username"
+                        placeholder="Имейл"
                     />
 
                     <InputError className="mt-2" message={errors.email} />
@@ -70,21 +68,20 @@ export default function UpdateProfileInformation({
                 {mustVerifyEmail && user.email_verified_at === null && (
                     <div>
                         <p className="text-sm mt-2">
-                            Your email address is unverified.
+                            Вашият имейл не е верифициран
                             <Link
                                 href={route("verification.send")}
                                 method="post"
                                 as="button"
                                 className="underline text-sm  rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                             >
-                                Click here to re-send the verification email.
+                                Кликни тук за да ти изпартим онтово имейл за верификация
                             </Link>
                         </p>
 
                         {status === "verification-link-sent" && (
                             <div className="mt-2 font-medium text-sm text-green-600">
-                                A new verification link has been sent to your
-                                email address.
+                               Нов имейл за верификация е изпратен на вашият имейл
                             </div>
                         )}
                     </div>
@@ -92,7 +89,7 @@ export default function UpdateProfileInformation({
 
                 <div className="flex items-center gap-4">
                     <button className="fill-button" disabled={processing}>
-                        Save
+                        Запази
                     </button>
 
                     <Transition
@@ -101,7 +98,7 @@ export default function UpdateProfileInformation({
                         leaveTo="opacity-0"
                         className="transition ease-in-out"
                     >
-                        <p className="text-sm ">Saved.</p>
+                        <p className="text-sm ">Запазено.</p>
                     </Transition>
                 </div>
             </form>
