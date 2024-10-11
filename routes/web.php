@@ -42,8 +42,26 @@ Route::get('/nb-coaching', function () {
     $user = auth()->user();
     $clientTables = FitnessTable::where('user_id', $user?->id)->get();
     $userPermissions =  $user?->getAllPermissions()->pluck('name');
-    return Inertia::render('NbCoaching/NbCoachingPage', ['tables' => $clientTables, 'userPermissions' => $userPermissions]);
-});
+    $imagePaths = [];
+
+    if ($user?->images) {
+        foreach ($user?->images as $image) {
+            $imageDetails['path'] = asset('storage/' . $image->file_path);
+            $imageDetails['date'] = $image->uploaded_at->format('d.m.Y h:i:s');
+            $imagePaths[] = $imageDetails;
+        }
+    }
+
+    return Inertia::render(
+        'NbCoaching/NbCoachingPage',
+        [
+            'tables' => $clientTables,
+            'user' => $user,
+            'userPermissions' => $userPermissions,
+            'images' => $imagePaths
+        ]
+    );
+})->name('nb-coaching');
 
 Route::get('/nb-coaching/brochure/{id}', function ($id) {
     return Inertia::render('NbCoaching/NbCoachingBrochurePage', [
@@ -59,6 +77,8 @@ Route::get('/dashboard', function () {
         'permissions' => $user?->getAllPermissions()->pluck('name'),
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::post('/user/{user}/store-image', [UserImageController::class, 'store'])->name('user.storeImage');
 
 Route::prefix('/admin')->middleware(['role:admin,superadmin'])->group(function () {
     Route::get('/', [AdminUserController::class, 'index'])->name('admin');

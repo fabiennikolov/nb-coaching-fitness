@@ -16,6 +16,75 @@ import ProfileGallery from "./Partials/ProfileGallery";
 export default function UserShowPage(props) {
     const { user, tables, images, allPermissions } = props;  
 
+    const tableForm = useForm({
+        name: '',
+        url: '',
+        description: ''
+    });
+
+    const imageForm = useForm({
+        image : null,
+        admin: true
+    });
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+
+        if (file) {
+            setImageFile(file);
+            const previewUrl = URL.createObjectURL(file);
+            setImagePreview(previewUrl);
+        }
+        imageForm.setData('images', e.target.files); // Store the files as an array
+    };
+
+     const handleClearImage = () => {
+        setImageFile(null);
+        setImagePreview(null);
+    };
+
+    const {
+        isModalOneOpen,
+        setIsModalOneOpen,
+        isModalTwoOpen,
+        setIsModalTwoOpen,
+        handleChange,
+        inputs,
+        imagePreview,
+        setImageFile,
+        setImagePreview
+    } = UserPageController();
+
+     const handleSubmit = (e) => {
+        e.preventDefault();
+
+        tableForm.post(route('admin.storeTable', { user: user.id }), {
+            onSuccess: () => {
+                setIsModalOneOpen(false); // Close the modal on success
+                toast.success('Програмата е добавена успешно!'); // Trigger success toast
+            },
+        });
+    };
+
+    const handleImageSubmit = (e) => {
+        e.preventDefault();
+        
+        // Create a FormData object to send the file
+        const formData = new FormData();
+        formData.append('image', imageForm.data.image); // Append single image
+
+        imageForm.post(route('admin.storeImage', { user: user.id}), {
+            data: formData,
+            onSuccess: () => {
+                setIsModalTwoOpen(false); // Close modal after success
+                handleClearImage();
+                toast.success('Сниката е качена успешно!');
+            },
+        });
+    };
+
+    const { email, name, phone } = user;
+  
     return (
         <AuthenticatedLayout
             auth={props.auth}
