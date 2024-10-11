@@ -38,7 +38,7 @@ const ProfilePrograms = ({ user, tables }) => {
                                 className="flex-col-3 p-3 border border-neutral-800 group hover:border-neutral-300 rounded-md transition-all"
                             >
                                 <iframe
-                                    className="lg:h-[200px] w-full pointer-events-none blur-sm"
+                                    className="lg:h-[200px] w-full pointer-events-none"
                                     src={table.url}
                                 />
                                 <div className="flex-between">

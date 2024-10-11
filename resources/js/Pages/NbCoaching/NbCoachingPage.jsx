@@ -151,8 +151,14 @@ const NbCoachingPage = (props) => {
                                         className="flex-col-3 p-3 border border-neutral-800 group hover:border-neutral-300 rounded-md transition-all"
                                     >
                                         <iframe
-                                            className="h-[200px] w-full pointer-events-none blur-sm"
+                                            className="h-[200px] w-full pointer-events-none "
                                             src={table.url}
+                                            style={{
+                                                transform: 'scale(0.75)',  // Adjust this value to fit the content
+                                                transformOrigin: 'top left',
+                                                width: '133%',  // Compensate for the scale
+                                                height: '266px'  // Compensate for the scale
+                                            }}
                                         />
                                         <div className="flex-between">
                                             <div className="flex-col-1">
