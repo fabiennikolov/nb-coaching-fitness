@@ -57,11 +57,7 @@ class RolesAndPermissionsSeeder extends Seeder
         // Create roles and assign permissions
         foreach ($rolesWithPermissions as $roleName => $rolePermissions) {
             $role = Role::firstOrCreate(['name' => $roleName]);
-            if ($roleName === 'superadmin') {
-                $role->syncPermissions($rolePermissions); // Sync all permissions to superadmin
-            } else {
-                $role->syncPermissions($rolePermissions);
-            }
+            $role->syncPermissions($rolePermissions);
         }
     }
 }
