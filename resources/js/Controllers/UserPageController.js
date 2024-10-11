@@ -66,8 +66,7 @@ const UserPageController = () => {
             data: formData,
             onSuccess: () => {
                 setIsModalTwoOpen(false); 
-                handleClearImage();
-                console.log(isModalTwoOpen, "asdsdsadasd")
+                handleClearImage(); 
                 toast.success("Сниката е качена успешно!");
             },
         });
