@@ -27,6 +27,7 @@ const UserPageController = () => {
 
     const imageForm = useForm({
         image: null,
+        admin: true
     });
 
     const handleFileChange = (e) => {
@@ -60,13 +61,14 @@ const UserPageController = () => {
         e.preventDefault();
 
         const formData = new FormData();
-        formData.append("image", imageForm.data.image); 
+        formData.append("image", imageForm.data.image);
 
         imageForm.post(route("admin.storeImage", { user: user.id }), {
             data: formData,
             onSuccess: () => {
                 setIsModalTwoOpen(false); 
                 handleClearImage();
+                console.log(isModalTwoOpen, "asdsdsadasd")
                 toast.success("Сниката е качена успешно!");
             },
         });

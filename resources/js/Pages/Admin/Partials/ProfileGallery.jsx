@@ -56,7 +56,7 @@ const ProfileGallery = ({user, images}) => {
                         },
                     }}
                 >
-                    {user && images.length != 0 ? (
+                    {user && images.length > 0 ? (
                         images.map((image) => (
                             <SwiperSlide key={image.id} className="flex-col-3">
                                 <Zoom>

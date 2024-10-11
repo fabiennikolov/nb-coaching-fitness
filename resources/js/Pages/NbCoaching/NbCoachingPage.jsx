@@ -144,7 +144,7 @@ const NbCoachingPage = (props) => {
                             <h1 className="text-2xl font-bold">Програми</h1>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                            {blur ? (
+                            {tables.length > 0 ? (
                                 tables.map((table, id) => (
                                     <div
                                         key={id}
@@ -178,7 +178,7 @@ const NbCoachingPage = (props) => {
                             )}
                         </div>
 
-                        <div className="flex-between mb-2">
+                        <div className="flex-between mt-3">
                             <h1 className="text-2xl font-bold">Прогрес</h1>
                             <button
                                 className="flex-2 bg-white rounded-md p-2 пь-4"
