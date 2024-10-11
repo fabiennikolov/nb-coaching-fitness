@@ -5,7 +5,8 @@ import UserPageController from "@/Controllers/UserPageController";
 import { userRoles } from "@/Constants/StaticData";
 import { CloudUpload, X } from "lucide-react";
 
-export const UserPremisionInnerModal = ({ setToggleEditProfileModal }) => {
+export const UserPremisionInnerModal = ({ setToggleEditProfileModal, allPermissions }) => {
+    console.log(allPermissions)
     return (
         <form className="flex-col-5 p-5">
             <div className="flex-col-1">
@@ -14,14 +15,14 @@ export const UserPremisionInnerModal = ({ setToggleEditProfileModal }) => {
             </div>
 
             <div className="flex-col-3">
-                {userRoles.map((roles, id) => (
+                {allPermissions.map((id, name) => (
                     <div
                         className="form-group flex items-center gap-5"
                         key={id}
                     >
-                        <input type="checkbox" id={roles.name} />
-                        <label className="text-white" for={roles.name}>
-                            {roles.name}
+                        <input type="checkbox" id={id} />
+                        <label className="text-white" for={name}>
+                            {name}
                         </label>
                     </div>
                 ))}

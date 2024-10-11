@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useForm } from '@inertiajs/react';
-import { LoginInputs } from '@/Constants/StaticData';
+import { LoginInputs } from '@/Constants/DynamicData';
 
 const LoginController = () => {
     const { data, setData, post, processing, errors, reset } = useForm({

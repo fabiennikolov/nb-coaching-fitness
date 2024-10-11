@@ -1,7 +1,9 @@
 import {
     contactFormGridThree,
-    contactFormInputs,
 } from "@/Constants/StaticData";
+import {
+    contactFormInputs
+} from "@/Constants/DynamicData";
 import Navbar from "@/CustomComponents/Navbar";
 import { Send } from "lucide-react";
 import React, { useState } from "react";

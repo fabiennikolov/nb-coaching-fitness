@@ -8,6 +8,7 @@ use App\Models\FitnessTable;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Spatie\Permission\Models\Permission;
 
 class AdminUserController extends Controller
 {
@@ -46,7 +47,8 @@ class AdminUserController extends Controller
         return Inertia::render('Admin/UserShowPage', [
             'user' => $user,
             'tables' => $clientTables,
-            'images' => $imagePaths
+            'images' => $imagePaths,
+            'allPermissions' => Permission::all()->pluck('name', 'id')
         ]);
     }
 }

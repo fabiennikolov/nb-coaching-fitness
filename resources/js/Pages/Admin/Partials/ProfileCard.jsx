@@ -5,7 +5,7 @@ import { Check, PenLine, X } from "lucide-react";
 import Modal from "@/Components/Modal";
 import { UserPremisionInnerModal } from "@/CustomComponents/Modals";
 
-const ProfileCard = ({ user }) => {
+const ProfileCard = ({ user, allPermissions }) => {
 
     const { email, name, phone, status = "Подвърден" } = user;
 
@@ -43,7 +43,7 @@ const ProfileCard = ({ user }) => {
                 onClose={() => setToggleEditProfileModal(false)}
                 show={toggleEditProfileModal}
             >
-                <UserPremisionInnerModal setToggleEditProfileModal={setToggleEditProfileModal}/>
+                <UserPremisionInnerModal setToggleEditProfileModal={setToggleEditProfileModal} allPermissions={allPermissions}/>
             </Modal>
         </div>
     );

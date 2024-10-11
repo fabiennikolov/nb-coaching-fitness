@@ -16,16 +16,16 @@ const NbCoachingPage = (props) => {
             {!blur && (
                 <div className="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 text-center flex-col-1 z-[100000] w-full">
                     <h1 className="text-2xl font-bold">
-                        {auth
-                            ? "Регистрацията е успешна!"
+                        {auth.user
+                            ? "Регистрацията ви е приета!"
                             : "Не си регистриран!"}
                     </h1>
                     <p className="max-w-sm text-stone-300 mx-auto">
-                        {auth
-                            ? "Регистриран сте, но нямате достъп до таблиците. Изчакайте одобрение, за да видите информацията."
+                        {auth.user
+                            ? "Вашата информация ще бъде прегледана, за да потвърдя акаунта ви. Ще се свържа с вас възможно най-скоро с допълнителна информация на посочения от вас имейл."
                             : "Свържи се с мен за да повече информация"}
                     </p>
-                    {auth ? (
+                    {auth.user ? (
                         ""
                     ) : (
                         <div className="flex-2 justify-center">

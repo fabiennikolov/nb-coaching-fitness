@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useForm } from '@inertiajs/react';
-import { ResgiterInputs } from '@/Constants/StaticData';
+import { ResgiterInputs } from '@/Constants/DynamicData';
 
 const RegisterController = () => {
     const { data, setData, post, processing, errors, reset } = useForm({

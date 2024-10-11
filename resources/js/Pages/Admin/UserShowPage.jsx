@@ -14,9 +14,7 @@ import ProfileGallery from "./Partials/ProfileGallery";
 
 
 export default function UserShowPage(props) {
-    const { user, tables, images } = props;
-
-  
+    const { user, tables, images, allPermissions } = props;  
 
     return (
         <AuthenticatedLayout
@@ -29,7 +27,7 @@ export default function UserShowPage(props) {
             }
         >
             <div className="max-w-wrapper flex-col-5 py-5">
-               <ProfileCard user={user}/>
+               <ProfileCard user={user} allPermissions={allPermissions} />
                <ProfileInfo user={user}/>
                <ProfilePrograms user={user} tables={tables}/>
                <ProfileGallery user={user} images={images}/>
