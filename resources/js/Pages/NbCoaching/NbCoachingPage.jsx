@@ -172,7 +172,7 @@ const NbCoachingPage = (props) => {
                                             href={table.url}
                                         >
                                             <button className="bg-white p-3 rounded-md flex-center w-full gap-3 hover:bg-neutral-300 transition-all">
-                                                See
+                                                Виж
                                             </button>
                                         </a>
                                     </div>
@@ -184,6 +184,8 @@ const NbCoachingPage = (props) => {
                             )}
                         </div>
 
+                    {auth.user ? (
+                        <div>
                         <div className="flex-between mt-3">
                             <h1 className="text-2xl font-bold">Прогрес</h1>
                             <button
@@ -259,8 +261,6 @@ const NbCoachingPage = (props) => {
                                 </form>
                             </Modal>
                         </div>
-
-                        {/* Swiper for displaying progress */}
                         <Swiper
                             spaceBetween={50}
                             slidesPerView={1}
@@ -291,10 +291,17 @@ const NbCoachingPage = (props) => {
                                         ))
                                     ) : (
                                     <div className="flex justify-center items-center w-full h-[200px] border border-neutral-800 rounded-md p-5 text-white col-span-1 sm:col-span-2 lg:col-span-4">
-                                        Този потребител няма качени снимки. 
+                                        {auth.user
+                                        ? "Нямате качени снимки."
+                                        : "Тук ще можете да споделяте снимките от прогреса."}
                                     </div>
                             )}
                         </Swiper>
+                        </div>
+                    ) : (
+                        ""
+                    )}
+                        
                     </div>
                 </div>
             </div>

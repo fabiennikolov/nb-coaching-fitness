@@ -6,7 +6,6 @@ import { userRoles } from "@/Constants/StaticData";
 import { CloudUpload, X } from "lucide-react";
 
 export const UserPremisionInnerModal = ({ setToggleEditProfileModal, allPermissions }) => {
-    console.log(allPermissions)
     return (
         <form className="flex-col-5 p-5">
             <div className="flex-col-1">
@@ -15,14 +14,11 @@ export const UserPremisionInnerModal = ({ setToggleEditProfileModal, allPermissi
             </div>
 
             <div className="flex-col-3">
-                {allPermissions.map((id, name) => (
-                    <div
-                        className="form-group flex items-center gap-5"
-                        key={id}
-                    >
-                        <input type="checkbox" id={id} />
-                        <label className="text-white" for={name}>
-                            {name}
+                {Object.keys(allPermissions).map((key) => (
+                    <div className="form-group flex items-center gap-5" key={key}>
+                        <input type="checkbox" id={key} />
+                        <label className="text-white" htmlFor={key}>
+                            {allPermissions[key]}
                         </label>
                     </div>
                 ))}
