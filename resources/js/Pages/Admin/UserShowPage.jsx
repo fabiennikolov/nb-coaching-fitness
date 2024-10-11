@@ -3,9 +3,6 @@ import Zoom from "react-medium-image-zoom";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import UserPageController from "@/Controllers/UserPageController";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { PenLine, Plus, Check, X } from "lucide-react";
-import {CreateTableInnerModal, UploadImageInnerModal, UserPremisionInnerModal} from "@/CustomComponents/Modals";
 import ProfileCard from "./Partials/ProfileCard";
 import ProfileInfo from "./Partials/ProfileInfo";
 import ProfilePrograms from "./Partials/ProfilePrograms";
@@ -21,7 +18,7 @@ export default function UserShowPage(props) {
         url: '',
         description: ''
     });
-
+    
     const imageForm = useForm({
         image : null,
         admin: true
@@ -83,8 +80,7 @@ export default function UserShowPage(props) {
         });
     };
 
-    const { email, name, phone } = user;
-  
+ 
     return (
         <AuthenticatedLayout
             auth={props.auth}
