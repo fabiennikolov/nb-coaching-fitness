@@ -144,7 +144,7 @@ const NbCoachingPage = (props) => {
                             <h1 className="text-2xl font-bold">Програми</h1>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                            {tables.length > 0 ? (
+                            {tables?.length > 0 ? (
                                 tables.map((table, id) => (
                                     <div
                                         key={id}

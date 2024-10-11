@@ -17,7 +17,6 @@ const UserPageController = () => {
         { name: "URL", value: "url" },
         { name: "Description", value: "description" },
     ];
-
     
     const tableForm = useForm({
         name: "",
