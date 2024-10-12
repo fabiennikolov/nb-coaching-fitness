@@ -21,7 +21,7 @@ const UserPageController = () => {
     const tableForm = useForm({
         name: "",
         url: "",
-        description: "",
+        description: ""
     });
 
     const imageForm = useForm({
@@ -45,13 +45,13 @@ const UserPageController = () => {
         setImagePreview(null);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e, id) => {        
         e.preventDefault();
-
-        tableForm.post(route("admin.storeTable", { user: user.id }), {
+        
+        tableForm.post(route("admin.storeTable", { user: id }), {
             onSuccess: () => {
                 setIsModalOneOpen(false);
-                toast.success("Програмата е добавена успешно!"); 
+                toast.success("Програмата е добавена успешно!");
             },
         });
     };

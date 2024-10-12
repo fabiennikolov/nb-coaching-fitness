@@ -1,41 +1,34 @@
 import React from "react";
 import UserPageController from "@/Controllers/UserPageController";
-
-import { Check, PenLine, X } from "lucide-react";
+import { Check, PenLine } from "lucide-react";
 import Modal from "@/Components/Modal";
 import { UserPremisionInnerModal } from "@/CustomComponents/Modals";
 
 const ProfileCard = ({ user, allPermissions }) => {
-
     const { email, name, phone, status = "Подвърден" } = user;
-
-    const {  toggleEditProfileModal, setToggleEditProfileModal, } = UserPageController();
+    const { toggleEditProfileModal, setToggleEditProfileModal } = UserPageController();
 
     return (
-        <div className="flex-between border border-neutral-800 rounded-md p-5">
-            <div className="flex-3">
+        <div className="flex justify-between items-center border border-red-500 rounded-lg p-6 bg-black">
+            <div className="flex items-center space-x-4">
                 <img
-                    className="w-[50px] h-[50px] rounded-full"
+                    className="w-[60px] h-[60px] rounded-full border-4 border-red-500"
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png"
                 />
-                <div className="flex-col-1">
-                    <h1 className="text-lg font-bold">{name}</h1>
-                    <p>{email}</p>
-                    <p className="flex-2">
-                        {status}{" "}
-                        {status !== "Подвърден" ? (
-                            <X className="text-red-600" />
-                        ) : (
-                            <Check className="text-green-600" />
-                        )}
+                <div className="text-white">
+                    <h1 className="text-xl font-bold">{name}</h1>
+                    <p className="text-sm text-gray-300">{email}</p>
+                    <p className="flex items-center mt-1 space-x-2 text-sm">
+                        <span className="text-red-400">{status}</span>
+                        <Check className="text-green-600" />
                     </p>
                 </div>
             </div>
             <button
                 onClick={() => setToggleEditProfileModal(true)}
-                className="bg-white text-black p-2 rounded-md px-4 flex-2 w-max"
+                className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-md flex items-center space-x-2 transition-all duration-300"
             >
-                <span className="hidden sm:flex">Редактирай</span>
+                <span className="hidden sm:inline">Дай права</span>
                 <PenLine size={20} />
             </button>
 
@@ -43,7 +36,7 @@ const ProfileCard = ({ user, allPermissions }) => {
                 onClose={() => setToggleEditProfileModal(false)}
                 show={toggleEditProfileModal}
             >
-                <UserPremisionInnerModal setToggleEditProfileModal={setToggleEditProfileModal} allPermissions={allPermissions}/>
+                <UserPremisionInnerModal setToggleEditProfileModal={setToggleEditProfileModal} allPermissions={allPermissions} />
             </Modal>
         </div>
     );

@@ -41,12 +41,11 @@ export const UserPremisionInnerModal = ({ setToggleEditProfileModal, allPermissi
 };
 
 
-export const CreateTableInnerModal = ({ setIsModalOneOpen }) => {
-
+export const CreateTableInnerModal = ({ setIsModalOneOpen, user }) => {
     const { handleSubmit, tableForm, inputs } = UserPageController()
 
     return (
-        <form className="p-6" onSubmit={handleSubmit}>
+        <form className="p-6" onSubmit={(e) => handleSubmit(e, user.id)}>
             <h2 className="text-2xl font-bold">
                 Добавяне на таблица за потребител
             </h2>
