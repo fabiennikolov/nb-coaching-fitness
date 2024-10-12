@@ -82,16 +82,16 @@ const NbCoachingPage = (props) => {
     return (
         <div>
             {!blur && (
-                <div className="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 text-center flex-col-1 z-[100000] w-full">
+                <div className="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 text-center flex-col-1 z-[100000] w-fit">
                     <h1 className="text-2xl font-bold">
                         {auth.user
                             ? "Регистрацията ви е приета!"
-                            : "Не си регистриран!"}
+                            : "Влезте в профила си!"}
                     </h1>
                     <p className="max-w-sm text-stone-300 mx-auto">
                         {auth.user
                             ? "Вашата информация ще бъде прегледана, за да потвърдя акаунта ви. Ще се свържа с вас възможно най-скоро с допълнителна информация на посочения от вас имейл."
-                            : "Свържи се с мен за да повече информация"}
+                            : "Тази услуга е достъпна само за регистрирани потребители. Ако нямате профил, моля, регистрирайте се или се свържете с мен."}
                     </p>
                     {auth.user ? (
                         ""
