@@ -88,12 +88,12 @@ export const CreateTableInnerModal = ({ setIsModalOneOpen, user }) => {
 };
 
 
-export const UploadImageInnerModal = ({ setIsModalTwoOpen }) => {
+export const UploadImageInnerModal = ({ setIsModalTwoOpen, user }) => {
 
     const { handleImageSubmit, handleFileChange, imagePreview, handleClearImage } = UserPageController();
 
     return (
-        <form className="p-6" onSubmit={handleImageSubmit}>
+        <form className="p-6" onSubmit={(e) => handleImageSubmit(e, user.id)}>
         <h2 className="text-2xl font-bold">
             Добавяне на Снимка
         </h2>

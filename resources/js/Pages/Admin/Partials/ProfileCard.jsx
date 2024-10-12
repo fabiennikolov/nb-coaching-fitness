@@ -9,7 +9,7 @@ const ProfileCard = ({ user, allPermissions }) => {
     const { toggleEditProfileModal, setToggleEditProfileModal } = UserPageController();
 
     return (
-        <div className="flex justify-between items-center border border-red-500 rounded-lg p-6 bg-black">
+        <div className="flex justify-between items-center border border-red-500 rounded-lg p-6 bg-gray-900 shadow-lg">
             <div className="flex items-center space-x-4">
                 <img
                     className="w-[60px] h-[60px] rounded-full border-4 border-red-500"

@@ -1,81 +1,71 @@
 import React from "react";
 import Modal from "@/Components/Modal";
-import Zoom from 'react-medium-image-zoom'
+import Zoom from 'react-medium-image-zoom';
 import UserPageController from "@/Controllers/UserPageController";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { UploadImageInnerModal } from "@/CustomComponents/Modals";
 import { Plus } from "lucide-react";
 
-const ProfileGallery = ({user, images}) => {
+const ProfileGallery = ({ user, images }) => {
+    const { isModalTwoOpen, setIsModalTwoOpen } = UserPageController();
 
-    const {
-        isModalTwoOpen,
-        setIsModalTwoOpen,
-    } = UserPageController();
+    const handleSuccess = () => {
+        setIsModalTwoOpen(false);
+        toast.success("Снимката е качена успешно!");
+
+        setTimeout(() => {
+            window.location.reload(); // Reload to reflect new images
+        }, 1000);
+    };
 
     return (
-        <div>
-            <div className="flex-between mb-2">
-                <h1 className="text-2xl font-bold">Прогрес</h1>
-                <button
-                    className="flex-2 bg-white rounded-md p-2 пь-4"
-                    onClick={() => setIsModalTwoOpen(true)}
-                >
-                    <span className="hidden sm:flex">Добави Снимка</span>
-                    <Plus />
-                </button>
+        <div className="flex flex-col gap-6">
+            <div className="border border-red-500 rounded-lg p-6 bg-gray-900 shadow-lg">
+                {/* Title and Button in the same div */}
+                <div className="flex justify-between items-center mb-4">
+                    <h1 className="text-2xl font-bold text-red-500">Прогрес</h1>
+                    <button
+                        className="flex items-center bg-red-600 hover:bg-red-700 text-white rounded-md py-2 px-4 transition-all duration-300"
+                        onClick={() => setIsModalTwoOpen(true)}
+                    >
+                        <span className="hidden sm:inline">Добави Снимка</span>
+                        <Plus />
+                    </button>
+                </div>
 
-                <Modal
-                    show={isModalTwoOpen}
-                    className="relative"
-                    onClose={() => setIsModalTwoOpen(false)}
-                >
-                    <UploadImageInnerModal
-                        setIsModalTwoOpen={setIsModalTwoOpen}
-                    />
-                </Modal>
-            </div>
-
-            <div className="flex justify-center items-center w-full border border-neutral-800 rounded-md p-5 text-white col-span-1 sm:col-span-2 lg:col-span-4">
-                <Swiper
-                    spaceBetween={50}
-                    slidesPerView={1}
-                    breakpoints={{
-                        480: {
-                            slidesPerView: 1,
-                            spaceBetween: 20,
-                        },
-                        768: {
-                            slidesPerView: 3,
-                            spaceBetween: 30,
-                        },
-                        1024: {
-                            slidesPerView: 4,
-                            spaceBetween: 40,
-                        },
-                    }}
-                >
-                    {user && images.length > 0 ? (
-                        images.map((image) => (
-                            <SwiperSlide key={image.id} className="flex-col-3">
+                {user && images.length !== 0 ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {images.map((image, id) => (
+                            <div
+                                key={id}
+                                className="flex flex-col p-4 bg-gray-800 border border-neutral-700 hover:border-red-500 rounded-lg transition-all duration-300"
+                            >
                                 <Zoom>
                                     <img
-                                        className="w-full lg:w-[300px] h-[300px] mx-auto lg:object-cover  object-center"
+                                        className="w-full lg:w-[300px] h-[300px] object-cover rounded-md"
                                         src={image.path}
+                                        alt="Progress"
                                     />
                                 </Zoom>
-                                <p className="mt-2">{image.date}</p>
-                            </SwiperSlide>
-                        ))
-                    ) : (
-                        <h1 className="text-lg text-center py-5">
-                            {" "}
-                            Този потребител няма качени снимки.
-                        </h1>
-                    )}
-                </Swiper>
+                                <div className="mt-4 text-center">
+                                    <p className="text-lg font-bold text-white">{image.date}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <h1 className="text-center text-lg text-gray-400 w-full py-10">
+                        Този потребител няма качени снимки.
+                    </h1>
+                )}
             </div>
+
+            <Modal
+                onClose={() => setIsModalTwoOpen(false)}
+                show={isModalTwoOpen}
+            >
+                <UploadImageInnerModal setIsModalTwoOpen={setIsModalTwoOpen} user={user}  />
+            </Modal>
         </div>
     );
 };

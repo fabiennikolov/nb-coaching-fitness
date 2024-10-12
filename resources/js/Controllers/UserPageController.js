@@ -56,13 +56,13 @@ const UserPageController = () => {
         });
     };
 
-    const handleImageSubmit = (e) => {
+    const handleImageSubmit = (e, id) => {
         e.preventDefault();
 
         const formData = new FormData();
         formData.append("image", imageForm.data.image);
 
-        imageForm.post(route("admin.storeImage", { user: user.id }), {
+        imageForm.post(route("admin.storeImage", { user: id }), {
             data: formData,
             onSuccess: () => {
                 setIsModalTwoOpen(false); 
@@ -71,7 +71,6 @@ const UserPageController = () => {
             },
         });
     };
-
 
     const inputs = inputsContainer(tableForm);
 
