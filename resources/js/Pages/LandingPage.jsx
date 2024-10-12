@@ -23,11 +23,11 @@ const Welcome = (props) => {
                 <ContainerScroll
                     titleComponent={
                         <div className="flex-col-5 mb-14 mt-10">
-                            <div className="flex flex-col lg:flex-row items-center justify-center">
-                                <h1 className="text-3xl md:text-4xl font-semibold dark:text-white">
+                            <div className="flex flex-col items-center justify-center font-bold">
+                                <h1 className="text-2xl sm:text-4xl lg:text-6xl font-semibold dark:text-white">
                                     Добре дошли в
                                 </h1>
-                                <span className="text-red-600 font-bold text-5xl md:text-5xl ml-2">
+                                <span className="text-5xl sm:text-7xl lg:text-9xl gradient-text font-bold ml-2">
                                     NBcoaching
                                 </span>
                             </div>
@@ -35,16 +35,16 @@ const Welcome = (props) => {
                             <p className="m-3">{description}</p>
                             <div className="flex flex-col md:flex-row gap-3 items-center flex-center w-full">
                                 <a
-                                    className="text-white w-full md:w-max"
+                                    className="text-black w-full md:w-max"
                                     href={auth.user ? "/profile" : "/login"}
                                 >
-                                    <button className="outline-button">
+                                    <button className="fill-button">
                                         {auth.user ? "Профил" : "Вход"}
                                     </button>
                                 </a>
                                 <a
                                     href="#научи-повече"
-                                    className="fill-button text-black"
+                                    className="outline-button text-black"
                                 >
                                     Научи повече
                                 </a>

@@ -2,6 +2,7 @@ import Modal from "@/Components/Modal";
 import UserPageController from "@/Controllers/UserPageController";
 
 import { Plus } from "lucide-react";
+import { ProgrammCard } from "@/CustomComponents/Cards";
 import { CreateTableInnerModal } from "@/CustomComponents/Modals";
 
 const ProfilePrograms = ({ user, tables }) => {
@@ -25,30 +26,7 @@ const ProfilePrograms = ({ user, tables }) => {
                 {user && tables.length !== 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {tables.map((table, id) => (
-                            <div
-                                key={id}
-                                className="flex flex-col p-4 bg-neutral-800 border border-neutral-700 hover:border-red-500 rounded-lg transition-all duration-300"
-                            >
-                                <iframe
-                                    className="lg:h-[200px] w-full pointer-events-none rounded-md"
-                                    src={table.url}
-                                />
-                                <div className="mt-4 text-center">
-                                    <h1 className="text-lg font-bold text-white">
-                                        {table.name}
-                                    </h1>
-                                </div>
-                                <a
-                                    className="mt-4 w-full"
-                                    href={table.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <button className="bg-red-600 text-white p-2 rounded-md w-full hover:bg-red-700 transition-all">
-                                        Виж
-                                    </button>
-                                </a>
-                            </div>
+                           <ProgrammCard {...table} key={id}/>
                         ))}
                     </div>
                 ) : (

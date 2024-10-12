@@ -1,13 +1,14 @@
-import React from "react";
+import react, { useState } from "react";
 import Modal from "@/Components/Modal";
-import Zoom from 'react-medium-image-zoom';
 import UserPageController from "@/Controllers/UserPageController";
-import { Swiper, SwiperSlide } from "swiper/react";
+
 import { UploadImageInnerModal } from "@/CustomComponents/Modals";
-import { Plus, Trash2 } from "lucide-react";
+import { Plus } from "lucide-react";
+import { GalleryCard } from "@/CustomComponents/Cards";
 
 const ProfileGallery = ({ user, images }) => {
     const { isModalTwoOpen, setIsModalTwoOpen } = UserPageController();
+    const [ deleteModal, setDeleteModal ] = useState(false)
 
     return (
         <div className="p-6 rounded-lg gradient-two">
@@ -27,27 +28,7 @@ const ProfileGallery = ({ user, images }) => {
                 {user && images.length !== 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {images.map((image, id) => (
-                            <div
-                                key={id}
-                                className="flex flex-col p-4 bg-neutral-800 border border-neutral-700 hover:border-red-500 rounded-lg transition-all duration-300"
-                            >
-                                <Zoom>
-                                    <img
-                                        className="w-full lg:w-[300px] h-[300px] object-cover rounded-md"
-                                        src={image.path}
-                                        alt="Progress"
-                                    />
-                                </Zoom>
-                                <div className="mt-4 flex justify-between items-center">
-                                    <p className="text-lg font-bold text-white">{image.date}</p>
-                                    <button
-                                        className="text-red-500 hover:text-red-700 transition-all duration-300"
-                                        onClick={() => {console.log('sad')}}
-                                    >
-                                        <Trash2 size={20} />
-                                    </button>
-                                </div>
-                            </div>
+                            <GalleryCard {...image} key={id} setDeleteModal={setDeleteModal}/>
                         ))}
                     </div>
                 ) : (
@@ -57,11 +38,35 @@ const ProfileGallery = ({ user, images }) => {
                 )}
             </div>
 
+            <Modal show={deleteModal} onClose={() => setDeleteModal(false)}>
+                <form className="p-6">
+                    <h2 className="text-2xl font-bold">Изтриване на снимка</h2>
+                    <p>Сигурни ли сте че искате да изтриете тази снимка?</p>
+                    <div className="mt-6 flex-col-2"></div>
+
+                    <div className="mt-6 flex-3 justify-end">
+                        <button
+                            type="button"
+                            className="fill-button"
+                            onClick={() => setDeleteModal(false)}
+                        >
+                            Откажи
+                        </button>
+                        <button className="fill-danger-button" type="submit">
+                            Изтрии
+                        </button>
+                    </div>
+                </form>
+            </Modal>
+
             <Modal
                 onClose={() => setIsModalTwoOpen(false)}
                 show={isModalTwoOpen}
             >
-                <UploadImageInnerModal setIsModalTwoOpen={setIsModalTwoOpen} user={user} />
+                <UploadImageInnerModal
+                    setIsModalTwoOpen={setIsModalTwoOpen}
+                    user={user}
+                />
             </Modal>
         </div>
     );

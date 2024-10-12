@@ -50,7 +50,7 @@ const Navbar = () => {
             className="w-full fixed  left-1/2 -translate-x-1/2  z-[100000] transition-all"
         >
             <div className="w-full  flex-between max-w-wrapper h-[80px]">
-                <div className="-ml-5">
+                <div className="-ml-5 cursor-pointer" onClick={() => window.location.href = '/'}>
                     <img
                         className="h-auto w-[150px]"
                         src="/assets/logo.png"

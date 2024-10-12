@@ -205,24 +205,36 @@ export const programInputs = [
 
 // ------------------------------------data table styles ---------------------------------------------//
 export const customStyles = {
+    tableWrapper: {
+        style: {
+            backgroundColor: "#202020", // Background color for the entire table
+            borderTopLeftRadius: "12px", // Rounded border for the top-left corner
+            borderTopRightRadius: "12px", // Rounded border for the top-right corner
+            borderBottom: "none", // No border on the bottom to keep it flat
+            overflow: "hidden", // Ensure content inside respects the border radius
+        },
+    },
     rows: {
         style: {
-            backgroundColor: "#202020",
-            color: "#a8a29e",
-            borderTop: "1px solid #3f3f3f",
+            backgroundColor: "#202020", // Background color for rows
+            color: "#a8a29e", // Text color for rows
+            borderTop: "1px solid #3f3f3f", // Border between rows
+            padding: "8px", // Padding for rows
         },
     },
     headCells: {
         style: {
-            backgroundColor: "#202020",
-            color: "#a8a29e",
-            border: "none",
+            backgroundColor: "#202020", // Background color for head cells
+            color: "#a8a29e", // Text color for head cells
+            border: "none", // No border for head cells
+            padding: "12px", // Padding for head cells
         },
     },
     cells: {
         style: {
-            backgroundColor: "#202020",
-            color: "#a8a29e",
+            backgroundColor: "#202020", // Background color for cells
+            color: "#a8a29e", // Text color for cells
+            padding: "12px", // Padding for cells
         },
     },
     pagination: {
@@ -233,7 +245,7 @@ export const customStyles = {
             padding: "8px 16px", // Padding around pagination controls
         },
         pageButtonsStyle: {
-            color: "#a8a29e", // Button text color
+            color: "#ffffff", // Change page button icons/text to white
             borderRadius: "5px", // Button border radius
             padding: "5px 10px", // Padding inside buttons
             margin: "0 4px", // Space between buttons
@@ -241,10 +253,12 @@ export const customStyles = {
             transition: "0.3s", // Smooth hover transition
 
             "&:disabled": {
-                cursor: "not-allowed",
+                cursor: "not-allowed", // Cursor style for disabled buttons
+                display: 'none'
             },
             "&.active": {
                 fontWeight: "bold", // Make active button text bold
+                color: "#ffffff", // Ensure active button is also white
             },
         },
     },

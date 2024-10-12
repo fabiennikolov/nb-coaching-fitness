@@ -82,6 +82,31 @@ iframe:hover {
     overscroll-behavior: contain;
 }
 
+.gradient-text{
+    background: -webkit-linear-gradient(red, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.swiper-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    opacity: 1;
+    transition: background-color 0.3s ease;
+}
+
+.swiper-pagination .swiper-pagination-bullet-active {
+    background-color: #ff0000; 
+    transform: scale(1.5);
+}
+
 @media screen and (min-width: 768px) {
     .sidebar {
         display: none;

@@ -1,14 +1,14 @@
 import "swiper/css";
 import "../css/app.css";
-import "swiper/css/navigation";
+import 'swiper/css/pagination';
 import "react-medium-image-zoom/dist/styles.css";
 import "react-toastify/dist/ReactToastify.css";
+
+import React from "react";
 
 import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
-import React from "react";
-import { ToastContainer } from "react-toastify";
 
 const appName =
     window.document.getElementsByTagName("title")[0]?.innerText || "Laravel";
