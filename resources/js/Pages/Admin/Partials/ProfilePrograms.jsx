@@ -1,15 +1,40 @@
+import { useState } from "react";
 import Modal from "@/Components/Modal";
-import UserPageController from "@/Controllers/UserPageController";
 
 import { Plus } from "lucide-react";
+import { useForm } from "@inertiajs/react"; 
 import { ProgrammCard } from "@/CustomComponents/Cards";
 import { CreateTableInnerModal } from "@/CustomComponents/Modals";
+import { toast, ToastContainer } from "react-toastify";
+import { toastContainerStyle } from "@/Constants/StaticData";
 
 const ProfilePrograms = ({ user, tables }) => {
-    const { isModalOneOpen, setIsModalOneOpen } = UserPageController();
+    const [ isModalOneOpen, setIsModalOneOpen ] = useState(false);
+     
+    const tableForm = useForm({
+        name: "",
+        url: "",
+        description: ""
+    });
+
+    const handleSubmit = (e, id) => {        
+        e.preventDefault();
+        
+        tableForm.post(route("admin.storeTable", { user: id }), {
+            onSuccess: () => {
+                setIsModalOneOpen(false);
+                toast.success("Програмата е добавена успешно!", {
+                     style: toastContainerStyle
+                });
+            },
+        });
+    };
+
 
     return (
         <div className="p-6 rounded-lg gradient-one">
+            <ToastContainer position="bottom-right"/>
+
             <div className="flex-col-5">
                 {/* Title and Button in the same div */}
                 <div className="flex justify-between items-center">
@@ -40,7 +65,7 @@ const ProfilePrograms = ({ user, tables }) => {
                 onClose={() => setIsModalOneOpen(false)}
                 show={isModalOneOpen}
             >
-                <CreateTableInnerModal setIsModalOneOpen={setIsModalOneOpen} user={user} />
+                <CreateTableInnerModal tableForm={tableForm} handleSubmit={handleSubmit} setIsModalOneOpen={setIsModalOneOpen} user={user} />
             </Modal>
         </div>
     );

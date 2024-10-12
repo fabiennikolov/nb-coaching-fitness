@@ -13,8 +13,8 @@
     @apply relative w-full outline-none;
 }
 
-.drag-n-drop{
-    @apply absolute text-center rounded-md border-2 border-neutral-600 border-dashed p-3 flex flex-col gap-1 items-center justify-center w-[92.5%] z-[-1]
+.drag-n-drop {
+    @apply absolute text-center rounded-md border-2 border-neutral-600 border-dashed p-3 flex flex-col gap-1 items-center justify-center w-[92.5%] z-[-1];
 }
 
 .form-group input {
@@ -24,18 +24,18 @@
     margin-bottom: 0;
     display: none;
     cursor: pointer;
-  }
-  
-  .form-group label {
-   @apply relative cursor-pointer
-  }
-  
-  .form-group label:before {
-    @apply content-[''] bg-transparent border border-white appearance-none shadow-md p-[12px] rounded-md inline-block relative align-middle cursor-pointer mr-2
-  }
-  
-  .form-group input:checked + label:after {
-    content: '';
+}
+
+.form-group label {
+    @apply relative cursor-pointer;
+}
+
+.form-group label:before {
+    @apply content-[''] bg-transparent border border-white appearance-none shadow-md p-[12px] rounded-md inline-block relative align-middle cursor-pointer mr-2;
+}
+
+.form-group input:checked + label:after {
+    content: "";
     display: block;
     position: absolute;
     top: 5px;
@@ -45,7 +45,7 @@
     border: solid red;
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
-  }
+}
 
 .input-container input,
 .input-container textarea {
@@ -82,13 +82,13 @@ iframe:hover {
     overscroll-behavior: contain;
 }
 
-.gradient-text{
+.gradient-text {
     background: -webkit-linear-gradient(red, #333);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.swiper-pagination {
+.swiper- pagination {
     display: flex;
     justify-content: center;
     margin-top: 20px;
@@ -103,9 +103,10 @@ iframe:hover {
 }
 
 .swiper-pagination .swiper-pagination-bullet-active {
-    background-color: #ff0000; 
+    background-color: #ff0000;
     transform: scale(1.5);
 }
+
 
 @media screen and (min-width: 768px) {
     .sidebar {

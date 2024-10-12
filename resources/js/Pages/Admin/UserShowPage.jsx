@@ -3,6 +3,7 @@ import ProfileInfo from "./Partials/ProfileInfo";
 import ProfilePrograms from "./Partials/ProfilePrograms";
 import ProfileGallery from "./Partials/ProfileGallery";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import { ToastContainer } from "react-toastify";
 
 
 

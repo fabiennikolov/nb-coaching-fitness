@@ -1,12 +1,7 @@
-import { useForm } from "@inertiajs/react";
-import { Plus } from "lucide-react";
 
 import React, { useState } from "react";
-import Modal from "@/Components/Modal";
 import Navbar from "@/CustomComponents/Navbar";
-import NbCoachingCard from "@/CustomComponents/NbCoachingCard";
 import BrochureCotroller from "@/Controllers/BorchureController";
-import UserPageController from "@/Controllers/UserPageController";
 
 import Programs from "./Partials/Programs";
 import Brochures from "./Partials/Brochures";
@@ -16,7 +11,7 @@ const NbCoachingPage = (props) => {
     const { user, images, tables, userPermissions } = props;
     const { auth } = BrochureCotroller();
 
-    const { isModalTwoOpen, setIsModalTwoOpen } = UserPageController();
+    const [ isModalTwoOpen, setIsModalTwoOpen ] = useState(false)
 
     const [blur, setBlur] = useState(true);
     return (

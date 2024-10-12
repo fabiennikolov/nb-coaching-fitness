@@ -1,4 +1,3 @@
-import Modal from "@/Components/Modal";
 import Zoom from "react-medium-image-zoom";
 
 import { Trash2 } from "lucide-react";

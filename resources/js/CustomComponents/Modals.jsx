@@ -1,6 +1,5 @@
 import React from "react";
 import Zoom from 'react-medium-image-zoom'
-import UserPageController from "@/Controllers/UserPageController";
 
 import { CloudUpload, X } from "lucide-react";
 import { programInputs } from "@/Constants/StaticData";
@@ -41,9 +40,7 @@ export const UserPremisionInnerModal = ({ setToggleEditProfileModal, allPermissi
 };
 
 
-export const CreateTableInnerModal = ({ setIsModalOneOpen, user }) => {
-    const { handleSubmit, tableForm } = UserPageController()
-
+export const CreateTableInnerModal = ({ setIsModalOneOpen, user, tableForm, handleSubmit }) => {
     return (
         <form className="p-6" onSubmit={(e) => handleSubmit(e, user.id)}>
             <h2 className="text-2xl font-bold">
@@ -88,10 +85,7 @@ export const CreateTableInnerModal = ({ setIsModalOneOpen, user }) => {
 };
 
 
-export const UploadImageInnerModal = ({ setIsModalTwoOpen, user }) => {
-
-    const { handleImageSubmit, handleFileChange, imagePreview, handleClearImage } = UserPageController();
-
+export const UploadImageInnerModal = ({ setIsModalTwoOpen, user, handleImageSubmit, handleFileChange, imagePreview, handleClearImage }) => {
     return (
         <form className="p-6" onSubmit={(e) => handleImageSubmit(e, user.id)}>
         <h2 className="text-2xl font-bold">

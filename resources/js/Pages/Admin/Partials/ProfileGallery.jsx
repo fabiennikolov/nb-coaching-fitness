@@ -1,17 +1,60 @@
 import react, { useState } from "react";
 import Modal from "@/Components/Modal";
-import UserPageController from "@/Controllers/UserPageController";
+
+import { toast, ToastContainer } from "react-toastify";
 
 import { UploadImageInnerModal } from "@/CustomComponents/Modals";
 import { Plus } from "lucide-react";
 import { GalleryCard } from "@/CustomComponents/Cards";
+import { useForm } from "@inertiajs/react";
+import { toastContainerStyle } from "@/Constants/StaticData";
 
 const ProfileGallery = ({ user, images }) => {
-    const { isModalTwoOpen, setIsModalTwoOpen } = UserPageController();
-    const [ deleteModal, setDeleteModal ] = useState(false)
+    const [deleteModal, setDeleteModal] = useState(false);
+    const [isModalTwoOpen, setIsModalTwoOpen] = useState(false);
+    const [imagePreview, setImagePreview] = useState(null);
+
+    const imageForm = useForm({
+        image: null,
+        admin: true,
+    });
+
+    const handleClearImage = () => {
+        setImagePreview(null);
+    };
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+
+        if (file) {
+            const previewUrl = URL.createObjectURL(file);
+            setImagePreview(previewUrl);
+        }
+        imageForm.setData("images", e.target.files);
+    };
+
+    const handleImageSubmit = (e, id) => {
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append("image", imageForm.data.image);
+
+        imageForm.post(route("admin.storeImage", { user: id }), {
+            data: formData,
+            onSuccess: () => {
+                setIsModalTwoOpen(false);
+                handleClearImage();
+                toast.success("Сниката е качена успешно!", {
+                    style: toastContainerStyle,
+                });
+            },
+        });
+    };
 
     return (
         <div className="p-6 rounded-lg gradient-two">
+            <ToastContainer position="bottom-right" />
+
             <div className="flex-col-3">
                 {/* Title and Button in the same div */}
                 <div className="flex justify-between items-center">
@@ -28,7 +71,11 @@ const ProfileGallery = ({ user, images }) => {
                 {user && images.length !== 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {images.map((image, id) => (
-                            <GalleryCard {...image} key={id} setDeleteModal={setDeleteModal}/>
+                            <GalleryCard
+                                {...image}
+                                key={id}
+                                setDeleteModal={setDeleteModal}
+                            />
                         ))}
                     </div>
                 ) : (
@@ -60,12 +107,16 @@ const ProfileGallery = ({ user, images }) => {
             </Modal>
 
             <Modal
-                onClose={() => setIsModalTwoOpen(false)}
                 show={isModalTwoOpen}
+                onClose={() => setIsModalTwoOpen(false)}
             >
                 <UploadImageInnerModal
                     setIsModalTwoOpen={setIsModalTwoOpen}
                     user={user}
+                    handleClearImage={handleClearImage}
+                    imagePreview={imagePreview}
+                    handleFileChange={handleFileChange}
+                    handleImageSubmit={handleImageSubmit}
                 />
             </Modal>
         </div>

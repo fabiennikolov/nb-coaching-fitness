@@ -11,7 +11,6 @@ import {
     SquareChartGantt,
 } from "lucide-react";
 
-
 export const navbarLinks = [
     {
         name: "Начало",
@@ -159,49 +158,53 @@ export const contactFormGridThree = [
     },
 ];
 
-export const brochures  = [
+export const brochures = [
     {
-        path: '/assets/brochureTwo/',
+        path: "/assets/brochureTwo/",
         link: `/nb-coaching/brochure/2`,
         img: "/assets/brochureTwo/naruchnik-1.png",
     },
     {
-        path: '/assets/brochureOne/',
+        path: "/assets/brochureOne/",
         link: `/nb-coaching/brochure/1`,
         img: "/assets/brochureOne/dobavki-1.png",
     },
-]
+];
 
 export const userRoles = [
     {
-        name: 'Admin',
-        role: 'Admin',
-        id: '',
+        name: "Admin",
+        role: "Admin",
+        id: "",
     },
     {
-        name: 'Super-Admin',
-        role: 'Super-Admin',
-        id: '',
+        name: "Super-Admin",
+        role: "Super-Admin",
+        id: "",
     },
     {
-        name: 'Registered',
-        role: 'Registered',
-        id: '',
+        name: "Registered",
+        role: "Registered",
+        id: "",
     },
     {
-        name: 'Blocked',
-        role: 'Blocked',
-        id: '',
+        name: "Blocked",
+        role: "Blocked",
+        id: "",
     },
-]
+];
 export const programInputs = [
     { name: "Name", value: "name" },
     { name: "URL", value: "url" },
     { name: "Description", value: "description" },
 ];
 
-
-
+export const toastContainerStyle = {
+    backgroundColor: "#202020", // Custom background color
+    color: "#fff", // Text color
+    padding: "16px", // Custom padding
+    borderRadius: "8px", // Rounded corners
+};
 
 // ------------------------------------data table styles ---------------------------------------------//
 export const customStyles = {
@@ -254,7 +257,7 @@ export const customStyles = {
 
             "&:disabled": {
                 cursor: "not-allowed", // Cursor style for disabled buttons
-                display: 'none'
+                display: "none",
             },
             "&.active": {
                 fontWeight: "bold", // Make active button text bold

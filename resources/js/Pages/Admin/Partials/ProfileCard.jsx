@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "@/Components/Modal";
-import UserPageController from "@/Controllers/UserPageController";
 
 import { Check, PenLine } from "lucide-react";
 import { UserPremisionInnerModal } from "@/CustomComponents/Modals";
 
 const ProfileCard = ({ user, allPermissions }) => {
     const { email, name, phone, status = "Потвърден" } = user;
-    const { toggleEditProfileModal, setToggleEditProfileModal } = UserPageController();
+    const [ toggleEditProfileModal, setToggleEditProfileModal ] = useState(false)
 
     return (
         <div className="flex justify-between items-center rounded-lg p-6 gradient-one">

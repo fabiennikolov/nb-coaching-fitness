@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import Modal from "@/Components/Modal";
 import Zoom from "react-medium-image-zoom";
 
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { Pagination } from "swiper/modules";
 import { useForm } from "@inertiajs/react";
 import { CloudUpload, Plus, X } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { GalleryCard } from "@/CustomComponents/Cards";
+import { toastContainerStyle } from "@/Constants/StaticData";
 
 const Progres = ({ auth, setIsModalTwoOpen, images, isModalTwoOpen, user }) => {
     const [deleteModal, setDeleteModal] = useState(false);
@@ -42,7 +43,9 @@ const Progres = ({ auth, setIsModalTwoOpen, images, isModalTwoOpen, user }) => {
             onSuccess: () => {
                 setIsModalTwoOpen(false);
                 handleClearImage();
-                toast.success("Сниката е качена успешно!");
+                toast.success("Сниката е качена успешно!", {
+                   style: toastContainerStyle
+                });
             },
         });
     };
@@ -51,6 +54,7 @@ const Progres = ({ auth, setIsModalTwoOpen, images, isModalTwoOpen, user }) => {
         <>
             {auth.user ? (
                 <div className="flex-col-5">
+                    <ToastContainer  position="bottom-right"/>
                     <div className="flex-between">
                         <h1 className="text-2xl font-bold">Прогрес</h1>
                         <button
