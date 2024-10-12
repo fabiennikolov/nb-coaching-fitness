@@ -5,11 +5,11 @@ import Modal from "@/Components/Modal";
 import { UserPremisionInnerModal } from "@/CustomComponents/Modals";
 
 const ProfileCard = ({ user, allPermissions }) => {
-    const { email, name, phone, status = "Подвърден" } = user;
+    const { email, name, phone, status = "Потвърден" } = user;
     const { toggleEditProfileModal, setToggleEditProfileModal } = UserPageController();
 
     return (
-        <div className="flex justify-between items-center border border-red-500 rounded-lg p-6 bg-gray-900 shadow-lg">
+        <div className="flex justify-between items-center border border-black rounded-lg p-6 bg-gradient-to-br from-gray-900 to-red-900 shadow-md hover:shadow-lg transition-shadow duration-300">
             <div className="flex items-center space-x-4">
                 <img
                     className="w-[60px] h-[60px] rounded-full border-4 border-red-500"

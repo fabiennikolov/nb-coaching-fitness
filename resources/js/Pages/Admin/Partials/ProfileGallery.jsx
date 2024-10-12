@@ -4,7 +4,7 @@ import Zoom from 'react-medium-image-zoom';
 import UserPageController from "@/Controllers/UserPageController";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { UploadImageInnerModal } from "@/CustomComponents/Modals";
-import { Plus } from "lucide-react";
+import { Plus, Trash2 } from "lucide-react";
 
 const ProfileGallery = ({ user, images }) => {
     const { isModalTwoOpen, setIsModalTwoOpen } = UserPageController();
@@ -47,8 +47,14 @@ const ProfileGallery = ({ user, images }) => {
                                         alt="Progress"
                                     />
                                 </Zoom>
-                                <div className="mt-4 text-center">
+                                <div className="mt-4 flex justify-between items-center">
                                     <p className="text-lg font-bold text-white">{image.date}</p>
+                                    <button
+                                        className="text-red-500 hover:text-red-700 transition-all duration-300"
+                                        onClick={() => {console.log('sad')}} // Add delete functionality here
+                                    >
+                                        <Trash2 size={20} />
+                                    </button>
                                 </div>
                             </div>
                         ))}
@@ -64,7 +70,7 @@ const ProfileGallery = ({ user, images }) => {
                 onClose={() => setIsModalTwoOpen(false)}
                 show={isModalTwoOpen}
             >
-                <UploadImageInnerModal setIsModalTwoOpen={setIsModalTwoOpen} user={user}  />
+                <UploadImageInnerModal setIsModalTwoOpen={setIsModalTwoOpen} user={user} />
             </Modal>
         </div>
     );
