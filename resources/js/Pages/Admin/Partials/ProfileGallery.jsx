@@ -9,21 +9,12 @@ import { Plus, Trash2 } from "lucide-react";
 const ProfileGallery = ({ user, images }) => {
     const { isModalTwoOpen, setIsModalTwoOpen } = UserPageController();
 
-    const handleSuccess = () => {
-        setIsModalTwoOpen(false);
-        toast.success("Снимката е качена успешно!");
-
-        setTimeout(() => {
-            window.location.reload(); // Reload to reflect new images
-        }, 1000);
-    };
-
     return (
-        <div className="flex flex-col gap-6">
-            <div className="border border-red-500 rounded-lg p-6 bg-gray-900 shadow-lg">
+        <div className="p-6 rounded-lg gradient-two">
+            <div className="flex-col-3">
                 {/* Title and Button in the same div */}
-                <div className="flex justify-between items-center mb-4">
-                    <h1 className="text-2xl font-bold text-red-500">Прогрес</h1>
+                <div className="flex justify-between items-center">
+                    <h1 className="text-2xl font-bold">Прогрес</h1>
                     <button
                         className="flex items-center bg-red-600 hover:bg-red-700 text-white rounded-md py-2 px-4 transition-all duration-300"
                         onClick={() => setIsModalTwoOpen(true)}
@@ -38,7 +29,7 @@ const ProfileGallery = ({ user, images }) => {
                         {images.map((image, id) => (
                             <div
                                 key={id}
-                                className="flex flex-col p-4 bg-gray-800 border border-neutral-700 hover:border-red-500 rounded-lg transition-all duration-300"
+                                className="flex flex-col p-4 bg-neutral-800 border border-neutral-700 hover:border-red-500 rounded-lg transition-all duration-300"
                             >
                                 <Zoom>
                                     <img
@@ -51,7 +42,7 @@ const ProfileGallery = ({ user, images }) => {
                                     <p className="text-lg font-bold text-white">{image.date}</p>
                                     <button
                                         className="text-red-500 hover:text-red-700 transition-all duration-300"
-                                        onClick={() => {console.log('sad')}} // Add delete functionality here
+                                        onClick={() => {console.log('sad')}}
                                     >
                                         <Trash2 size={20} />
                                     </button>

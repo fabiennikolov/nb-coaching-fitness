@@ -194,6 +194,11 @@ export const userRoles = [
         id: '',
     },
 ]
+export const programInputs = [
+    { name: "Name", value: "name" },
+    { name: "URL", value: "url" },
+    { name: "Description", value: "description" },
+];
 
 
 

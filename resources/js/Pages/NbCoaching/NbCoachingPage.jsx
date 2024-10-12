@@ -2,22 +2,20 @@ import { useForm } from '@inertiajs/react';
 import { Plus } from "lucide-react";
 
 import React, { useState } from "react";
+import Modal from '@/Components/Modal';
 import Navbar from "@/CustomComponents/Navbar";
 import NbCoachingCard from "@/CustomComponents/NbCoachingCard";
 import BrochureCotroller from "@/Controllers/BorchureController";
+import UserPageController from "@/Controllers/UserPageController";
 
 import { brochures } from "@/Constants/StaticData";
 import { Swiper, SwiperSlide } from "swiper/react";
-import UserPageController from "@/Controllers/UserPageController";
 import { toast } from 'react-toastify';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Modal from '@/Components/Modal';
-import SecondaryButton from '@/Components/SecondaryButton';
+
 
 const NbCoachingPage = (props) => {
 
-      const { user, images } = props;
+      const { user, images, tables, userPermissions } = props;
 
     const imageForm = useForm({
         image : null,
@@ -69,16 +67,8 @@ const NbCoachingPage = (props) => {
         setImagePreview
     } = UserPageController();
 
-    const {
-        confirmUserDeletion,
-        closeModal,
-        confirmingUserDeletion,
-        auth,
-    } = BrochureCotroller();
+    const { auth } = BrochureCotroller();
     const [blur, setBlur] = useState(true);
-
-    const { tables, userPermissions } = props;
-
     return (
         <div>
             {!blur && (
@@ -245,11 +235,12 @@ const NbCoachingPage = (props) => {
                                     )}
 
                                     <div className="mt-6 flex gap-3 justify-end">
-                                        <SecondaryButton
+                                        <button 
+                                            className="fill-button"
                                             onClick={() => setIsModalTwoOpen(false)}
                                         >
                                             Откажи
-                                        </SecondaryButton>
+                                        </button>
 
                                         <button
                                             className="outline-button"

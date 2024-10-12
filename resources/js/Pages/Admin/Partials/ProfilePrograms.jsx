@@ -1,5 +1,6 @@
 import Modal from "@/Components/Modal";
 import UserPageController from "@/Controllers/UserPageController";
+
 import { Plus } from "lucide-react";
 import { CreateTableInnerModal } from "@/CustomComponents/Modals";
 
@@ -7,11 +8,11 @@ const ProfilePrograms = ({ user, tables }) => {
     const { isModalOneOpen, setIsModalOneOpen } = UserPageController();
 
     return (
-        <div className="flex flex-col gap-6">
-            <div className="border border-red-500 rounded-lg p-6 bg-gray-900 shadow-lg">
+        <div className="p-6 rounded-lg gradient-one">
+            <div className="flex-col-5">
                 {/* Title and Button in the same div */}
-                <div className="flex justify-between items-center mb-4">
-                    <h1 className="text-2xl font-bold text-red-500 mb-4">Програми</h1>
+                <div className="flex justify-between items-center">
+                    <h1 className="text-2xl font-bold">Програми</h1>
                     <button
                         className="flex items-center bg-red-600 hover:bg-red-700 text-white rounded-md py-2 px-4 transition-all duration-300"
                         onClick={() => setIsModalOneOpen(true)}
@@ -26,7 +27,7 @@ const ProfilePrograms = ({ user, tables }) => {
                         {tables.map((table, id) => (
                             <div
                                 key={id}
-                                className="flex flex-col p-4 bg-gray-800 border border-neutral-700 hover:border-red-500 rounded-lg transition-all duration-300"
+                                className="flex flex-col p-4 bg-neutral-800 border border-neutral-700 hover:border-red-500 rounded-lg transition-all duration-300"
                             >
                                 <iframe
                                     className="lg:h-[200px] w-full pointer-events-none rounded-md"

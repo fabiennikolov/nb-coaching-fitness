@@ -4,20 +4,13 @@ import { useForm } from '@inertiajs/react';
 import { toast } from 'react-toastify';
 
 const UserPageController = () => {
-    const { user } = usePage().props.auth;
-
     const [imageFile, setImageFile] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
     const [isModalOneOpen, setIsModalOneOpen] = useState(false);
     const [isModalTwoOpen, setIsModalTwoOpen] = useState(false);
     const [toggleEditProfileModal, setToggleEditProfileModal] = useState(false)
 
-    const inputsContainer = () => [
-        { name: "Name", value: "name" },
-        { name: "URL", value: "url" },
-        { name: "Description", value: "description" },
-    ];
-    
+  
     const tableForm = useForm({
         name: "",
         url: "",
@@ -72,12 +65,9 @@ const UserPageController = () => {
         });
     };
 
-    const inputs = inputsContainer(tableForm);
-
 
     return {
         imagePreview,
-        inputs,
         isModalOneOpen,
         setIsModalOneOpen,
         isModalTwoOpen,

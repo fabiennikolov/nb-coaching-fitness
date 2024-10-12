@@ -5,9 +5,9 @@ const ProfileInfo = ({ user }) => {
     const { email, name, phone } = user;
 
     return (
-        <div className="border border-black rounded-lg p-6 bg-gradient-to-br from-red-900 to-gray-900 shadow-md hover:shadow-lg transition-shadow duration-300">
+        <div className="rounded-lg p-6 border gradient-two">
             <h1 className="text-2xl font-bold text-gray-300 mb-4">Информация</h1>
-            <div className="grid grid-cols-2 gap-6 text-white">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-white">
                 {/* First Name */}
                 <div>
                     <h2 className="text-xl text-white">Име</h2>
