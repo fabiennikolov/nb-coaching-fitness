@@ -13,7 +13,7 @@ class UserImageController extends Controller
     {
         // Validate that images are uploaded
         $request->validate([
-            'images*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240', // Validate each image
+            'images*' => 'required|image|mimes:jpeg,png,jpg,gif,svg', // Validate each image
         ]);
 
         // Loop through each image and store them
