@@ -8,103 +8,113 @@ import { aboutCards, headerDataText } from "@/Constants/StaticData";
 import Footer from "@/CustomComponents/Footer";
 
 const Welcome = (props) => {
-    const { title, subtitle, description } = headerDataText;
-
     const { auth, permissions } = props;
 
     return (
         <div className="relative">
-            <img
-                className="absolute opacity-[0.02] lg:opacity-30 left-[-12%] top-[10%] z-[-1]"
-                src="/assets/white-dots.png"
-            />
             <Navbar />
-            <header className="flex flex-col overflow-hidden px-5">
-                <ContainerScroll
-                    titleComponent={
-                        <div className="flex-col-5 mb-14 mt-10">
-                            <div className="flex flex-col items-center justify-center font-bold">
-                                <h1 className="text-2xl sm:text-4xl lg:text-6xl font-semibold dark:text-white">
-                                    Добре дошли в
-                                </h1>
-                                <span className="text-5xl sm:text-7xl lg:text-9xl gradient-text font-bold ml-2">
-                                    NBcoaching
-                                </span>
-                            </div>
 
-                            <p className="m-3">{description}</p>
-                            <div className="flex flex-col md:flex-row gap-3 items-center flex-center w-full">
-                                <a
-                                    className="text-black w-full md:w-max"
-                                    href={auth.user ? "/profile" : "/login"}
-                                >
-                                    <button className="fill-button">
-                                        {auth.user ? "Профил" : "Вход"}
-                                    </button>
-                                </a>
-                                <a
-                                    href="#научи-повече"
-                                    className="outline-button text-black"
-                                >
-                                    Научи повече
-                                </a>
-                            </div>
-                        </div>
-                    }
-                >
+            <header className="grid-2 justify-center items-center gap-5 lg:gap-0 max-w-wrapper py-32">
+                <div className="flex-col-5">
+                    <div className="flex flex-col gap-1 text-6xl">
+                        <h1>Добре дошли в</h1>
+                        <h1 className="font-bold">
+                            <span className="text-red-600">NB</span>coaching
+                        </h1>
+                    </div>
+                    <p className="text-lg max-w-[300px]">
+                        Платформа за персонализиран онлайн фитнес коучинг{" "}
+                    </p>
+                    <div className="flex items-center gap-5">
+                        <button className="outline-red-button">
+                            <a className="text-white" href="#learnMore">
+                                Научете повече
+                            </a>
+                        </button>
+                        <button className="fill-red-button">
+                            <a href="/quiz" className="text-white">
+                                Take the quiz
+                            </a>
+                        </button>
+                    </div>
+                </div>
+                <div className="relative">
                     <img
-                        src={`/assets/panel.jpg`}
-                        alt="hero"
-                        height={420}
-                        width={700}
-                        className="mx-auto w-full object-contain rounded-2xl h-auto"
-                        draggable={false}
+                        src="assets/landingPage/header-image-one.webp"
+                        className="w-[90%] lg:w-[1000px] border border-red-600 rounded-xl"
                     />
-                </ContainerScroll>
+                    <img
+                        src="assets/landingPage/header-image-2.jpg"
+                        className="absolute right-0 lg:-left-32 top-1/2  w-[250px] lg:w-[400px] h-auto border border-red-600 rounded-xl"
+                    />
+                </div>
             </header>
 
             <section
                 id="научи-повече"
-                className="flex-col-5 flex-center min-h-[80vh] my-10"
+                className="flex-col-10 flex-center min-h-[80vh] py-32 max-w-wrapper"
             >
-                <div className="flex-col-3 text-center px-5">
-                    <h1 className="font-bold text-3xl lg:text-6xl">
-                        Какво включва NBcoaching?
+                <div className="flex-col-5 text-center px-5">
+                    <h1 className="font-bold text-3xl lg:text-5xl">
+                        Какво включва <span className="text-red-600">NB</span>
+                        coaching<span className="text-red-600">?</span>
                     </h1>
                 </div>
-                <div className="max-w-wrapper grid-3 gap-3">
+                <div className=" grid-2 gap-x-56 gap-y-10 lg:gap-y-5">
                     {aboutCards.map((item, index) => (
-                        <div
-                            key={index}
-                            className="relative flex-col-3 bg-neutral-900 border border-neutral-800 p-5 rounded-md overflow-hidden"
-                        >
-                            <i
-                                className="absolute -right-[20%] z-0 -top-10 text-orange-600 opacity-[0.25]"
-                                size={200}
-                            >
-                                {item.icon}
-                            </i>
+                        <div className="flex items-center gap-3" key={index}>
+                            <div className="bg-white rounded-full p-2 w-max">
+                                <i>{item.icon}</i>
+                            </div>
                             <div className="flex-col-1 z-10">
                                 <h1 className="text-xl font-bold">
                                     {item.heading}
                                 </h1>
-                                <p>{item.p}</p>
+                                <p className="max-w-sm">{item.p}</p>
                             </div>
                         </div>
                     ))}
                 </div>
             </section>
 
-            <section className="flex flex-col gap-20 flex-center min-h-[80vh] relative overflow-hidden my-10">
-                <img
-                    className="absolute opacity-[0.02] lg:opacity-30 right-[-12%] top-[40%] z-[-1]"
-                    src="/assets/white-dots.png"
-                />
-                <div className="flex-col-3 lg:text-center px-5">
-                    <h1 className="font-bold text-3xl lg:text-6xl">
+            <section className="grid-2 max-w-wrapper py-32">
+                <h1 className="font-bold text-3xl lg:text-5xl">
+                    Какво е <span className="text-red-600">NB</span>
+                    coaching<span className="text-red-600">?</span>
+                </h1>
+                <div className="flex-col-5">
+                    <p>
+                        NBcoaching е персонализирана онлайн платформа, която
+                        предлага ефективни ресурси и насоки, за да постигнете
+                        вашите фитнес цели. С фокус върху практичността и
+                        дългосрочните резултати, разработвам за вас индивидуални
+                        стратегии за тренировки, хранене и суплементация.
+                    </p>
+                    <p>
+                        Консултацията е първата стъпка, в която ще науча повече
+                        за вашите цели, хранителни навици, начин на живот,
+                        нивото ви на активност, здравословното ви състояние и
+                        ежедневието ви. Ще анализирам вашата физическа форма.
+                        Тази информация ще ми помогне да разбера по-добре как
+                        мога да ви помогна в постигането на вашите фитнес цели.
+                    </p>
+                    <p className="text-white">
+                        Започнете още сега и реализирайте пълния си потенциал.
+                    </p>
+                    <button className="fill-red-button w-max">
+                        <a className="text-white" href="/contact">
+                            Свържете се с мен
+                        </a>
+                    </button>
+                </div>
+            </section>
+
+            <section className="grid-2 gap-5 max-w-wrapper py-32">
+                <div className="flex-col-5">
+                    <h1 className="font-bold text-3xl lg:text-5xl">
                         За кого е подходяща услугата?
                     </h1>
-                    <p className="max-w-[800px] mx-auto">
+                    <p className="max-w-lg">
                         Услугата е насочена към хора, които имат минимум 6
                         месеца опит в тренировките и искат да напреднат и да
                         достигнат нови висоти във фитнеса. Ако сте готови да
@@ -112,59 +122,29 @@ const Welcome = (props) => {
                         постигане на Вашите цели, аз съм тук, за да Ви помогна.
                     </p>
                 </div>
-                <div className="max-w-2xl px-5 2xl:px-0 grid-3 gap-10 items-center justify-center">
-                    <div className="w-full flex items-center lg:justify-end">
-                        <img
-                            src="/assets/coach.JPG"
-                            className="w-[150px] h-[150px] object-cover object-top rounded-full border-2 border-neutral-100"
-                        />
-                    </div>
-
-                    <div className="flex-col-5 col-span-2">
-                        <div>
-                            <p>За мен</p>
-                            <h1 className="text-2xl md:text-4xl font-bold">
-                                Никола Бугов
-                            </h1>
-                        </div>
-
-                        <p>
-                            Аз съм Никола Бугов, сертифициран фитнес треньор с
-                            повече от 2 години опит в работата с клиенти от
-                            различни нива на физическа подготовка. През това
-                            време съм помогнал на много хора да постигнат своите
-                            фитнес цели, независимо дали става въпрос за
-                            отслабване, изграждане на мускулна маса или просто
-                            за подобряване на общото им здравословно състояние.
-                        </p>
-                        <p>
-                            Запишете се за безплатна консултация и започнете
-                            своята трансформация. С NBcoaching имате всичко
-                            необходимо, за да реализирате амбициите си.
-                        </p>
-
-                        <div className="relative flex-col-3 bg-[var(--mainDarkenLightColor)] p-5 mt-10 rounded-md overflow-hidden border-2  border-neutral-800">
-                            <i
-                                className="absolute -right-[20%] z-0 -top-10 text-orange-600 opacity-[0.25]"
-                                size={200}
-                            ></i>
-                            <div className="flex-col-1 z-10">
-                                <h1 className="text-xl font-bold ">
-                                    Интересувате се от персонални тренировки?
-                                </h1>
-                                <p>
-                                    Предлагам индивидуален подход, съобразен с
-                                    вашите цели и нужди. За повече информация,
-                                    свържете се с мен.
-                                </p>
-                            </div>
-                            <a href="/contact" className="text-black">
-                                <button className="fill-button ">Контакт</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <img
+                    src="assets/landingPage/section-image.jpg"
+                    className="rounded-xl w-full"
+                    alt="section-image-2"
+                />
             </section>
+
+            <div className="py-32 px-5 lg:px-10">
+                <section className="px-5 lg:px-20 py-10 rounded-xl border border-red-600 grid-2">
+                    <div className="flex-col-5">
+                        <h1 className="text-3xl lg:text-5xl font-bold">
+                            Интересувате се от персонални тренировки?
+                        </h1>
+                        <p>
+                            Предлагам индивидуален подход, съобразен с вашите
+                            цели и нужди. За повече информация, свържете се с
+                            мен.
+                        </p>
+                        <button className="w-max fill-red-button"><a className="text-white" href="/">Безплатна консултация</a></button>
+                    </div>
+                </section>
+            </div>
+
             <Footer />
         </div>
     );

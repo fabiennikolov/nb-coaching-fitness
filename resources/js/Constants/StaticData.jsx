@@ -17,13 +17,24 @@ export const navbarLinks = [
         path: "/",
     },
     {
-        name: "Контакт",
-        path: "/contact",
-    },
-    {
         name: "NBcoaching",
         path: "/nb-coaching",
     },
+    {
+        name: "За мен",
+        path: "#forme",
+    },
+ 
+    {
+        name: "Блог",
+        path: "/blog",
+    },
+ 
+    {
+        name: "Контакт",
+        path: "/contact",
+    },
+ 
 ];
 
 export const headerDataText = {
@@ -35,61 +46,49 @@ export const headerDataText = {
 
 export const footerLinks = [
     {
-        name: "Navigation",
+        name: "Бързи Линкове",
         links: [
             {
-                name: "Company",
+                name: "Начало",
                 path: "/",
+                icon: ""
             },
             {
-                name: "Pricing",
-                path: "/",
+                name: "NBcoaching",
+                path: "/nb-coaching",
+                icon: ""
             },
             {
-                name: "Docs",
-                path: "/",
+                name: "За мен",
+                path: "#forme",
+                icon: ""
             },
+         
             {
-                name: "Careers",
-                path: "/",
+                name: "Блог",
+                path: "/blog",
+                icon: ""
+            },
+         
+            {
+                name: "Quiz",
+                path: "/quiz",
+                icon: ""
             },
         ],
     },
     {
-        name: "Documentation",
+        name: "Контакти",
         links: [
             {
-                name: "Introduction",
+                name: "+359 878920042",
                 path: "/",
+                icon: <Phone/>
             },
             {
-                name: "Quickstart",
+                name: "nbcoachingfitness@gmail.com",
                 path: "/",
-            },
-            {
-                name: "Why evals",
-                path: "/",
-            },
-            {
-                name: "Use Cases",
-                path: "/",
-            },
-            {
-                name: "Metrics",
-                path: "/",
-            },
-        ],
-    },
-    {
-        name: "Legal",
-        links: [
-            {
-                name: "Privacy Policy",
-                path: "/",
-            },
-            {
-                name: "Terms of Service",
-                path: "/",
+                icon: <Mail/>
             },
         ],
     },
@@ -99,32 +98,32 @@ export const aboutCards = [
     {
         heading: "Наръчник за хранене",
         p: "Информативен ресурс, който Ви помага да се справите с хранителния план и да направите правилния избор на храни.",
-        icon: <Drumstick className="text-red-600" size={200} />,
+        icon: <Drumstick size={25} />,
     },
     {
         heading: "Наръчник за суплементация",
         p: "Информация за хранителни добавки и как да ги използвате ефективно.",
-        icon: <Book className="text-blue-600" size={200} />,
+        icon: <Book size={25} />,
     },
     {
         heading: "Хранителен план",
         p: "Индивидуално съставен план, който отговаря на Вашите цели и предпочитания.",
-        icon: <SquareChartGantt className="text-yellow-600" size={200} />,
+        icon: <SquareChartGantt size={25} />,
     },
     {
         heading: "Тренировъчен план",
         p: "Персонализирана програма, адаптирана към Вашето ниво и желания.",
-        icon: <Dumbbell size={200} />,
+        icon: <Dumbbell size={25} />,
     },
     {
         heading: "Мониторинг",
         p: "Проследяване на напредъка Ви и корекции на плановете.",
-        icon: <Monitor className="text-red-600" size={200} />,
+        icon: <Monitor  size={25} />,
     },
     {
         heading: "Постоянна връзка с мен",
         p: "Непрекъсната подкрепа и отговори на Вашите въпроси по всяко време.",
-        icon: <Phone size={200} />,
+        icon: <Phone size={25} />,
     },
 ];
 

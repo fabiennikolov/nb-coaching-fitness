@@ -32,14 +32,9 @@ const Navbar = () => {
                 document.documentElement.scrollTop > 50
             ) {
                 navbarRef.current.classList.add("shadow-xl");
-                navbarRef.current.classList.add(
-                    "bg-[var(--mainDarkenLightColor)]"
-                );
+              
             } else {
                 navbarRef.current.classList.remove("shadow-xl");
-                navbarRef.current.classList.remove(
-                    "bg-[var(--mainDarkenLightColor)]"
-                );
             }
         };
     }, []);
@@ -47,10 +42,10 @@ const Navbar = () => {
     return (
         <div
             ref={navbarRef}
-            className="w-full fixed  left-1/2 -translate-x-1/2  z-[100000] transition-all"
+            className="w-full fixed bg-black  left-1/2 -translate-x-1/2  z-[100000] transition-all"
         >
-            <div className="w-full  flex-between max-w-wrapper h-[80px]">
-                <div className="-ml-5 cursor-pointer" onClick={() => window.location.href = '/'}>
+            <div className="w-full  flex-between px-10 h-[80px]">
+                <div className="-ml-5 cursor-pointer px-5" onClick={() => window.location.href = '/'}>
                     <img
                         className="h-auto w-[150px]"
                         src="/assets/logo.png"
@@ -65,7 +60,7 @@ const Navbar = () => {
                                     window.location.pathname === link.path
                                         ? "text-white"
                                         : ""
-                                } hover:text-white transition-all cursor-pointer`}
+                                } hover:text-white transition-all cursor-pointer font-bold`}
                                 href={link.path}
                             >
                                 {link.name}
@@ -126,11 +121,11 @@ const Navbar = () => {
                         </Dropdown>
                     ) : (
                         <a className="text-white hidden lg:flex" href="/login">
-                            <button className="outline-button">Вход</button>
+                            <button className="fill-red-button">Вход</button>
                         </a>
                     )}
                     <Menu
-                        className="flex lg:hidden text-white cursor-pointer"
+                        className="flex lg:hidden text-red-600 cursor-pointer"
                         size={30}
                         onClick={toggleSidebar}
                     />
@@ -148,15 +143,15 @@ const Navbar = () => {
                     className="h-auto w-[150px]"
                     alt="logo"
                 />
-                <ul className="flex-col-3">
+                <ul className="flex-col-3 flex-center">
                     {navbarLinks.map((link, index) => (
                         <li key={index}>
                             <a
                                 className={`${
                                     window.location.pathname === link.path
-                                        ? "text-white"
+                                        ? "text-white text-underline"
                                         : ""
-                                } hover:text-white transition-all cursor-pointer`}
+                                } hover:text-white transition-all font-bold text-xl cursor-pointer`}
                                 href={link.path}
                             >
                                 {link.name}
@@ -177,8 +172,8 @@ const Navbar = () => {
                 {auth.user ? (
                     ""
                 ) : (
-                    <a className="text-white" href="/login">
-                        <button className="outline-button">Вход</button>
+                    <a className="text-white mx-auto" href="/login">
+                        <button className="fill-red-button w-[200px]">Вход</button>
                     </a>
                 )}
             </div>

@@ -1,8 +1,8 @@
 .sidebar {
-    @apply fixed top-0 flex flex-col gap-8 bg-[var(--mainDarkColor)] min-h-screen -left-full w-full transition-all z-[100000] p-4;
+    @apply fixed flex flex-col gap-8 bg-[var(--mainDarkColor)] -top-[1000%] w-full transition-all z-[100000] p-4;
 }
 .sidebar.active {
-    @apply left-0;
+    @apply top-0 min-h-screen;
 }
 
 .special-footer-outline-text {
@@ -15,6 +15,15 @@
 
 .drag-n-drop {
     @apply absolute text-center rounded-md border-2 border-neutral-600 border-dashed p-3 flex flex-col gap-1 items-center justify-center w-[92.5%] z-[-1];
+}
+
+.text-underline::after{
+    width: 100%;
+    height: 1px;
+    background-color: red;
+    margin: auto;
+    display: block;
+    content: '';
 }
 
 .form-group input {
@@ -88,7 +97,7 @@ iframe:hover {
     -webkit-text-fill-color: transparent;
 }
 
-.swiper- pagination {
+.swiper-pagination {
     display: flex;
     justify-content: center;
     margin-top: 20px;
