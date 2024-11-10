@@ -44,7 +44,7 @@ const Progres = ({ auth, setIsModalTwoOpen, images, isModalTwoOpen, user }) => {
                 setIsModalTwoOpen(false);
                 handleClearImage();
                 toast.success("Сниката е качена успешно!", {
-                   style: toastContainerStyle
+                    style: toastContainerStyle,
                 });
             },
         });
@@ -54,7 +54,7 @@ const Progres = ({ auth, setIsModalTwoOpen, images, isModalTwoOpen, user }) => {
         <>
             {auth.user ? (
                 <div className="flex-col-5">
-                    <ToastContainer  position="bottom-right"/>
+                    <ToastContainer position="bottom-right" />
                     <div className="flex-between">
                         <h1 className="text-2xl font-bold">Прогрес</h1>
                         <button
@@ -150,10 +150,11 @@ const Progres = ({ auth, setIsModalTwoOpen, images, isModalTwoOpen, user }) => {
                         >
                             <form className="p-6">
                                 <h2 className="text-2xl font-bold">
-                                   Изтриване на снимка
+                                    Изтриване на снимка
                                 </h2>
                                 <p>
-                                    Сигурни ли сте че искате да изтриете тази снимка?
+                                    Сигурни ли сте че искате да изтриете тази
+                                    снимка?
                                 </p>
                                 <div className="mt-6 flex-col-2"></div>
 
@@ -178,7 +179,7 @@ const Progres = ({ auth, setIsModalTwoOpen, images, isModalTwoOpen, user }) => {
                     <Swiper
                         spaceBetween={50}
                         slidesPerView={1}
-                        className="p-5 border  border-neutral-700 rounded-lg"
+                        className="p-5 border  border-red-600  rounded-lg"
                         pagination={{
                             dynamicBullets: true,
                         }}
@@ -194,6 +195,10 @@ const Progres = ({ auth, setIsModalTwoOpen, images, isModalTwoOpen, user }) => {
                             },
                             768: {
                                 slidesPerView: 3,
+                                spaceBetween: 30,
+                            },
+                            998: {
+                                slidesPerView: 4,
                                 spaceBetween: 30,
                             },
                         }}
@@ -212,7 +217,7 @@ const Progres = ({ auth, setIsModalTwoOpen, images, isModalTwoOpen, user }) => {
                                 </SwiperSlide>
                             ))
                         ) : (
-                            <div className="flex justify-center items-center w-full h-[200px] border border-neutral-800 rounded-md p-5 text-white col-span-1 sm:col-span-2 lg:col-span-4">
+                            <div className="flex justify-center items-center w-full h-[200px] border border-ред-600 rounded-md p-5 text-white col-span-1 sm:col-span-2 lg:col-span-4">
                                 {auth.user
                                     ? "Нямате качени снимки."
                                     : "Тук ще можете да споделяте снимките от прогреса."}
@@ -221,7 +226,33 @@ const Progres = ({ auth, setIsModalTwoOpen, images, isModalTwoOpen, user }) => {
                     </Swiper>
                 </div>
             ) : (
-                ""
+                <div className="flex-col-3 relative">
+                    <div className="absolute flex flex-col lg:flex-row items-center gap-5 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[1000]">
+                        <a href="/quiz" className="text-white">
+                            <button className="fill-red-button">
+                                Take the quiz
+                            </button>
+                        </a>
+                        <a className="text-black" href="#learnMore">
+                            <button className="border-red-600 bg-neutral-300 p-2 px-4 rounded-lg text-black">
+                                Свържете се с мен
+                            </button>
+                        </a>
+                    </div>
+                    <h1 className="text-2xl font-bold">Прогрес</h1>
+                    <div className="p-5 border border-red-600  rounded-l select-none">
+                        <div className="grid-4 gap-5 blur-lg">
+                            <img
+                                className="w-full"
+                                src="/assets/landingPage/header-image-one.webp"
+                            />
+                            <img
+                                className="hidden w-full lg:flex"
+                                src="/assets/landingPage/header-image-2.jpg"
+                            />
+                        </div>
+                    </div>
+                </div>
             )}
         </>
     );

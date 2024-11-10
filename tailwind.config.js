@@ -91,6 +91,7 @@ theme: {
     },
       backgroundImage: {
           "panel-image": "linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url('/assets/login.jpg')",
+          'login-image': '',
         },
     },
 },

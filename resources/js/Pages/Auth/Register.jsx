@@ -3,80 +3,131 @@ import RegisterController from "@/Controllers/RegisterController";
 import { Loader } from "lucide-react";
 
 export default function Register() {
-   
-    const { submit, registerInputs, handleOnChange, data, errors, processing } = RegisterController();
+    const { submit, registerInputs, handleOnChange, data, errors, processing } =
+        RegisterController();
 
     return (
-        <form onSubmit={submit} className="grid-2 max-h-screen py-5">
+        <form onSubmit={submit} className="max-h-screen max-w-2xl py-5 mx-auto">
             <div className="flex-center min-h-screen">
                 <div className="w-full px-5 lg:px-10 xl:px-32 mx-auto">
-                    <div className="flex-col-3">
-                        <h1 className="font-bold text-3xl">Здравейте</h1>
-                        <p>Създайте си акаунт. Моля въведете вашите данни.</p>
+                    <div className="flex-col-10">
+                        <h1 className="font-bold text-5xl text-center">
+                            Регистрация
+                        </h1>
 
-                        {registerInputs.map(({ id, name, type, label, required, value, error, autoComplete }) => (
-                            <div key={id} className="input-container">
-                                <input
-                                    id={id}
-                                    name={name}
-                                    type={type}
-                                    value={value}
-                                    required={required}
-                                    autoComplete={autoComplete}
-                                    className="mt-1 block w-full"
-                                    placeholder={label}
-                                    onChange={handleOnChange}
-                                />
-                                {error && <InputError message={error} className="mt-2" />}
-                            </div>
-                        ))}
-
-                        <div className="input-container">
-                            <textarea
-                                id="additional_info"
-                                name="additional_info"
-                                value={data.additional_info}
-                                className="mt-1 block w-full"
-                                onChange={handleOnChange}
-                                required
-                                placeholder="Опишете вашите фитнес цели, опит и очаквания"
-                            />
-                            {errors.additional_info && (
-                                <InputError message={errors.additional_info} className="mt-2" />
+                        <div className="flex-col-3">
+                            {registerInputs.map(
+                                ({
+                                    id,
+                                    name,
+                                    type,
+                                    label,
+                                    required,
+                                    value,
+                                    error,
+                                    autoComplete,
+                                }) => (
+                                    <div className="flex-col-1">
+                                        <label className="text-white text-sm">
+                                            {label}
+                                            <span className="text-red-600">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div
+                                            key={id}
+                                            className="input-container"
+                                        >
+                                            <input
+                                                id={id}
+                                                name={name}
+                                                type={type}
+                                                value={value}
+                                                required={required}
+                                                autoComplete={autoComplete}
+                                                className="mt-1 block w-full"
+                                                placeholder={label}
+                                                onChange={handleOnChange}
+                                            />
+                                            {error && (
+                                                <InputError
+                                                    message={error}
+                                                    className="mt-2"
+                                                />
+                                            )}
+                                        </div>
+                                    </div>
+                                ),
                             )}
-                        </div>
-
-                        <div className="flex-between">
-                            <div className="flex-3">
-                                <input
-                                    type="checkbox"
-                                    name="remember"
-                                    className="custom-checkbox"
-                                    checked={data.remember}
+                            <div className="input-container">
+                                <label className="text-sm text-white">
+                                    Additional Info
+                                </label>
+                                <textarea
+                                    id="additional_info"
+                                    name="additional_info"
+                                    value={data.additional_info}
+                                    className="mt-1 block w-full"
                                     onChange={handleOnChange}
+                                    required
+                                    placeholder="Опишете вашите фитнес цели, опит и очаквания"
                                 />
-                                <p>Запомни за 30 дни</p>
+                                {errors.additional_info && (
+                                    <InputError
+                                        message={errors.additional_info}
+                                        className="mt-2"
+                                    />
+                                )}
                             </div>
-                            <a href="/forgot-password" className="text-[#dc2626] underline">
-                                Забравена парола?
-                            </a>
+                            <div className="flex-between">
+                                <div className="flex-3">
+                                    <input
+                                        type="checkbox"
+                                        name="remember"
+                                        className="custom-checkbox"
+                                        checked={data.remember}
+                                        onChange={handleOnChange}
+                                    />
+                                    <p className="text-sm">
+                                        Съгласявам се с{" "}
+                                        <span className="underline">
+                                            Политика за поверително
+                                        </span>
+                                        ст и{" "}
+                                        <span className="underline">
+                                            Политика за ползване
+                                        </span>{" "}
+                                        на NBCoaching
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button
+                                disabled={processing}
+                                className="w-full mt-3 bg-red-600 disabled:bg-red-600/50 text-white font-bold uppercase disabled:cursor-not-allowed rounded-md flex-2 justify-center p-3 transition-all"
+                            >
+                                {processing ? "Processing..." : "Регистрация"}
+                                {processing && (
+                                    <Loader
+                                        size={15}
+                                        className="animate-spin"
+                                    />
+                                )}
+                            </button>
                         </div>
-                       
-                        <button disabled={processing} className="w-full mt-3 bg-white disabled:bg-white/50 disabled:cursor-not-allowed rounded-md flex-2 justify-center p-3 transition-all">
-                            {processing ? "Processing..." : "Създаване на акаунт"}{processing && <Loader size={15} className="animate-spin"/>}
-                        </button>
 
-
-                        <p className="flex-end gap-1">
+                        <p className="flex-center gap-1 mb-10">
                             Вече имаш акаунт?{" "}
-                            <a className="text-[#dc2626] underline" href="/login">
+                            <a
+                                className="text-[#dc2626] underline"
+                                href="/login"
+                            >
                                 Вход
                             </a>
                         </p>
                     </div>
                 </div>
             </div>
-            <div className="bg-panel-image bg-center bg-cover" />
         </form>
     );
 }

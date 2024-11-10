@@ -70,10 +70,10 @@ const Navbar = () => {
                     {adminRole && (
                         <li>
                             <a
-                                className="hover:text-white transition-all cursor-pointer"
+                                className="hover:text-white transition-all font-bold cursor-pointer"
                                 href="/admin"
                             >
-                                Admin
+                                Админ
                             </a>
                         </li>
                     )}
@@ -161,10 +161,10 @@ const Navbar = () => {
                     {adminRole && (
                         <li>
                             <a
-                                className="hover:text-white transition-all cursor-pointer"
+                                className="hover:text-white font-bold text-xl transition-all cursor-pointer"
                                 href="/admin"
                             >
-                                Admin
+                                Админ
                             </a>
                         </li>
                     )}

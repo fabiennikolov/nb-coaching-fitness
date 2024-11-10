@@ -14,6 +14,7 @@ const NbCoachingPage = (props) => {
     const [ isModalTwoOpen, setIsModalTwoOpen ] = useState(false)
 
     const [blur, setBlur] = useState(true);
+    
     return (
         <div>
             {!blur && (
@@ -36,10 +37,10 @@ const NbCoachingPage = (props) => {
                                 href="/contact"
                                 className="text-black mt-2 border-none"
                             >
-                                <button className="fill-button">Контакт</button>
+                                <button className="fill-button border-none">Контакт</button>
                             </a>
                             <a href="/login" className="text-black mt-2">
-                                <button className="fill-button">Вход</button>
+                                <button className="fill-red-button">Вход</button>
                             </a>
                         </div>
                     )}
@@ -60,7 +61,7 @@ const NbCoachingPage = (props) => {
                             setBlur={setBlur}
                             blur={blur}
                         />
-                        <Programs tables={tables}/>
+                        <Programs user={user} tables={tables}/>
                         <Progres
                             user={user}
                             images={images}

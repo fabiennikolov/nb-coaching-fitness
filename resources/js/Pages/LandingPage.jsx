@@ -1,15 +1,11 @@
 import React from "react";
 import Navbar from "@/CustomComponents/Navbar";
 
-import { usePage } from "@inertiajs/react";
-import { ContainerScroll } from "@/CustomComponents/ui/container-scroll-animation";
-import { aboutCards, headerDataText } from "@/Constants/StaticData";
+import { aboutCards } from "@/Constants/StaticData";
 
 import Footer from "@/CustomComponents/Footer";
 
 const Welcome = (props) => {
-    const { auth, permissions } = props;
-
     return (
         <div className="relative">
             <Navbar />
@@ -77,7 +73,7 @@ const Welcome = (props) => {
                 </div>
             </section>
 
-            <section className="grid-2 max-w-wrapper py-32">
+            <section id="learnMore" className="grid-2 max-w-wrapper py-32">
                 <h1 className="font-bold text-3xl lg:text-5xl">
                     Какво е <span className="text-red-600">NB</span>
                     coaching<span className="text-red-600">?</span>

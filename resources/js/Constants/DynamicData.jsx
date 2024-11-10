@@ -99,20 +99,20 @@ export const LoginInputs = (data, errors) => [
         id: "email",
         name: "email",
         type: "email",
-        label: "Email",
         autoComplete: "username",
         required: true,
         value: data.email,
         error: errors.email,
+        label: 'Имейл адрес'
     },
     {
         id: "password",
         name: "password",
         type: "password",
-        label: "Password",
         required: true,
         value: data.password,
         error: errors.password,
+        label: 'Парола'
     },
 ];
 
