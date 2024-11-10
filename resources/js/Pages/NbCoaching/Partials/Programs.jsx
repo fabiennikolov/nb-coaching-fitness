@@ -22,7 +22,7 @@ const Programs = ({ tables, user }) => {
                 </div>
             ) : (
                 <div className="relative h-[300px] p-5 rounded-lg border border-red-600 pointer-events-none select-none">
-                    <div className="absolute flex flex-col lg:flex-row items-center gap-3 gap-5 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[1000]">
+                    <div className="absolute flex flex-col lg:flex-row items-center  gap-5 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[1000]">
                         <a href="/quiz" className="text-white">
                             <button className="fill-red-button">
                                 Take the quiz
