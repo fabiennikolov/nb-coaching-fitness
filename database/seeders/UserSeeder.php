@@ -26,6 +26,7 @@ class UserSeeder extends Seeder
                 'email' => 'alex@alex.com',
                 'password' => bcrypt('password'),
                 'role' => 'superadmin',
+                'additional_info' => 'i am skinny girl i want to gain muscle mass, not weight, but to look fit and healthy and energetic'
             ],
             [
                 'name' => 'Alex Mech',
